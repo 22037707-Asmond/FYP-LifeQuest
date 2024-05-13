@@ -1,6 +1,26 @@
 /* Homepage Header Css */
 
 .logo {
-    width: 100px;
+    width: 200px;
     height: 100px;
+    display: inline-block;
+    
+}
+
+.navbar {
+    background-color: red;
+    width: 800px;
+}
+
+.adjustNav {
+    margin-top: -70px;
+}
+
+.navbar-btn {
+    color: white;
+    font-weight: bolder;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: large;
+    margin-left: 30px;
 }

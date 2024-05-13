@@ -5,26 +5,28 @@ import "../LifeQuest.css";
 const HomepageHeader = () => {
     return (
         <>
+            <img className="logo" src="/images/tee up.png" alt="" />
             <div className="container">
-                <img className="logo" src="/images/tee up.png" alt="" />
-                    <nav className="navbar navbar-expand-sm d-flex justify-content-center">
-                        <Link className="navbar-brand">
-                            <button className="btn btn-warning">About us</button>
+                <div className="d-flex justify-content-center adjustNav">
+                    <nav className="navbar navbar-btnexpand-sm justify-content-center">
+                        <Link className="navbar-btnbrand">
+                            <button className=" navbar-btn">About us</button>
                         </Link>
-                        <Link className="navbar-brand">
-                            <button className="btn btn-warning">Programmes</button>
+                        <Link className="navbar-btnbrand">
+                            <button className=" navbar-btn">Programmes</button>
                         </Link>
-                        <Link className="navbar-brand">
-                            <button className="btn btn-warning">Careers</button>
+                        <Link className="navbar-btnbrand">
+                            <button className=" navbar-btn">Careers</button>
                         </Link>
-                        <Link className="navbar-brand">
-                            <button className="btn btn-warning">Stories</button>
+                        <Link className="navbar-btnbrand">
+                            <button className=" navbar-btn">Stories</button>
                         </Link>
                     </nav>
                 </div>
-
+            </div>
         </>
     );
+
 };
 
 export default HomepageHeader;
