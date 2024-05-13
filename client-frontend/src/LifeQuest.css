@@ -1,0 +1,41 @@
+/* Homepage Header Css */
+
+.logo {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    
+}
+
+.navbar {
+    background-color: red;
+    width: 800px;
+    border-radius: 20px;
+}
+
+.adjustNav {
+    margin-top: -70px;
+}
+
+.navbar-btn {
+    color: white;
+    font-weight: bolder;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: large;
+    margin-left: 30px;
+}
+
+
+/* Homepage Carousel Css */
+.c-item {
+    height: 580px;
+    width: 200px;
+    
+}
+
+.c-image {
+    width: auto;
+    height: auto;
+}
+
