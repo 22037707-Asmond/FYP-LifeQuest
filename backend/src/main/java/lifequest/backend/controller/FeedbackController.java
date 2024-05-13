@@ -26,4 +26,14 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.addFeedback(feedback), HttpStatus.CREATED);
     }
 
+    @PostMapping("/feedback/get/{id}")
+    public ResponseEntity<Feedback> getFeedbackById(@RequestBody Long id) {
+        return new ResponseEntity<>(feedbackService.getFeedbackById(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/feedback/getAll")
+    public ResponseEntity<Iterable<Feedback>> getAllFeedback() {
+        return new ResponseEntity<>(feedbackService.getAllFeedback(), HttpStatus.OK);
+    }
+
 }
