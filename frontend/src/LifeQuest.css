@@ -10,6 +10,7 @@
 .navbar {
     background-color: red;
     width: 800px;
+    border-radius: 20px;
 }
 
 .adjustNav {
@@ -24,3 +25,17 @@
     font-size: large;
     margin-left: 30px;
 }
+
+
+/* Homepage Carousel Css */
+.c-item {
+    height: 580px;
+    width: 200px;
+    
+}
+
+.c-image {
+    width: auto;
+    height: auto;
+}
+

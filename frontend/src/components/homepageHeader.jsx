@@ -5,7 +5,9 @@ import "../LifeQuest.css";
 const HomepageHeader = () => {
     return (
         <>
-            <img className="logo" src="/images/tee up.png" alt="" />
+            <div className="container">
+                <img className="logo" src="/images/tee up.png" alt="" />
+            </div>
             <div className="container">
                 <div className="d-flex justify-content-center adjustNav">
                     <nav className="navbar navbar-btnexpand-sm justify-content-center">
