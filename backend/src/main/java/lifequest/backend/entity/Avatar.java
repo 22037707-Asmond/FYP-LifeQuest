@@ -18,11 +18,11 @@ public class Avatar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String gender;
     private String dob;
     private String occupation;
     private int salary;
+    private int retirementMoney;
 
 }
