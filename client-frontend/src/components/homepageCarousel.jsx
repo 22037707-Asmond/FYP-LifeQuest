@@ -27,7 +27,7 @@ const HomepageCarousel = () => {
                         <img className="d-block w-100 c-image" src="/images/teeup team.jpg" alt="Second slide" />
                     </div>
                     <div className="carousel-item c-item">
-                        <img className="d-block w-100 c-image" src="/images/youth inspirin.jpg" alt="Third slide"/>
+                        <img className="d-block w-100 c-image" src="/images/life quest.png" alt="Third slide"/>
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
