@@ -1,15 +1,12 @@
-import './App.css';
-import SignIn from './pages/SignIn';
+import React from 'react';
+import {Route, Routes} from 'react-router-dom';
+import SignInPage from './pages/SignInPage';
 
 function App() {
   return (
-    <> 
-      <SignIn />
-      <div>
-        Changs by sema
-      </div>
-    </>
-  
+    <Routes>
+      <Route path='/' element={<SignInPage/>} />
+    </Routes>
   );
 }
 
