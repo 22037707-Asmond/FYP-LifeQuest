@@ -7,6 +7,11 @@
     
 }
 
+body {
+    background-color: red
+
+}
+
 .navbar {
     background-color: red;
     width: 800px;
