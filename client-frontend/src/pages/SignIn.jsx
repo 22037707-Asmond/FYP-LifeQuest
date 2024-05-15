@@ -9,10 +9,9 @@ import Box from '@mui/material/Box';
 import LockOpenOutlined from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import HomepageHeader from '../components/homepageHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-
-
 
 const defaultTheme = createTheme();
 
@@ -29,9 +28,9 @@ export default function Signup({ setIsLoggedIn }) {
         //     password2: data.get('password2'),
         // };
 
-        // if (formData.password == formData.password2) {
+        // if (formData.password === formData.password2) {
         //     const res = await UserService.createUser(formData);
-        //     const isSuccessful = res.message && (res.message.indexOf("successfully") != -1);
+        //     const isSuccessful = res.message && res.message.includes("successfully");
         //     if (isSuccessful) {
         //         alert(res.message);
         //         setIsLoggedIn(true);
@@ -40,12 +39,14 @@ export default function Signup({ setIsLoggedIn }) {
         //         alert(res.response.data.message);
         //     }
         // } else {
-        //     alert("Passwords do not match. Please try again")
+        //     alert("Passwords do not match. Please try again");
         // }
     };
 
     return (
         <ThemeProvider theme={defaultTheme}>
+            <HomepageHeader />
+
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -99,25 +100,26 @@ export default function Signup({ setIsLoggedIn }) {
                             name="password2"
                             label="Confirm Password"
                             type="password"
-                            id="password2"/>
-                            <Button
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
-                            >
-                                Sign Up
-                            </Button>
-                            <Grid container justifyContent="center" alignItems="center">
-                                <Grid item >
-                                    <Link href="/" variant="body2">
-                                        {"Already have an account? Login"}
-                                    </Link>
-                                </Grid>
+                            id="password2"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2, bgcolor: 'red' }}
+                        >
+                            Sign Up
+                        </Button>
+                        <Grid container justifyContent="center" alignItems="center" >
+                            <Grid item>
+                                <Link href="/" variant="body2" sx={{ color: 'red' }}>
+                                    Already have an account? Login
+                                </Link>
                             </Grid>
-                        </Box>
+                        </Grid>
                     </Box>
-                </Container>
-            </ThemeProvider>
-        );
-    }
+                </Box>
+            </Container>
+        </ThemeProvider>
+    );
+}
