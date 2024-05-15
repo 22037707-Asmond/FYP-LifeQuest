@@ -21,7 +21,7 @@ const HomepageHeader = () => {
                         <Link className="navbar-btnbrand">
                             <button className=" navbar-btn">Stories</button>
                         </Link>
-                        <Link className="navbar-btnbrand" >
+                        <Link className="navbar-btnbrand" to='/SignIn'>
                             <button className="navbar-btn">Login</button>
                         </Link>
                     </nav>

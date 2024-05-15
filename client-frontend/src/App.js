@@ -9,8 +9,11 @@ function App() {
     <Routes>
       <Route path='/' element={<Homepage/>} />
       <Route path='SignIn' element = {<SignIn/>} ></Route>s
+<<<<<<< HEAD
       <Route path='AboutU' element = {<AboutUs/>} ></Route>s
 
+=======
+>>>>>>> cdd2e65eb6537f1630cdc1fb22236d2a395e78b0
     </Routes>
   );
 }
