@@ -9,7 +9,7 @@
 
 .navbar {
     background-color: red;
-    width: 800px;
+    width: 1000px;
     border-radius: 20px;
 }
 
@@ -22,8 +22,12 @@
     font-weight: bolder;
     background-color: transparent;
     border-color: transparent;
-    font-size: large;
+    font-size: 25px;
     margin-left: 30px;
+}
+
+.navbar-btn:hover {
+   opacity: 0.8;
 }
 
 
@@ -31,7 +35,6 @@
 .c-item {
     height: 580px;
     width: 200px;
-    
 }
 
 .c-image {

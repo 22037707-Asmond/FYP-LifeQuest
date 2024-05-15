@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lifequest.backend.entity.Clients;
-import lifequest.backend.entity.Feedback;
 import lifequest.backend.service.ClientsService;
 
 @RestController
@@ -23,14 +22,5 @@ public class ClientController {
     public ResponseEntity<Clients> addClient(@RequestBody  Clients client) {
         return new ResponseEntity<>(clientsService.addClient(client), HttpStatus.CREATED);
     }
-
-
-
-    //  @PostMapping("/feedback/add")
-    // public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
-    //     return new ResponseEntity<>(feedbackService.addFeedback(feedback), HttpStatus.CREATED);
-    // }
-
-
 
 }
