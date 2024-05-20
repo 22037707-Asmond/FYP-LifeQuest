@@ -24,7 +24,7 @@ const HomepageHeader = () => {
                         <Link className="navbar-btnbrand" to='/SignUp'>
                             <button className="navbar-btn">Sign Up</button>
                         </Link>
-                        <Link className="navbar-btnbrand" to='/SignUp'>
+                        <Link className="navbar-btnbrand" to='/Login'>
                             <button className="navbar-btn">Login</button>
                         </Link>
                     </nav>
