@@ -9,7 +9,7 @@ const HomepageHeader = () => {
             <div className="container">
                 <div className="d-flex justify-content-center adjustNav">
                     <nav className="navbar navbar-btnexpand-sm justify-content-center">
-                        <Link className="navbar-btnbrand">
+                        <Link className="navbar-btnbrand" to='/AboutUs'>
                             <button className=" navbar-btn">About us</button>
                         </Link>
                         <Link className="navbar-btnbrand">
@@ -21,7 +21,10 @@ const HomepageHeader = () => {
                         <Link className="navbar-btnbrand">
                             <button className=" navbar-btn">Stories</button>
                         </Link>
-                        <Link className="navbar-btnbrand" to='/SignIn'>
+                        <Link className="navbar-btnbrand" to='/SignUp'>
+                            <button className="navbar-btn">Sign Up</button>
+                        </Link>
+                        <Link className="navbar-btnbrand" to='/Login'>
                             <button className="navbar-btn">Login</button>
                         </Link>
                     </nav>
