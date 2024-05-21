@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { addAccount } from '../../apis/api';
+import { addAccount } from '../../apis/AccountsAPI';
 import HomepageHeader from '../homepageHeader';
 
 const defaultTheme = createTheme();

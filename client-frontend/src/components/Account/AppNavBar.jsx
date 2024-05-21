@@ -31,7 +31,8 @@ export default function AppNavBar() {
           component="div"
           sx={{ display: { xs: 'none', sm: 'block' }, fontSize: { sm: 20, md: 24 } }}
         >
-          LifeQuest
+          CoinGuid
+
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: { xs: 1, sm: 2 } }}>

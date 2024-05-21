@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import HomepageHeader from '../homepageHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { addAccount } from '../../apis/api';
+import { addAccount } from '../../apis/AccountsAPI';
 
 const defaultTheme = createTheme();
 

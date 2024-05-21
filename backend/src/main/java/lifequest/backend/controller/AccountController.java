@@ -42,4 +42,6 @@ public class AccountController {
     public ResponseEntity<?> getAccountByUsername(@PathVariable String username) {
         return new ResponseEntity<>(accountService.findAccountbyUsername(username), HttpStatus.OK);
     }
+
+  
 }
