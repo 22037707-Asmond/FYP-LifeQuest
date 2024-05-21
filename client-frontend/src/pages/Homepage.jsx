@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../LifeQuest.css';
 import HeroSection from '../components/heroSection';
 import Footer from '../components/homepageFooter';
+import LifeQuestGame from '../components/LifeQuest_Game';
 
 
 const Homepage = () => {
@@ -15,6 +16,8 @@ const Homepage = () => {
           <HomepageCarousel />
           <br />
          <HeroSection />
+         <br />
+         <LifeQuestGame />
          <br />
          <Footer />
        </>
