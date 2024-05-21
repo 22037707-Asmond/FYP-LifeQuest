@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 public class AccountController {
 
     @Autowired
@@ -42,4 +42,6 @@ public class AccountController {
     public ResponseEntity<?> getAccountByUsername(@PathVariable String username) {
         return new ResponseEntity<>(accountService.findAccountbyUsername(username), HttpStatus.OK);
     }
+
+  
 }
