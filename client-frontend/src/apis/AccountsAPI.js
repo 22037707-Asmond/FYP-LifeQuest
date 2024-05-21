@@ -17,3 +17,7 @@ export const getAccountByUsr = (username) => {
 export const deleteAccount = (accountId) => {
     return axios.delete(`${REST_API_URL}/accounts/delete/${accountId}`);
 };
+
+export const authUser = (username, password) => {
+    return axios.post(`${REST_API_URL}/accounts/auth`, { username, password });
+};
