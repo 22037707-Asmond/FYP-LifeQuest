@@ -17,8 +17,8 @@ public class AgentService {
         agentRepository.deleteById(id);
     }
 
-    public void addAgent(Agent agent) {
-        agentRepository.save(agent);
+    public Agent addAgent(Agent agent) {
+        return agentRepository.save(agent);
     }
 
     

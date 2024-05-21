@@ -35,5 +35,8 @@ public class AccountService {
         return accountRepository.findByUsername(username);
     }
 
+    public Account authAccount(String username, String password) {
+        return accountRepository.findByUsernameAndPassword(username, password);
+    }
 
 }
