@@ -1,0 +1,10 @@
+{
+    "name": "LifeQuest",
+    "short_name": "LifeQuest",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1976d2",
+    "description": "A platform to manage your life quests"
+  }
+  

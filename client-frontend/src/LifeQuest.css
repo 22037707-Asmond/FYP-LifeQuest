@@ -9,7 +9,7 @@
 
 .navbar {
     background-color: red;
-    width: 800px;
+    width: 1000px;
     border-radius: 20px;
 }
 
@@ -26,12 +26,15 @@
     margin-left: 30px;
 }
 
+.navbar-btn:hover {
+   opacity: 0.8;
+}
+
 
 /* Homepage Carousel Css */
 .c-item {
     height: 580px;
     width: 200px;
-    
 }
 
 .c-image {
