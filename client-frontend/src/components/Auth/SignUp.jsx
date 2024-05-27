@@ -163,7 +163,7 @@ export default function Signup({ setIsLoggedIn }) {
                         </Button>
                         <Grid container justifyContent="center" alignItems="center">
                             <Grid item>
-                                <Link href="/SignIn" variant="body2" sx={{ color: 'red' }}>
+                                <Link href="/Login" variant="body2" sx={{ color: 'red' }}>
                                     Already have an account? Login
                                 </Link>
                             </Grid>

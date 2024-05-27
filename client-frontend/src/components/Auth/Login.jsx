@@ -13,8 +13,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { addAccount } from '../../apis/AccountsAPI';
 import HomepageHeader from '../homepageHeader';
+import axios from 'axios';
+import { authUser } from '../../apis/AccountsAPI';
 
 const defaultTheme = createTheme();
 
@@ -24,10 +25,25 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic here
+        try {
+            const userDetails = await authUser(username, password);
+            console.log(userDetails);
+           
+            if (userDetails) {
+                // Authentication successful, redirect to account page
+                navigate('/AccountPage', { state: { acc: userDetails } });
+              } else {
+                // Invalid username or password, display error message
+                setError('Invalid username or password.');
+              }
+        } catch (error) {
+            // Error handling for failed request
+            setError('Failed to authenticate. Please try again later.');
+        }
     };
+    
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -35,22 +51,21 @@ export default function Login() {
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
-                     sx={{
+                    sx={{
                         marginTop: 8,
-                        marginBottom: 8, // Add marginBottom for spacing
-                        padding: 3, // Add padding for better spacing between elements
+                        marginBottom: 8,
+                        padding: 3,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)', // Add boxShadow for shadow effect
+                        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
                     }}
-                    
                 >
                     <Avatar sx={{ m: 2, bgcolor: 'error.main' }}>
                         <LoginIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Login in to your TeeUp Account
+                        Login to your TeeUp Account
                     </Typography>
                     {error && (
                         <Typography component="p" variant="body2" color="error">

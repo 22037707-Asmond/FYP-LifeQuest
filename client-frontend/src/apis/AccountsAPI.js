@@ -18,6 +18,12 @@ export const deleteAccount = (accountId) => {
     return axios.delete(`${REST_API_URL}/accounts/delete/${accountId}`);
 };
 
-export const authUser = (username, password) => {
-    return axios.post(`${REST_API_URL}/accounts/auth`, { username, password });
-};
+export const authUser = async (username, password) => {
+    try {
+      const response = await axios.get(`${REST_API_URL}/accounts/auth/${username}/${password}`);
+      return response.data;
+    } catch (error) {
+      // Handle errors
+    }
+  };
+  

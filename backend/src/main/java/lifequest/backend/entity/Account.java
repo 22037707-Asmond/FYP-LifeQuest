@@ -32,6 +32,8 @@ public class Account {
     private String username;
     private String password;
     private String email;
+    private String role;
+    private byte[] profilePicture;
 
   // Add a method to set the password securely
   public void setPassword(String password) {
