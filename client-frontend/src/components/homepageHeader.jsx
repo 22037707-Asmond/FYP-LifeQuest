@@ -5,7 +5,9 @@ import "../LifeQuest.css";
 const HomepageHeader = () => {
     return (
         <>
-            <img className="logo" src="/images/tee up.png" alt="" />
+            <Link to="/"> 
+                <img className="logo" src="/images/tee up.png" alt="" />
+            </Link>            
             <div className="container">
                 <div className="d-flex justify-content-center adjustNav">
                     <nav className="navbar navbar-btnexpand-sm justify-content-center">
@@ -20,6 +22,9 @@ const HomepageHeader = () => {
                         </Link>
                         <Link className="navbar-btnbrand">
                             <button className=" navbar-btn">Stories</button>
+                        </Link>
+                        <Link className="navbar-btnbrand" to='/LifeQuest'>
+                            <button className="navbar-btn">Game</button>
                         </Link>
                         <Link className="navbar-btnbrand" to='/SignUp'>
                             <button className="navbar-btn">Sign Up</button>
