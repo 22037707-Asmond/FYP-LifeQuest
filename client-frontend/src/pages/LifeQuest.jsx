@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Application, Assets, Sprite, Texture } from 'pixi.js';
+import HomepageHeader from '../components/homepageHeader';
 
 const LifeQuest = () => {
     useEffect(() => {
@@ -112,7 +113,12 @@ const LifeQuest = () => {
         };
     }, []);
 
-    return <div id="game-container" />;
+    return (
+        <>
+            <HomepageHeader /> 
+            <div id="game-container" />
+        </>
+    );
 };
 
 export default LifeQuest;
