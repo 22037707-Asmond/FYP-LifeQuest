@@ -2,6 +2,8 @@ package lifequest.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,13 +11,15 @@ import java.util.List;
 import lifequest.backend.entity.*;
 import lifequest.backend.repository.*;
 
-
 @Service
 @AllArgsConstructor
 public class UsersService {
 
     @Autowired
     public UsersRepository accountRepository;
+
+    @Autowired
+    public AgentRepository agentRepository;
 
     public Users addAccount(Users account) {
         return accountRepository.save(account);
@@ -44,6 +48,20 @@ public class UsersService {
         }
         return null;
     }
+
+    public void hireAgent(Long accountId, Long agentId) {
+        Users account = accountRepository.findById(accountId).orElse(null);
+        Agent agent = agentRepository.findById(agentId).orElse(null);
+        if (account != null && agent != null) {
+            account.getAgents().add(agent);
+            accountRepository.save(account);
+        }
+    }
+
+
+
+
+   
 
     // Method to hash the password using SHA-256
     private String hashPassword(String password) {

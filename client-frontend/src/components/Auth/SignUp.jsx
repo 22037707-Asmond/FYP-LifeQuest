@@ -12,11 +12,11 @@ import Container from '@mui/material/Container';
 import HomepageHeader from '../homepageHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-import { addAccount } from '../../apis/AccountsAPI';
+import { addAccount } from '../../services/AccountsAPI';
 
 const defaultTheme = createTheme();
 
-export default function Signup({ setIsLoggedIn }) {
+export default function Signup() {
     
     const [firstname, setFirstname] = React.useState('');
     const [lastname, setLastname] = React.useState('');
@@ -24,6 +24,7 @@ export default function Signup({ setIsLoggedIn }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [password2, setPassword2] = React.useState('');
+    const [role] = React.useState('User');
     const [error, setError] = React.useState('');
 
     const navigate = useNavigate();
@@ -42,16 +43,18 @@ export default function Signup({ setIsLoggedIn }) {
                 username,
                 email,
                 password,
+                role
             };
     
             addAccount(account)
                 .then((response) => {
                     console.log(response.data);
-                    if (response.data.success) {
-                        setIsLoggedIn(true);
-                        
-                    } 
-                    navigate('/');
+                    if (response.data.success) {       
+                        navigate('/Login');                 
+                    } else {
+                        setError(response.data.message);
+                    }
+                    
                 })
                 .catch((error) => {
                     console.error("There was an error creating the account!", error);

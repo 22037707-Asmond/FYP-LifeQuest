@@ -14,8 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import HomepageHeader from '../homepageHeader';
-import axios from 'axios';
-import { authUser } from '../../apis/AccountsAPI';
+import { authUser } from '../../services/AccountsAPI';
+import { LocalStorage } from '../../services/LocalStorage';
 
 const defaultTheme = createTheme();
 
@@ -32,18 +32,15 @@ export default function Login() {
             console.log(userDetails);
            
             if (userDetails) {
-                // Authentication successful, redirect to account page
+                LocalStorage.setAccount(userDetails); // Store user details in localStorage
                 navigate('/AccountPage', { state: { acc: userDetails } });
-              } else {
-                // Invalid username or password, display error message
+            } else {
                 setError('Invalid username or password.');
-              }
+            }
         } catch (error) {
-            // Error handling for failed request
             setError('Failed to authenticate. Please try again later.');
         }
     };
-    
 
     return (
         <ThemeProvider theme={defaultTheme}>
