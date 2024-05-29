@@ -1,11 +1,9 @@
 package lifequest.backend.repository;
+import lifequest.backend.entity.Account;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import lifequest.backend.entity.*;
+public interface AccountRepository extends JpaRepository<Account, Long>{
 
-public interface AccountRepository extends JpaRepository<Account, Long>
-{
-    public Account findByUsername(String username);
-    public Account findByUsernameAndPassword(String username, String password);
 }

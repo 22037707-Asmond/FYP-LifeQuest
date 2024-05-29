@@ -2,8 +2,8 @@ package lifequest.backend.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import lifequest.backend.entity.Account;
-import lifequest.backend.service.AccountService;
+import lifequest.backend.entity.Users;
+import lifequest.backend.service.UsersService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "*")
-public class AccountController {
+public class UsersController {
 
     @Autowired
-    public AccountService accountService;
+    public UsersService accountService;
 
     @PostMapping("/accounts/add")
-    public ResponseEntity<Account> addAccount(@RequestBody Account account) {
+    public ResponseEntity<Users> addAccount(@RequestBody Users account) {
         return new ResponseEntity<>(accountService.addAccount(account), HttpStatus.CREATED);
     }
 
@@ -42,7 +42,7 @@ public class AccountController {
 
     @GetMapping("/accounts/{username}")
     public ResponseEntity<?> getAccountByUsername(@PathVariable String username) {
-        return new ResponseEntity<>(accountService.findAccountbyUsername(username), HttpStatus.OK);
+        return new ResponseEntity<>(accountService.findAccountByUsername(username), HttpStatus.OK);
     }
 
     @GetMapping("/accounts/auth/{username}/{password}")
