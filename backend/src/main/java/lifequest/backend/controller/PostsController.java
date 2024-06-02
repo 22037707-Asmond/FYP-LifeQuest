@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lifequest.backend.entity.Posts;
+import lifequest.backend.entity.Articles;
 import lifequest.backend.service.PostsService;
 
 @RestController
@@ -25,12 +25,12 @@ public class PostsController {
     public PostsService postsService;
 
     @PostMapping("/posts/add")
-    public ResponseEntity<Posts> addPost(@RequestBody Posts post) {
+    public ResponseEntity<Articles> addPost(@RequestBody Articles post) {
         return new ResponseEntity<>(postsService.addPost(post), HttpStatus.CREATED);
     }
 
     @GetMapping("/posts")
-    public ResponseEntity<List<Posts>> getAllPosts() {
+    public ResponseEntity<List<Articles>> getAllPosts() {
         return new ResponseEntity<>(postsService.getAllPosts(), HttpStatus.OK);
     }
 

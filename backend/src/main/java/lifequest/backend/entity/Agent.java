@@ -21,9 +21,10 @@ import java.sql.*;
 public class Agent extends Account {
     private String firstName;
     private String lastName;
-    private Blob profilePicture;
     private int yearsOfExperience;
     private String bio;
+    private String phoneNumber;
+    private int salary;
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;

@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Optional;
+
 import lifequest.backend.entity.*;
 import lifequest.backend.repository.*;
 
@@ -58,10 +60,10 @@ public class UsersService {
         }
     }
 
+    public Users getUserById(Long id) {
+        return accountRepository.findById(id).orElse(null);
+    }
 
-
-
-   
 
     // Method to hash the password using SHA-256
     private String hashPassword(String password) {
@@ -89,5 +91,4 @@ public class UsersService {
         return hexString.toString();
     }
 
-    
 }

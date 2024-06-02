@@ -10,7 +10,6 @@ import lifequest.backend.entity.Users;
 import lifequest.backend.service.AccountService;
 import lifequest.backend.service.UsersService;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.sql.SQLException;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.lang.reflect.Field;
 
 @RestController
 @RequestMapping("/api")
@@ -73,6 +79,17 @@ public class UsersController {
         usersService.hireAgent(accountId, agentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-}
 
-  
+    
+
+     @GetMapping("/accounts/id/{id}")
+    public ResponseEntity<?> getAccountById(@PathVariable Long id) {
+        Account account = usersService.getUserById(id);
+        if (account == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        return ResponseEntity.ok(account);
+    }
+    
+}
