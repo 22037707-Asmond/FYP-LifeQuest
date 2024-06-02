@@ -1,26 +1,29 @@
 package lifequest.backend.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lifequest.backend.configs.BlobConfig;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.InheritanceType;
-
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,7 +33,8 @@ public class Account {
     private String email;
     private String role;
 
-   
+    @JsonSerialize(using = BlobConfig.class)
+    private Blob profilePicture;
 
     public void setPassword(String password) {
         this.password = hashPassword(password);
@@ -61,5 +65,4 @@ public class Account {
         }
         return hexString.toString();
     }
-
 }

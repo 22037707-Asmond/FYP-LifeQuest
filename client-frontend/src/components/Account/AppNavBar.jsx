@@ -10,11 +10,12 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
 
 
 export default function AppNavBar() {
   return (
-    <AppBar position="static" sx={{ height: { xs: 56, sm: 64, md: 80,backgroundColor:"red" } }}>
+    <AppBar position="static" sx={{ height: { xs: 56, sm: 64, md: 80, backgroundColor: "red" } }}>
       <Toolbar sx={{ minHeight: { xs: 56, sm: 64, md: 80 }, px: { xs: 1, sm: 2, md: 3 } }}>
         <IconButton
           size="large"
@@ -50,6 +51,7 @@ export default function AppNavBar() {
               <NotificationsIcon sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
             </Badge>
           </IconButton>
+
           <IconButton
             size="large"
             edge="end"
@@ -57,9 +59,26 @@ export default function AppNavBar() {
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
             color="inherit"
+            sx={{
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+              '&:focus': {
+                backgroundColor: 'transparent',
+              },
+              '&:active': {
+                backgroundColor: 'transparent',
+              },
+              '&:visited': {
+                backgroundColor: 'transparent',
+              },
+            }}
           >
-            <AccountCircle sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
+            <Link to='/Profile'>
+              <AccountCircle sx={{ fontSize: { xs: 24, sm: 28, md: 32 }, color: 'white' }} />
+            </Link>
           </IconButton>
+
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton

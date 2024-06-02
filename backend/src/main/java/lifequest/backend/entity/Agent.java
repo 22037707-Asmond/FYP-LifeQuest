@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.sql.*;
 
 @Entity
 @Getter
@@ -20,9 +21,10 @@ import lombok.Setter;
 public class Agent extends Account {
     private String firstName;
     private String lastName;
-    private byte[] profilePicture;
     private int yearsOfExperience;
     private String bio;
+    private String phoneNumber;
+    private int salary;
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;

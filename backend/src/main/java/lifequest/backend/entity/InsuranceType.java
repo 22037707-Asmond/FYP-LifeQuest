@@ -1,11 +1,12 @@
 package lifequest.backend.entity;
 
+import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,14 +17,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Posts {
+public class InsuranceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
+    private String name;
+    private String description;
 
-    @Column(length = 10000)
-    private String content;
-    private byte[] image;
-    private byte[] video;
+    @OneToMany(mappedBy = "insuranceType")
+    private List<Insurance> insurances;
 }
