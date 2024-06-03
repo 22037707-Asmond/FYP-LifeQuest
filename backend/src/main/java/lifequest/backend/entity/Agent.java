@@ -21,7 +21,7 @@ import java.sql.*;
 public class Agent extends Account {
     private String firstName;
     private String lastName;
-    private Blob profilePicture;
+    private byte[] profilePicture;
     private int yearsOfExperience;
     private String bio;
 
