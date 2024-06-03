@@ -1,3 +1,5 @@
+// localStorageWithHook.js
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export const LocalStorage = {
@@ -8,17 +10,37 @@ export const LocalStorage = {
         const accountData = window.localStorage.getItem('account');
         if (accountData) {
             const parsedAccount = JSON.parse(accountData);
-            try {
-                const response = await axios.get(`/api/accounts/id/${parsedAccount.id}`);
-                return response.data;
-            } catch (error) {
-                console.error('Error fetching account data:', error);
-                return null;
-            }
+            return parsedAccount;
         }
         return null;
     },
     clearAccount: () => {
         window.localStorage.removeItem('account');
     }
+};
+
+export const useAccount = () => {
+    const [account, setAccount] = useState(null);
+    const [profilePictureUrl, setProfilePictureUrl] = useState('');
+
+    useEffect(() => {
+        const fetchAccountData = async () => {
+            try {
+                const accountData = await LocalStorage.getAccount();
+                if (accountData) {
+                    setAccount(accountData);
+                    if (accountData.profilePicture) {
+                        const url = `data:image/jpeg;base64,${accountData.profilePicture}`;
+                        setProfilePictureUrl(url);
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching account data:', error);
+            }
+        };
+
+        fetchAccountData();
+    }, []);
+
+    return { account, profilePictureUrl };
 };
