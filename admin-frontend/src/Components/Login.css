@@ -1,25 +1,9 @@
-body {
-    background-color: #4169E1;
-}
-
-table {
-    border-style: solid;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    background-color: beige;
-}
-
-td {
-    padding: 10px;
-}
-
 main {
-    max-width: 400px;
+    max-width: 50%;
     margin: 50px auto;
     padding: 30px;
     border-radius: 5px;
-    background-color: beige;
+    background-color: rgb(234, 234, 234);
     border-style: solid;
 }
 
@@ -53,8 +37,12 @@ button {
     cursor: pointer;
 }
 
-.error-msg {
-    color: red;
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(234, 234, 234);
+    color: black;
+    border: 1px solid black;
     text-align: center;
-    margin-top: 10px;
-}
+ }
