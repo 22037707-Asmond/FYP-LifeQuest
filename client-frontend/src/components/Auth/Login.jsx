@@ -25,6 +25,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -33,7 +34,7 @@ export default function Login() {
            
             if (userDetails) {
                 LocalStorage.setAccount(userDetails); // Store user details in localStorage
-                navigate('/AccountPage', { state: { acc: userDetails } });
+                navigate('/AccountPage');
             } else {
                 setError('Invalid username or password.');
             }

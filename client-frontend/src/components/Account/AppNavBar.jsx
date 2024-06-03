@@ -11,9 +11,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function AppNavBar() {
+  const navigate = useNavigate();
   return (
     <AppBar position="static" sx={{ height: { xs: 56, sm: 64, md: 80, backgroundColor: "red" } }}>
       <Toolbar sx={{ minHeight: { xs: 56, sm: 64, md: 80 }, px: { xs: 1, sm: 2, md: 3 } }}>
@@ -31,6 +33,7 @@ export default function AppNavBar() {
           noWrap
           component="div"
           sx={{ display: { xs: 'none', sm: 'block' }, fontSize: { sm: 20, md: 24 } }}
+          onClick={() => navigate('/AccountPage')}
         >
           CoinGuid
 

@@ -2,12 +2,12 @@ package lifequest.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
 import lifequest.backend.entity.*;
 import lifequest.backend.repository.*;
 
@@ -16,33 +16,33 @@ import lifequest.backend.repository.*;
 public class UsersService {
 
     @Autowired
-    public UsersRepository accountRepository;
+    public UsersRepository usersRepository;
 
     @Autowired
     public AgentRepository agentRepository;
 
     public Users addAccount(Users account) {
-        return accountRepository.save(account);
+        return usersRepository.save(account);
     }
 
     public Users getAccountById(Long id) {
-        return accountRepository.findById(id).orElse(null);
+        return usersRepository.findById(id).orElse(null);
     }
 
     public List<Users> getAllAccounts() {
-        return accountRepository.findAll();
+        return usersRepository.findAll();
     }
 
     public void deleteAccount(Long id) {
-        accountRepository.deleteById(id);
+        usersRepository.deleteById(id);
     }
 
     public Users findAccountByUsername(String username) {
-        return accountRepository.findByUsername(username);
+        return usersRepository.findByUsername(username);
     }
 
     public Users authAccount(String username, String password) {
-        Users account = accountRepository.findByUsername(username);
+        Users account = usersRepository.findByUsername(username);
         if (account != null && account.getPassword().equals(hashPassword(password))) {
             return account;
         }
@@ -50,18 +50,20 @@ public class UsersService {
     }
 
     public void hireAgent(Long accountId, Long agentId) {
-        Users account = accountRepository.findById(accountId).orElse(null);
+        Users account = usersRepository.findById(accountId).orElse(null);
         Agent agent = agentRepository.findById(agentId).orElse(null);
         if (account != null && agent != null) {
             account.getAgents().add(agent);
-            accountRepository.save(account);
+            usersRepository.save(account);
         }
     }
 
+    public Users getUserById(Long id) {
+        return usersRepository.findById(id).orElse(null);
+    }
 
+    
 
-
-   
 
     // Method to hash the password using SHA-256
     private String hashPassword(String password) {
@@ -89,5 +91,4 @@ public class UsersService {
         return hexString.toString();
     }
 
-    
 }
