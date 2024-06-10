@@ -20,21 +20,21 @@ import lifequest.backend.service.PostsService;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
-public class PostsController {
+public class ArticleController {
     @Autowired
     public PostsService postsService;
 
-    @PostMapping("/posts/add")
+    @PostMapping("/article/add")
     public ResponseEntity<Articles> addPost(@RequestBody Articles post) {
         return new ResponseEntity<>(postsService.addPost(post), HttpStatus.CREATED);
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/article")
     public ResponseEntity<List<Articles>> getAllPosts() {
         return new ResponseEntity<>(postsService.getAllPosts(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/posts/delete/{id}")
+    @DeleteMapping("/article/delete/{id}")
     public ResponseEntity<?> deletePost(@PathVariable Long id) {
         postsService.deletePost(id);
         return new ResponseEntity<>(HttpStatus.OK);
