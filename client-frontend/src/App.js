@@ -6,7 +6,6 @@ import Login from './components/Auth/Login';
 import AccountPage from './pages/AccountPage';
 import AboutUs from './pages/AboutUs';
 import LifeQuest from './pages/LifeQuest';
-import { AccountProvider } from './AccountState';
 import Profile from './pages/Profile';
 
 
@@ -14,7 +13,6 @@ import Profile from './pages/Profile';
 function App() {
   const isLoggedIn = false;
   return (
-    <AccountProvider>
       <Routes>
         <Route path='/' element={<Homepage />} />
 
@@ -31,7 +29,6 @@ function App() {
         <Route path="Profile" element={<Profile/>}></Route>
 
       </Routes>
-    </AccountProvider>
   );
 }
 
