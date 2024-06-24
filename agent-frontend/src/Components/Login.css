@@ -1,0 +1,48 @@
+main {
+    max-width: 50%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: rgb(234, 234, 234);
+    border-style: solid;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+button {
+    background: #337ab7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(234, 234, 234);
+    color: black;
+    border: 1px solid black;
+    text-align: center;
+ }
