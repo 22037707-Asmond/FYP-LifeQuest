@@ -1,5 +1,6 @@
 package lifequest.backend.entity;
 
+import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lifequest.backend.configs.BlobConfig;
 
@@ -33,7 +34,7 @@ public class Account {
     private String email;
     private String role;
 
-    @JsonSerialize(using = BlobConfig.class)
+    @JsonSerialize(using = JsonSerializer.class)
     private Blob profilePicture;
 
     public void setPassword(String password) {
