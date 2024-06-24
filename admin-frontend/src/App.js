@@ -1,26 +1,27 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
-import FooterComponent from './components/FooterComponent';
-import HeaderComponent from './components/HeaderComponent';
-import ListAgentsComponents from './components/ListAgentsComponents';
-import AddAgentsComponent from './components/AddAgentsComponents';
-import AddAgentsComponents from './components/AddAgentsComponents';
+import PostingsAdd from './pages/PostingsAdd';
+import PostsListing from './pages/PostingsView';
+// import MainDash from './Components/MainDash/MainDash';
+// import RightSide from './Components/RigtSide/RightSide';
+// import Sidebar from './Components/Sidebar';
 
 function App() {
   return (
-    <div>
-      <Router>
-        <HeaderComponent/>
-        <div className="container"> 
-          <Routes> 
-            <Route exact path="/" element={<ListAgentsComponents />} />
-            <Route path="/agents" element={<ListAgentsComponents />} />
-            <Route path="/add-agent" element={<AddAgentsComponents />} />
-          </Routes>
-        </div>
-        <FooterComponent/>
-      </Router>
-    </div>
+    // <div className="App">
+    //   <PostingsAdd/>
+    //   {/* <div className="AppGlass">
+    //     <Sidebar/>
+    //     <MainDash/>
+    //     <RightSide/>
+    //   </div> */}
+    // </div>
+    <Router>
+    <Routes>
+      <Route path="/article" element={<PostsListing/>} />
+      <Route path="/article/add" element={<PostingsAdd />} />
+    </Routes>
+  </Router>
   );
 }
 

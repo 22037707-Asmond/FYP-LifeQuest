@@ -91,5 +91,16 @@ public class UsersController {
 
         return ResponseEntity.ok(account);
     }
+
+    @PostMapping("/accounts/update/{id}")
+    public ResponseEntity<?> updateAccount(@PathVariable Long id,  @RequestBody Account updatedAccount) {
+        Account account = accService.updateAccount(id, updatedAccount);
+        if (updatedAccount == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        return ResponseEntity.ok(account);
+    }
+       
     
 }

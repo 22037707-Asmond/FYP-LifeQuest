@@ -24,18 +24,18 @@ public class BackendApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Agent agent = new Agent();
-		agent.setFirstName("Sema");
-		agent.setLastName("Kaya");	
+		// Agent agent = new Agent();
+		// agent.setFirstName("Sema");
+		// agent.setLastName("Kaya");	
 
-		// Read the image file and convert it to byte[]
-		Path imagePath = Paths.get("C:/Users/22019860/Pictures/ic pic.jpg");
-		byte[] profilePictureBytes = Files.readAllBytes(imagePath);
-		agent.setProfilePicture(profilePictureBytes);
+		// // Read the image file and convert it to byte[]
+		// Path imagePath = Paths.get("C:/Users/22019860/Pictures/ic pic.jpg");
+		// byte[] profilePictureBytes = Files.readAllBytes(imagePath);
+		// agent.setProfilePicture(profilePictureBytes);
 
-		agent.setYearsOfExperience(5);
-		agent.setBio("I am a software engineer.");
-		agentRepository.save(agent);	
+		// agent.setYearsOfExperience(5);
+		// agent.setBio("I am a software engineer.");
+		// agentRepository.save(agent);	
 	}
 
 }
