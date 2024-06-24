@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -56,4 +57,13 @@ public class Agent extends Account {
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;
+<<<<<<< HEAD
+=======
+
+    @OneToMany(mappedBy = "agent")
+    private List<Premium> premiums;
+
+    
+
+>>>>>>> refs/remotes/origin/main
 }

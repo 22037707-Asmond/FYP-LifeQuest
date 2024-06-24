@@ -1,4 +1,4 @@
-import SignIn from '../Components/SignIn';
+import SignIn from '../Components/Updates/SignIn';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SignInPage = () => {

@@ -14,12 +14,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { addAccount } from '../../services/AccountsAPI';
 
+
 const defaultTheme = createTheme();
 
 export default function Signup() {
-    
+
     const [firstname, setFirstname] = React.useState('');
     const [lastname, setLastname] = React.useState('');
+    const [dob, setdob] = React.useState(null);
     const [username, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -32,29 +34,30 @@ export default function Signup() {
     function saveAccount(e) {
         e.preventDefault();
         setError('');
-    
+
         if (password !== password2) {
             setError("Passwords do not match!");
             return;
         } else {
             const account = {
-                firstName: firstname, // Updated to match backend
-                lastName: lastname,   // Updated to match backend
+                firstName: firstname,
+                lastName: lastname,
                 username,
                 email,
                 password,
-                role
+                role,
+                dob
             };
-    
+
             addAccount(account)
                 .then((response) => {
                     console.log(response.data);
-                    if (response.data.success) {       
-                        navigate('/Login');                 
+                    if (response.data.success) {
+                        navigate('Login');
                     } else {
                         setError(response.data.message);
                     }
-                    
+
                 })
                 .catch((error) => {
                     console.error("There was an error creating the account!", error);
@@ -62,7 +65,7 @@ export default function Signup() {
                 });
         }
     }
-    
+
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -112,6 +115,8 @@ export default function Signup() {
                             value={lastname}
                             onChange={(e) => setLastname(e.target.value)}
                         />
+
+
                         <TextField
                             margin="normal"
                             required
