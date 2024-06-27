@@ -1,18 +1,18 @@
 package lifequest.backend.configs;
 
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Base64;
+
+import javax.sql.rowset.serial.SerialBlob;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.util.Base64;
 
 public class BlobConfig {
 
@@ -45,4 +45,5 @@ public class BlobConfig {
             }
         }
     }
+}
 }
