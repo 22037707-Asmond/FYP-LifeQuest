@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/css/main.css"; // Adjust the path according to your directory structure
+import "../../public/assets/css/main.css"; // Adjusted path
 
 const MyInfoForm = () => {
   const [clientId, setClientId] = useState("");
   const [redirectUrl, setRedirectUrl] = useState("");
   const [scope, setScope] = useState("");
-  const [purposeId, setPurposeId] = useState("");
   const [authApiUrl, setAuthApiUrl] = useState("");
   const [method] = useState("S256");
-  const [scrollToAppForm, setScrollToAppForm] = useState(false);
   const [formValues, setFormValues] = useState({});
 
   useEffect(() => {
@@ -29,10 +27,8 @@ const MyInfoForm = () => {
     });
 
     if (window.location.href.indexOf("callback?code") > -1) {
-      setScrollToAppForm(true);
       callServerAPIs();
     } else if (window.location.href.indexOf("callback") > -1) {
-      setScrollToAppForm(true);
       alert("ERROR: Missing Auth Code");
     }
   }, []);
@@ -42,7 +38,7 @@ const MyInfoForm = () => {
       url: "/generateCodeChallenge",
       type: "POST",
       success: (result) => {
-        const authorizeUrl = `${authApiUrl}?client_id=${clientId}&scope=${scope}&purpose_id=${purposeId}&code_challenge=${result}&code_challenge_method=${method}&redirect_uri=${redirectUrl}`;
+        const authorizeUrl = `${authApiUrl}?client_id=${clientId}&scope=${scope}&purpose_id=&code_challenge=${result}&code_challenge_method=${method}&redirect_uri=${redirectUrl}`;
         window.location = authorizeUrl;
       },
       error: (result) => {
@@ -52,7 +48,7 @@ const MyInfoForm = () => {
   };
 
   const callServerAPIs = () => {
-    const authCode = $.url(window.location.href).param("code");
+    const authCode = new URLSearchParams(window.location.search).get("code");
 
     $.ajax({
       url: "/getPersonData",
@@ -74,35 +70,29 @@ const MyInfoForm = () => {
     let noaData = "";
     let address = "";
     if (data["noa-basic"]) {
-      noaData = str(data["noa-basic"].amount)
-        ? formatMoney(str(data["noa-basic"].amount), 2, ".", ",")
-        : "";
+      noaData = data["noa-basic"].amount ? formatMoney(data["noa-basic"].amount, 2, ".", ",") : "";
     }
     if (data.regadd.type === "SG") {
-      address = str(data.regadd.country)
+      address = data.regadd.country
         ? ""
-        : `${str(data.regadd.block)} ${str(data.regadd.building)} \n #${str(
-            data.regadd.floor
-          )}-${str(data.regadd.unit)} ${str(data.regadd.street)} \n Singapore ${str(
-            data.regadd.postal
-          )}`;
+        : `${data.regadd.block} ${data.regadd.building} \n #${data.regadd.floor}-${data.regadd.unit} ${data.regadd.street} \n Singapore ${data.regadd.postal}`;
     } else if (data.regadd.type === "Unformatted") {
-      address = `${str(data.regadd.line1)}\n${str(data.regadd.line2)}`;
+      address = `${data.regadd.line1}\n${data.regadd.line2}`;
     }
 
     setFormValues({
-      uinfin: str(data.uinfin),
-      name: str(data.name),
-      sex: str(data.sex),
-      race: str(data.race),
-      nationality: str(data.nationality),
-      dob: str(data.dob),
-      email: str(data.email),
-      mobileno: `${str(data.mobileno.prefix)}${str(data.mobileno.areacode)} ${str(data.mobileno.nbr)}`,
+      uinfin: data.uinfin,
+      name: data.name,
+      sex: data.sex,
+      race: data.race,
+      nationality: data.nationality,
+      dob: data.dob,
+      email: data.email,
+      mobileno: `${data.mobileno.prefix}${data.mobileno.areacode} ${data.mobileno.nbr}`,
       regadd: address,
-      housingtype: str(data.housingtype) === "" ? str(data.hdbtype) : str(data.housingtype),
-      marital: str(data.marital),
-      edulevel: str(data.edulevel),
+      housingtype: data.housingtype === "" ? data.hdbtype : data.housingtype,
+      marital: data.marital,
+      edulevel: data.edulevel,
       assessableincome: noaData,
     });
   };
@@ -113,21 +103,13 @@ const MyInfoForm = () => {
     t = t === undefined ? "," : t;
     const s = n < 0 ? "-" : "";
     const i = String(parseInt((n = Math.abs(Number(n) || 0).toFixed(c)), 10));
-    const j = (j = i.length) > 3 ? j % 3 : 0;
+    const j = i.length > 3 ? i.length % 3 : 0;
     return (
       s +
       (j ? i.substr(0, j) + t : "") +
       i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) +
       (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "")
     );
-  };
-
-  const str = (data) => {
-    if (!data) return null;
-    if (data.value) return data.value;
-    if (data.desc) return data.desc;
-    if (typeof data === "string") return data;
-    return "";
   };
 
   const handleAuthorizeSubmit = (e) => {

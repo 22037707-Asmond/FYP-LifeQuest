@@ -7,6 +7,7 @@ import AccountPage from './pages/AccountPage';
 import AboutUs from './pages/AboutUs';
 import LifeQuest from './pages/LifeQuest';
 import Profile from './pages/Profile';
+import MyInfoForm from './components/MyInfoForm';
 
 
 
@@ -20,7 +21,7 @@ function App() {
 
         <Route path='AboutUS' element={<AboutUs />}></Route>
 
-        <Route path='Login' element={<Login />}></Route>
+        <Route path='Login' element={<MyInfoForm />}></Route>
 
         <Route path='LifeQuest' element={<LifeQuest />}></Route>
 
