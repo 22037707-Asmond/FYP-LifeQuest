@@ -1,0 +1,55 @@
+.App {
+    /* padding: 0.5rem 3.5rem; */
+    color: var(--black);
+    background: linear-gradient(106.37deg,
+            #ffe1bc 29.63%,
+            #ffcfd1 51.55%,
+            #f3c6f1 90.85%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.posts-listing {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Responsive grid with minimum item width of 300px */
+    /* padding: 0.5rem 3.5rem; */
+    color: var(--black);
+    background: linear-gradient(106.37deg,
+            #ffe1bc 29.63%,
+            #ffcfd1 51.55%,
+            #f3c6f1 90.85%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.post {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    padding: 20px;
+}
+
+.post h2 {
+    margin: 0 0 10px;
+}
+
+.post .media {
+    margin-bottom: 10px;
+}
+
+.post .media img,
+.post .media video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.post p {
+    margin: 0;
+}
