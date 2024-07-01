@@ -1,10 +1,9 @@
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import SystemUpdateAltOutlinedIcon from '@mui/icons-material/SystemUpdateAltOutlined';
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import Header from "../../Components/Header";
-import { tokens } from "../../theme";
+import Header from '../../Components/PageFragment/Header';
 import { getAllAgents } from "./AgentsAPI";
 
 const Agents = () => {
@@ -34,9 +33,7 @@ const Agents = () => {
     }, [agents]);
 
     // These is just for the dark mode and light mode
-    const theme = useTheme();
-    const colors = tokens(theme.palette.mode);
-
+    
     // The codes below here are for column data in agents, field is for the column name in database, headerName is for the name to appear frontend
     const columns = [
         { field: "id", headerName: "ID" },

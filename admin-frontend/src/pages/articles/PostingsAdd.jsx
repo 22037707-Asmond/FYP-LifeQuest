@@ -2,7 +2,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../../Components/PageFragment/Header';
 import { addPost } from './PostingAPI';
+import './Postings.css';
 
 const PostingsAdd = () => {
     const [uploads, setUploads] = useState(null);
@@ -74,7 +76,7 @@ const PostingsAdd = () => {
             <section>
                 <div className="App">
                     <main>
-                        <h1>Add post</h1>
+                        <Header title="Add Article" subtitle="LifeQuest's posts"/>
                         <form onSubmit={savePost}>
                             <div className="mb-3 col-10">
                                 <label htmlFor="uploads" className="form-label">Image/Video</label>

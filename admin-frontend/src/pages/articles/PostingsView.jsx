@@ -2,7 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
 import { Box, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Header from "../../Components/Header";
+import Header from "../../Components/PageFragment/Header";
 import { delPost, getAllPosts, updatePost } from "./PostingAPI"; // Ensure this path is correct
 
 function PostsListing() {
