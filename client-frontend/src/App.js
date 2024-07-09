@@ -7,6 +7,7 @@ import AccountPage from './pages/AccountPage';
 import AboutUs from './pages/AboutUs';
 import LifeQuest from './pages/LifeQuest';
 import Profile from './pages/Profile';
+import PremiumTest from './pages/PremiumTest';
 
 
 
@@ -27,6 +28,8 @@ function App() {
         <Route path='AccountPage' element={<AccountPage />}></Route>
 
         <Route path="Profile" element={<Profile/>}></Route>
+        
+        <Route path="PremiumTest" element={<PremiumTest/>}></Route>
 
       </Routes>
   );

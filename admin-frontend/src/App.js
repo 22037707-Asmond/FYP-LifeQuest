@@ -6,6 +6,10 @@ import PostsListing from './pages/PostingsView';
 // import RightSide from './Components/RigtSide/RightSide';
 // import Sidebar from './Components/Sidebar';
 
+//Agent Components
+import AllAgents from './pages/AllAgents';
+import HiredAgents from './pages/HiredAgents';
+
 function App() {
   return (
     // <div className="App">
@@ -20,6 +24,10 @@ function App() {
     <Routes>
       <Route path="/article" element={<PostsListing/>} />
       <Route path="/article/add" element={<PostingsAdd />} />
+
+      //Agent Routes
+      <Route path="/agents" element={<AllAgents />} />
+      <Route path="/hiredAgents" element={<HiredAgents />} />
     </Routes>
   </Router>
   );
