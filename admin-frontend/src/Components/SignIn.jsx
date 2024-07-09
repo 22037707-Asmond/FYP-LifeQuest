@@ -1,7 +1,7 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import './Login.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
     return (
@@ -36,7 +36,7 @@ const SignIn = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <button type="submit" style={{ background: '#337ab7', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>Sign in</button>
+                                        <Link to = '/dashboard-LQ'><button type="submit" style={{ background: '#337ab7', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '3px', cursor: 'pointer' }}>Sign in</button></Link>
                                     </form>
                                 </main>
                             </section>

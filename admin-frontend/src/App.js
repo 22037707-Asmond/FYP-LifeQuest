@@ -1,16 +1,26 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
-import PostingsAdd from './pages/PostingsAdd';
-import PostsListing from './pages/PostingsView';
-// import MainDash from './Components/MainDash/MainDash';
-// import RightSide from './Components/RigtSide/RightSide';
-// import Sidebar from './Components/Sidebar';
+// import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+// import SignIn from './Components/SignIn'; /*To Be routed to the proper SignIn*/
+// import AdminPage from './pages/AdminPage';
+// import PostingsAdd from './pages/PostingsAdd';
+// import PostsListing from './pages/PostingsView';
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import Agents from "./pages/agents";
+import PostsListing from "./pages/articles/PostingsView";
+import Dashboard from "./pages/dashboard/index";
+import Sidebar from "./pages/global/Sidebar";
+import Topbar from "./pages/global/Topbar";
+// import ArticlesView from "./pages/Articles/PostingsView";
+import { Route, Routes } from "react-router-dom";
+import PostingsAdd from "./pages/articles/PostingsAdd";
+import { ColorModeContext, useMode } from "./theme";
 
 //Agent Components
 import AllAgents from './pages/AllAgents';
 import HiredAgents from './pages/HiredAgents';
 
 function App() {
+  const [theme, colorMode] = useMode();
+
   return (
     // <div className="App">
     //   <PostingsAdd/>
@@ -30,6 +40,38 @@ function App() {
       <Route path="/hiredAgents" element={<HiredAgents />} />
     </Routes>
   </Router>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="app">
+          <Sidebar />
+          <main className="content">
+            <Topbar/>
+            {/* Adjust here in routes to see the different pages */}
+            <Routes>
+              <Route path="/Home" element={<Dashboard />} />
+              <Route path="/article" element={<PostsListing />} />
+              <Route path="/add_articles" element={<PostingsAdd/>} />
+              <Route path="/Agents" element={<Agents />} />
+              {/* <Route path="/Customers" element={<CustomersView />} /> */}
+              {/* <Route path="/Admins" element={<AdminsView />} /> */}
+              {/* <Route path="/Invoices" element={<InvoicesView />} /> */}
+            </Routes>
+          </main>
+        </div>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
+    //   <Router>
+    //   <Routes>
+    //     <Route path="/" element={<SignIn/>}/>  {/*To Be routed to the proper SignIn*/}
+    //     <Route path="/dashboard" element={<AdminPage />}/>
+    //     <Route path="/article" element={<PostsListing/>}/>
+    //     <Route path="/article/add" element={<PostingsAdd />}/>
+    //     {/* <Route path='/Agents' element={<AgentPage/>}/>
+    //     <Route path='/Customers' element={<CustomerPage/>}/> */}
+
+    //   </Routes>
+    // </Router>
   );
 }
 
