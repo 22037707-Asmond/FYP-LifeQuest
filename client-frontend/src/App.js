@@ -21,7 +21,7 @@ function App() {
 
         <Route path='AboutUS' element={<AboutUs />}></Route>
 
-        <Route path='Login' element={<MyInfoForm />}></Route>
+        <Route path='Login' element={<Login />}></Route>
 
         <Route path='LifeQuest' element={<LifeQuest />}></Route>
 

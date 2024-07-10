@@ -32,7 +32,6 @@ public class Account {
     private Long id;
     @NotNull
     private String firstName;
-
     @NotNull
     private String lastName;
     private String username;

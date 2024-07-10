@@ -4,7 +4,8 @@
 // import PostingsAdd from './pages/PostingsAdd';
 // import PostsListing from './pages/PostingsView';
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Agents from "./pages/agents";
+import AgentsListing from "./pages/agents/AgentsView";
+import AdminsListing from "./pages/admins/AdminsView";
 import PostsListing from "./pages/articles/PostingsView";
 import Dashboard from "./pages/dashboard/index";
 import Sidebar from "./pages/global/Sidebar";
@@ -12,6 +13,8 @@ import Topbar from "./pages/global/Topbar";
 // import ArticlesView from "./pages/Articles/PostingsView";
 import { Route, Routes } from "react-router-dom";
 import PostingsAdd from "./pages/articles/PostingsAdd";
+import AgentsAdd from "./pages/agents/AgentsAdd";
+import AdminsAdd from "./pages/admins/AdminsAdd";
 import { ColorModeContext, useMode } from "./theme";
 
 function App() {
@@ -30,9 +33,11 @@ function App() {
               <Route path="/Home" element={<Dashboard />} />
               <Route path="/article" element={<PostsListing />} />
               <Route path="/add_articles" element={<PostingsAdd/>} />
-              <Route path="/Agents" element={<Agents />} />
+              <Route path="/agent" element={<AgentsListing />} />
+              <Route path="/add_agents" element={<AgentsAdd/>} />
+              <Route path="/admin" element={<AdminsListing />} />
+              <Route path="/add_admins" element={<AdminsAdd/>} />
               {/* <Route path="/Customers" element={<CustomersView />} /> */}
-              {/* <Route path="/Admins" element={<AdminsView />} /> */}
               {/* <Route path="/Invoices" element={<InvoicesView />} /> */}
             </Routes>
           </main>
