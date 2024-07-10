@@ -1,0 +1,31 @@
+.App {
+    min-height: 25vh;
+    margin-left: 50px;
+    font-family: 'Inter', sans-serif;
+}
+
+.post {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    padding: 20px;
+}
+
+.post h2 {
+    margin: 0 0 10px;
+}
+
+.post .media {
+    margin-bottom: 10px;
+}
+
+.post .media img,
+.post .media video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.post p {
+    margin: 0;
+}
