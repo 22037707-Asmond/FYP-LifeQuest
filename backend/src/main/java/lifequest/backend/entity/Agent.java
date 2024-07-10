@@ -20,12 +20,13 @@ import java.sql.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Agent extends Account {
-    private String firstName;
-    private String lastName;
+  
     private int yearsOfExperience;
     private String bio;
     private String phoneNumber;
     private int salary;
+    private String about;
+
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;

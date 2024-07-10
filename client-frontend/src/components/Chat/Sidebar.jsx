@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ChatSidebar() {
+function Sidebar() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function ChatSidebar() {
   )
 }
 
-export default ChatSidebar
+export default Sidebar

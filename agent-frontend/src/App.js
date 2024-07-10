@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Chat from './pages/Chat';
+import AccountPage from './pages/AccountPage';
+
+
 
 function App() {
+  const isLoggedIn = false;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+        <Route path='/' element={<Login />} />
+
+        <Route path='Chat' element={<Chat/>}></Route>
+
+        <Route path="/Profile" element={<AccountPage/>}></Route>
+
+
+      </Routes>
   );
 }
 
 export default App;
+
