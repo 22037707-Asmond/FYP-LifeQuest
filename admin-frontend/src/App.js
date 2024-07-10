@@ -17,10 +17,32 @@ import AgentsAdd from "./pages/agents/AgentsAdd";
 import AdminsAdd from "./pages/admins/AdminsAdd";
 import { ColorModeContext, useMode } from "./theme";
 
+//Agent Components
+import AllAgents from './pages/AllAgents';
+import HiredAgents from './pages/HiredAgents';
+
 function App() {
   const [theme, colorMode] = useMode();
 
   return (
+    // <div className="App">
+    //   <PostingsAdd/>
+    //   {/* <div className="AppGlass">
+    //     <Sidebar/>
+    //     <MainDash/>
+    //     <RightSide/>
+    //   </div> */}
+    // </div>
+    <Router>
+    <Routes>
+      <Route path="/article" element={<PostsListing/>} />
+      <Route path="/article/add" element={<PostingsAdd />} />
+
+      //Agent Routes
+      <Route path="/agents" element={<AllAgents />} />
+      <Route path="/hiredAgents" element={<HiredAgents />} />
+    </Routes>
+  </Router>
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />

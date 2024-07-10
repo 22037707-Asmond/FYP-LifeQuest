@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import lifequest.backend.entity.Account;
 import lifequest.backend.entity.Agent;
 import lifequest.backend.exception.ResourceNotFoundException;
 import lifequest.backend.repository.AgentRepository;
