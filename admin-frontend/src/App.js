@@ -6,12 +6,15 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Agents from "./pages/agents";
 import PostsListing from "./pages/articles/PostingsView";
+import Bar from "./pages/Charts/BarChart";
 import Dashboard from "./pages/dashboard/index";
 import Sidebar from "./pages/global/Sidebar";
 import Topbar from "./pages/global/Topbar";
 // import ArticlesView from "./pages/Articles/PostingsView";
 import { Route, Routes } from "react-router-dom";
 import PostingsAdd from "./pages/articles/PostingsAdd";
+import Line from "./pages/Charts/LineChart";
+import Pie from "./pages/Charts/PieChart";
 import { ColorModeContext, useMode } from "./theme";
 
 function App() {
@@ -31,6 +34,9 @@ function App() {
               <Route path="/article" element={<PostsListing />} />
               <Route path="/add_articles" element={<PostingsAdd/>} />
               <Route path="/Agents" element={<Agents />} />
+              <Route path="/bar" element={<Bar/>} />
+              <Route path="/pie" element={<Pie/>} />
+              <Route path="/LineChart" element={<Line/>} />
               {/* <Route path="/Customers" element={<CustomersView />} /> */}
               {/* <Route path="/Admins" element={<AdminsView />} /> */}
               {/* <Route path="/Invoices" element={<InvoicesView />} /> */}
