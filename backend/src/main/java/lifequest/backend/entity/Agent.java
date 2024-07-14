@@ -18,7 +18,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-<<<<<<< HEAD
 public class Agent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,16 +27,6 @@ public class Agent {
     private String telephone;
     private String email;
     private double salary;
-=======
-public class Agent extends Account {
-  
-    private int yearsOfExperience;
-    private String bio;
-    private String phoneNumber;
-    private int salary;
-    private String about;
-
->>>>>>> 230de8b6c7ebd8763e5f83980caf410a2f8238f3
 
     // @ManyToMany(mappedBy = "agents")
     // private List<Users> users;

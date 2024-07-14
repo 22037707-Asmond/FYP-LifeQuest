@@ -33,16 +33,6 @@ function App() {
     //     <RightSide/>
     //   </div> */}
     // </div>
-    <Router>
-    <Routes>
-      <Route path="/article" element={<PostsListing/>} />
-      <Route path="/article/add" element={<PostingsAdd />} />
-
-      //Agent Routes
-      <Route path="/agents" element={<AllAgents />} />
-      <Route path="/hiredAgents" element={<HiredAgents />} />
-    </Routes>
-  </Router>
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -52,6 +42,11 @@ function App() {
             <Topbar/>
             {/* Adjust here in routes to see the different pages */}
             <Routes>
+              <Route path="/article" element={<PostsListing/>} />
+              <Route path="/article/add" element={<PostingsAdd />} />
+              //Agent Routes
+              <Route path="/agents" element={<AllAgents />} />
+              <Route path="/hiredAgents" element={<HiredAgents />} />
               <Route path="/Home" element={<Dashboard />} />
               <Route path="/article" element={<PostsListing />} />
               <Route path="/add_articles" element={<PostingsAdd/>} />

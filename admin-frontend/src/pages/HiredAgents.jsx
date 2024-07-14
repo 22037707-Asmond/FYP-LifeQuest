@@ -19,8 +19,7 @@ const HiredAgents = () => {
             }
         };
 
-        fet
-        chHiredAgents();
+        fetchHiredAgents();
     }, []);
 
     return (
