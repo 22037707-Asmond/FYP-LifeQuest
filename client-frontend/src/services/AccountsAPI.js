@@ -10,6 +10,7 @@ export const getAccounts = () => {
     return axios.get(`${REST_API_URL}/accounts`);
 };
 
+
 export const getAccountByUsr = (username) => {
     return axios.get(`${REST_API_URL}/accounts/${username}`);
 };

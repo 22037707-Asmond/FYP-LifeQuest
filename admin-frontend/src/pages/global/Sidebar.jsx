@@ -86,7 +86,7 @@ const SideBar = () => {
 
             <Item
               title="Agents"
-              to="/Agents"
+              to="/agent"
               icon={<PeopleAltOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -102,7 +102,7 @@ const SideBar = () => {
 
             <Item
               title="Admin"
-              to="/Admins"
+              to="/admin"
               icon={<AdminPanelSettingsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

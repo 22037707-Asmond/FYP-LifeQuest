@@ -1,20 +1,20 @@
-// import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-// import SignIn from './Components/SignIn'; /*To Be routed to the proper SignIn*/
-// import AdminPage from './pages/AdminPage';
-// import PostingsAdd from './pages/PostingsAdd';
-// import PostsListing from './pages/PostingsView';
+
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Agents from "./pages/agents";
+import { Route, Routes } from "react-router-dom";
+import AdminsAdd from "./pages/admins/AdminsAdd";
+import AdminsListing from "./pages/admins/AdminsView";
+import AgentsAdd from "./pages/agents/AgentsAdd";
+import AgentsListing from "./pages/agents/AgentsView";
+import AllAgents from './pages/AllAgents';
+import PostingsAdd from "./pages/articles/PostingsAdd";
 import PostsListing from "./pages/articles/PostingsView";
 import Bar from "./pages/Charts/BarChart";
+import Line from "./pages/Charts/LineChart";
+import Pie from "./pages/Charts/PieChart";
 import Dashboard from "./pages/dashboard/index";
 import Sidebar from "./pages/global/Sidebar";
 import Topbar from "./pages/global/Topbar";
-// import ArticlesView from "./pages/Articles/PostingsView";
-import { Route, Routes } from "react-router-dom";
-import PostingsAdd from "./pages/articles/PostingsAdd";
-import Line from "./pages/Charts/LineChart";
-import Pie from "./pages/Charts/PieChart";
+import HiredAgents from './pages/HiredAgents';
 import { ColorModeContext, useMode } from "./theme";
 
 function App() {
@@ -33,7 +33,12 @@ function App() {
               <Route path="/Home" element={<Dashboard />} />
               <Route path="/article" element={<PostsListing />} />
               <Route path="/add_articles" element={<PostingsAdd/>} />
-              <Route path="/Agents" element={<Agents />} />
+              <Route path="/agent" element={<AgentsListing />} />
+              <Route path="/add_agents" element={<AgentsAdd/>} />
+              <Route path="/admin" element={<AdminsListing />} />
+              <Route path="/add_admins" element={<AdminsAdd/>} />
+              <Route path="/agents" element={<AllAgents />} />
+              <Route path="/hiredAgents" element={<HiredAgents />} />
               <Route path="/bar" element={<Bar/>} />
               <Route path="/pie" element={<Pie/>} />
               <Route path="/LineChart" element={<Line/>} />

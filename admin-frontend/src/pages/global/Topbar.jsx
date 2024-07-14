@@ -7,45 +7,54 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box, IconButton, useTheme } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ColorModeContext, tokens } from '../../theme';
 
 const Topbar = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleAddButtonClick = () => {
+        if (location.pathname.includes("/agent")) {
+            navigate("/add_agents");
+        } else if (location.pathname.includes("/article")) {
+            navigate("/add_articles");
+        } else if (location.pathname.includes("/admin")) {
+            navigate("/add_admins");
+        }
+    };
 
     return (
-        <>
         <Box display="flex" justifyContent="space-between" p={2}>
-            <Box display="flex" backgroundColor={colors.primary[400]} boarderRadius='3px'>
-                <InputBase sx={{ml: 2, flex: 1}} placeholder="search"/>
-                <IconButton type='button' sx={{ p: 1}}>
-                    <SearchIcon/>
+            <Box display="flex" backgroundColor={colors.primary[400]} borderRadius='3px'>
+                <InputBase sx={{ ml: 2, flex: 1 }} placeholder="search" />
+                <IconButton type='button' sx={{ p: 1 }}>
+                    <SearchIcon />
                 </IconButton>
             </Box>
             
             <Box display="flex">
                 <IconButton onClick={colorMode.toggleColorMode}>
                     {theme.palette.mode === 'dark' ? (
-                        <DarkModeOutlinedIcon/>
+                        <DarkModeOutlinedIcon />
                     ) : (
-                        <LightModeOutlinedIcon/>
+                        <LightModeOutlinedIcon />
                     )}
                 </IconButton>
-                <IconButton component={Link} to="/add_articles">
-                    <AddCircleOutlineOutlinedIcon/>
+                <IconButton onClick={handleAddButtonClick}>
+                    <AddCircleOutlineOutlinedIcon />
                 </IconButton>
                 <IconButton>
-                    <NotificationsNoneOutlinedIcon/>
+                    <NotificationsNoneOutlinedIcon />
                 </IconButton>
                 <IconButton>
-                    <AccountCircleOutlinedIcon/>
+                    <AccountCircleOutlinedIcon />
                 </IconButton>
             </Box>
         </Box>
-
-        </>
     );
 };
 
