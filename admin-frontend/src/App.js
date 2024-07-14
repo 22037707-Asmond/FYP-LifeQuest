@@ -1,38 +1,26 @@
-// import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-// import SignIn from './Components/SignIn'; /*To Be routed to the proper SignIn*/
-// import AdminPage from './pages/AdminPage';
-// import PostingsAdd from './pages/PostingsAdd';
-// import PostsListing from './pages/PostingsView';
+
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import AgentsListing from "./pages/agents/AgentsView";
+import { Route, Routes } from "react-router-dom";
+import AdminsAdd from "./pages/admins/AdminsAdd";
 import AdminsListing from "./pages/admins/AdminsView";
+import AgentsAdd from "./pages/agents/AgentsAdd";
+import AgentsListing from "./pages/agents/AgentsView";
+import AllAgents from './pages/AllAgents';
+import PostingsAdd from "./pages/articles/PostingsAdd";
 import PostsListing from "./pages/articles/PostingsView";
+import Bar from "./pages/Charts/BarChart";
+import Line from "./pages/Charts/LineChart";
+import Pie from "./pages/Charts/PieChart";
 import Dashboard from "./pages/dashboard/index";
 import Sidebar from "./pages/global/Sidebar";
 import Topbar from "./pages/global/Topbar";
-// import ArticlesView from "./pages/Articles/PostingsView";
-import { Route, Routes } from "react-router-dom";
-import PostingsAdd from "./pages/articles/PostingsAdd";
-import AgentsAdd from "./pages/agents/AgentsAdd";
-import AdminsAdd from "./pages/admins/AdminsAdd";
-import { ColorModeContext, useMode } from "./theme";
-
-//Agent Components
-import AllAgents from './pages/AllAgents';
 import HiredAgents from './pages/HiredAgents';
+import { ColorModeContext, useMode } from "./theme";
 
 function App() {
   const [theme, colorMode] = useMode();
 
   return (
-    // <div className="App">
-    //   <PostingsAdd/>
-    //   {/* <div className="AppGlass">
-    //     <Sidebar/>
-    //     <MainDash/>
-    //     <RightSide/>
-    //   </div> */}
-    // </div>
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -54,7 +42,13 @@ function App() {
               <Route path="/add_agents" element={<AgentsAdd/>} />
               <Route path="/admin" element={<AdminsListing />} />
               <Route path="/add_admins" element={<AdminsAdd/>} />
+              <Route path="/agents" element={<AllAgents />} />
+              <Route path="/hiredAgents" element={<HiredAgents />} />
+              <Route path="/bar" element={<Bar/>} />
+              <Route path="/pie" element={<Pie/>} />
+              <Route path="/LineChart" element={<Line/>} />
               {/* <Route path="/Customers" element={<CustomersView />} /> */}
+              {/* <Route path="/Admins" element={<AdminsView />} /> */}
               {/* <Route path="/Invoices" element={<InvoicesView />} /> */}
             </Routes>
           </main>
