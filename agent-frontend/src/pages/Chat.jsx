@@ -4,7 +4,7 @@ import SockJS from 'sockjs-client';
 import AppNavBar from '../components/Account/AppNavBar';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
-import { getFullName } from '../services/AgentAPI';
+import { getFullName } from '../services/AgentsAPI';
 import {
     MainContainer,
     Sidebar,
