@@ -18,20 +18,25 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Agent {
+public class Agent extends  Account{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private int yearsOfExperience;
+    private String bio;
+    private String phoneNumber;
+    private double salary;
     
     private String mr_ms;
     private String telephone;
     private String email;
 
-    // @ManyToMany(mappedBy = "agents")
-    // private List<Users> users;
+    @ManyToMany(mappedBy = "agents")
+    private List<Users> users;
 
-    // @OneToMany(mappedBy = "agent")
-    // private List<Premium> premiums;
+    @OneToMany(mappedBy = "agent")
+    private List<Premium> premiums;
 
     // // Actions field - Not sure how you want to handle this, it could be methods or an additional field
     // // If it's just a string or JSON representation of actions, you could add it like this:

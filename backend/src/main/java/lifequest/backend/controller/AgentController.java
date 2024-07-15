@@ -1,5 +1,7 @@
 package lifequest.backend.controller;
 
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,8 @@ import lifequest.backend.entity.Account;
 import lifequest.backend.entity.Agent;
 import lifequest.backend.exception.ResourceNotFoundException;
 import lifequest.backend.repository.AgentRepository;
-
+import lifequest.backend.service.AgentService;
+import javax.sql.rowset.serial.SerialBlob;
 
 @RestController
 @RequestMapping("/api")
@@ -107,15 +110,15 @@ public class AgentController {
         return ResponseEntity.ok(agentService.getFullName(username));
     }
 
-    // @GetMapping("/agents/profilepicture/{username}")
-    // public ResponseEntity<?> getProfilePicture(@PathVariable String username) {
-    //     Blob profilePicture = agentService.getProfilePicture(username);
-    //     try {
-    //         return ResponseEntity.ok(new SerialBlob(profilePicture.getBytes(1, (int) profilePicture.length())));
-    //     } catch (SQLException e) {
-    //         e.printStackTrace();
-    //         return ResponseEntity.badRequest().body("Error retrieving profile picture");
-    //     }
-    // }
+    @GetMapping("/agents/profilepicture/{username}")
+    public ResponseEntity<?> getProfilePicture(@PathVariable String username) {
+        Blob profilePicture = agentService.getProfilePicture(username);
+        try {
+            return ResponseEntity.ok(new SerialBlob(profilePicture.getBytes(1, (int) profilePicture.length())));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error retrieving profile picture");
+        }
+    }
 
 }
