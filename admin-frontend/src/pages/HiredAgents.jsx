@@ -19,9 +19,8 @@
 //             }
 //         };
 
-//         fet
-//         chHiredAgents();
-//     }, []);
+    //     fetchHiredAgents();
+    // }, []);
 
 //     return (
 //         <div className="App">
