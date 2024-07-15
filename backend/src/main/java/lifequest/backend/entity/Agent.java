@@ -27,7 +27,7 @@ public class Agent extends Account {
     private int yearsOfExperience;
     private String bio;
     private String phoneNumber;
-    private int salary;
+    private double salary;
     private String about;
 
 

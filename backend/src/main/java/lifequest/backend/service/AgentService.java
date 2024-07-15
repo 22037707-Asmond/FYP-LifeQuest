@@ -40,6 +40,17 @@ public class AgentService {
         return null;
     }
 
+
+    public String getFullName(String username) {
+        Agent account = agentRepository.findByUsername(username);
+        return account.getFirstName() + " " + account.getLastName();
+    }
+
+    public Blob getProfilePicture(String username) {
+        Agent account = agentRepository.findByUsername(username);
+        return account.getProfilePicture();
+    }
+
      // Method to hash the password using SHA-256
     private String hashPassword(String password) {
         try {

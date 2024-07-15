@@ -28,9 +28,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@CrossOrigin("*")
+
 @RestController
-@RequestMapping("/api/v1/agents")
+@RequestMapping("/api")
 public class AgentController {
 
     @Autowired
@@ -45,41 +45,11 @@ public class AgentController {
     }
 
     // build create agent REST API
-    @PostMapping
-    public ResponseEntity<Agent> createAgent(
-        @RequestParam("firstName") String firstName,
-        @RequestParam("lastName") String lastName,
-        @RequestParam("profilePicture") MultipartFile profilePicture,
-        @RequestParam("yearsOfExperience") int yearsOfExperience,
-        @RequestParam("bio") String bio,
-        @RequestParam("phoneNumber") String phoneNumber,
-        @RequestParam("salary") double salary) {
-
-        try {
-            Agent agent = new Agent();
-            agent.setFirstName(firstName);
-            agent.setLastName(lastName);
-            agent.setYearsOfExperience(yearsOfExperience);
-            agent.setBio(bio);
-            agent.setPhoneNumber(phoneNumber);
-            agent.setSalary(salary);
-
-            if (profilePicture != null && !profilePicture.isEmpty()) {
-                byte[] bytes = profilePicture.getBytes();
-                Blob blob = new SerialBlob(bytes);
-                agent.setProfilePicture(blob);
-            }
-
-            Agent savedAgent = agentRepository.save(agent);
-            return new ResponseEntity<>(savedAgent, HttpStatus.CREATED);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PostMapping("/agents/add")
+    public ResponseEntity<Agent> createAgent( @RequestBody Agent agent) {
+        return new ResponseEntity<>(agentService.addAgent(agent), HttpStatus.CREATED);
     }
+       
 
     // build get agent by id REST API
     @GetMapping("/{id}")
@@ -115,6 +85,34 @@ public class AgentController {
             .orElseThrow(() -> new ResourceNotFoundException("Agent not exist with id: " + id));
         agentRepository.delete(agent);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @GetMapping("/agents/all")
+    public ResponseEntity<List<Agent>> getAgents() {
+        return new ResponseEntity<>(agentService.getAgents(), HttpStatus.OK);
+    }
+
+    @GetMapping("/agents/auth/{username}/{password}")
+    public ResponseEntity<?> authAccount(@PathVariable String username, @PathVariable String password) {
+        return ResponseEntity.ok(agentService.authAccount(username, password));
+    }
+
+
+    @GetMapping("/agents/fullname/{username}")
+    public ResponseEntity<?> getFullName(@PathVariable String username) {
+        return ResponseEntity.ok(agentService.getFullName(username));
+    }
+
+    @GetMapping("/agents/profilepicture/{username}")
+    public ResponseEntity<?> getProfilePicture(@PathVariable String username) {
+        Blob profilePicture = agentService.getProfilePicture(username);
+        try {
+            return ResponseEntity.ok(new SerialBlob(profilePicture.getBytes(1, (int) profilePicture.length())));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error retrieving profile picture");
+        }
     }
 
 }

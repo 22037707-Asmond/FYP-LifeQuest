@@ -28,7 +28,7 @@ function AccountPage() {
       <br />
       <Stack spacing={5} direction={'row'}>
         <SideProfile acc={account} />
-        <PostListings user={account} />
+        {/* <PostListings user={account} /> */}
       </Stack>
       <div style={{ marginTop: '20px' }}>
         <Calendar />

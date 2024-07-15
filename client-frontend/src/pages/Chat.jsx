@@ -4,14 +4,7 @@ import SockJS from 'sockjs-client';
 import AppNavBar from '../components/Account/AppNavBar';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Divider
-} from '@mui/material';
+import { getFullName } from '../services/AgentAPI';
 import {
   MainContainer,
   Sidebar,
@@ -38,7 +31,6 @@ const ChatPage = () => {
     const { agentId } = useParams();
     const location = useLocation();
     const agentName = location.state?.agentUserName || "Agent";
-    console.log('Agent Name:', agentName);
     const [privateChats, setPrivateChats] = useState(new Map());
     const [publicChats, setPublicChats] = useState([]);
     const [tab, setTab] = useState(agentId ? agentName : 'CHATROOM');
@@ -47,6 +39,7 @@ const ChatPage = () => {
         receivername: agentName,
         message: ''
     });
+    const [agentNames, setAgentNames] = useState(new Map());
 
     const stompClientRef = useRef(null);
 
@@ -76,6 +69,22 @@ const ChatPage = () => {
     useEffect(() => {
         localStorage.setItem('publicChats', JSON.stringify(publicChats));
     }, [publicChats]);
+
+    useEffect(() => {
+        const fetchAgentNames = async () => {
+            const newAgentNames = new Map();
+            for (let username of privateChats.keys()) {
+                try {
+                    const fullName = await getFullName(username);
+                    newAgentNames.set(username, fullName);
+                } catch (error) {
+                    console.error(`Failed to fetch full name for user ${username}:`, error);
+                }
+            }
+            setAgentNames(newAgentNames);
+        };
+        fetchAgentNames();
+    }, [privateChats]);
 
     const connect = (username) => {
         const Sock = new SockJS('http://localhost:8080/ws');
@@ -185,7 +194,12 @@ const ChatPage = () => {
                             <Avatar src={profilePictureUrl} status="available" />
                         </Conversation>
                         {[...privateChats.keys()].map((name, index) => (
-                            <Conversation key={index} name={name} active={tab === name} onClick={() => setTab(name)}>
+                            <Conversation 
+                            key={index} 
+                            name={agentNames.get(name) || name} 
+                            active={tab === name} onClick={() => setTab(name)}
+                            style={{fontSize: '25px'}}
+                            >
                                 <Avatar src={profilePictureUrl} status="available" />
                             </Conversation>
                         ))}
@@ -214,8 +228,8 @@ const ChatPage = () => {
                                     sender: chat.sender,
                                     sentTime: new Date(chat.timestamp).toLocaleTimeString()
                                 }}
+                                style={{ fontSize: '30px' }}
                             >
-                                <Avatar src={profilePictureUrl} name={chat.sender} />
                             </Message>
                         ))}
                     </MessageList>

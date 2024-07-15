@@ -61,7 +61,7 @@ export default function Login() {
                         <LoginIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Login to your TeeUp Account
+                        Login to your Agent Account
                     </Typography>
                     {error && (
                         <Typography component="p" variant="body2" color="error">
