@@ -33,7 +33,6 @@ public class Account {
     
     @NotNull
     private String firstName;
-
     @NotNull
     private String lastName;
     

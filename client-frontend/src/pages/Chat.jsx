@@ -6,23 +6,23 @@ import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
 import { getFullName } from '../services/AgentAPI';
 import {
-  MainContainer,
-  Sidebar,
-  Search,
-  ConversationList,
-  Conversation,
-  Avatar,
-  ChatContainer,
-  ConversationHeader,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  MessageList,
-  MessageSeparator,
-  Message,
-  TypingIndicator,
-  MessageInput,
-  ExpansionPanel
+    MainContainer,
+    Sidebar,
+    Search,
+    ConversationList,
+    Conversation,
+    Avatar,
+    ChatContainer,
+    ConversationHeader,
+    VoiceCallButton,
+    VideoCallButton,
+    InfoButton,
+    MessageList,
+    MessageSeparator,
+    Message,
+    TypingIndicator,
+    MessageInput,
+    ExpansionPanel
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
@@ -194,11 +194,11 @@ const ChatPage = () => {
                             <Avatar src={profilePictureUrl} status="available" />
                         </Conversation>
                         {[...privateChats.keys()].map((name, index) => (
-                            <Conversation 
-                            key={index} 
-                            name={agentNames.get(name) || name} 
-                            active={tab === name} onClick={() => setTab(name)}
-                            style={{fontSize: '25px'}}
+                            <Conversation
+                                key={index}
+                                name={agentNames.get(name) || name}
+                                active={tab === name} onClick={() => setTab(name)}
+                                style={{ fontSize: '25px' }}
                             >
                                 <Avatar src={profilePictureUrl} status="available" />
                             </Conversation>
