@@ -1,7 +1,5 @@
 package lifequest.backend.entity;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,27 +15,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Premium {
+public class CalendarEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String title;
+    private String date;
+    private boolean accepted = false;
 
-    private double payment;
+    @ManyToOne
+    private Agent agent;
 
-    private String purchaseDate; 
-    
     @ManyToOne
     private Users user; 
-
-    @ManyToOne
-    private Insurance insurance; 
-
-    @ManyToOne
-    private Agent agent; 
-
-    
-    public void setPurchaseDateToCurrentDate() {
-        this.purchaseDate = LocalDate.now().toString();
-    }
 }
 

@@ -11,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequestMapping("/api/premiums")
-public class PremiumsController {
+@RequestMapping("/api/premium")
+public class PremiumController {
 
     @Autowired
     private PayPalService payPalService;

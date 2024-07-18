@@ -1,44 +1,32 @@
-// src/components/Calendar.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
 
-const Calendar = () => {
+const Calendar = ({ userId }) => {
   const [calendar, setCalendar] = useState([]);
 
-  useEffect(() => {
-    fetchCalendar();
-  }, []);
-
-  const fetchCalendar = async () => {
+  const fetchAcceptedMeetings = useCallback(async () => {
     try {
-      const response = await axios.get('/api/calendar');
+      const response = await axios.get(`/api/calendar/accepted/${userId}`);
       setCalendar(response.data);
     } catch (error) {
-      console.error('Error fetching calendar', error);
+      console.error('Error fetching accepted meetings', error);
     }
-  };
+  }, [userId]);
 
-  const handleDateClick = async (info) => {
-    const title = prompt('Enter event title:');
-    if (title) {
-      try {
-        const newEvent = { title, date: info.dateStr };
-        const response = await axios.post('/api/calendar', newEvent);
-        setCalendar([...calendar, response.data]);
-      } catch (error) {
-        console.error('Error saving event', error);
-      }
-    }
-  };
+  useEffect(() => {
+    fetchAcceptedMeetings();
+  }, [fetchAcceptedMeetings]);
 
   return (
     <FullCalendar
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
-      events={calendar}
-      dateClick={handleDateClick}
+      events={calendar.map(event => ({
+        title: event.title,
+        date: event.date
+      }))}
     />
   );
 };

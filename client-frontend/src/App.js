@@ -8,6 +8,7 @@ import AboutUs from './pages/AboutUs';
 import LifeQuest from './pages/LifeQuest';
 import Profile from './pages/Profile';
 import PremiumTest from './pages/PremiumTest';
+import CalendarTest from './pages/CalendarTest';
 import MyInfoForm from './components/MyInfoForm';
 
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="Profile" element={<Profile/>}></Route>
         
         <Route path="PremiumTest" element={<PremiumTest/>}></Route>
+
+        <Route path="CalendarTest" element={<CalendarTest/>}></Route>
 
       </Routes>
   );

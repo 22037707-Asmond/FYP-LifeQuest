@@ -1,13 +1,12 @@
 import React from 'react';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 
-const PremiumPayment = () => {
+const PremiumPayment = ({ onOrderCreate, onOrderApprove }) => {
   const cartTotal = 100.00; // Example value
-  const memberId = 1; // Example value
 
   const createOrder = (data, actions) => {
-    return fetch('/api/paypal/pay', {
-      method: 'post',
+    return fetch('http://localhost:8080/api/paypal/pay', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -20,10 +19,19 @@ const PremiumPayment = () => {
         cancelUrl: 'http://localhost:3000/cancel',
         successUrl: 'http://localhost:3000/success'
       })
-    }).then(response => response.json())
-      .then(order => {
-        return order.id;
-      });
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(order => {
+      return order.id; // Ensure this is correct
+    })
+    .catch(error => {
+      console.error('Error creating order:', error);
+    });
   };
 
   const onApprove = (data, actions) => {
@@ -33,12 +41,8 @@ const PremiumPayment = () => {
       console.log(`Transaction completed by ${details.payer.name.given_name}`);
       console.log(`Order ID: ${orderId}`);
       console.log(`Transaction ID: ${transactionId}`);
-      processOrder(orderId, transactionId);
+      // Process order with orderId and transactionId
     });
-  };
-
-  const processOrder = (orderId, transactionId) => {
-    // Your order processing logic here
   };
 
   return (
@@ -52,3 +56,5 @@ const PremiumPayment = () => {
 };
 
 export default PremiumPayment;
+
+
