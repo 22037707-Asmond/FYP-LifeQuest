@@ -1,15 +1,11 @@
 package lifequest.backend.entity;
 
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.rowset.serial.SerialBlob;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -22,32 +18,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Agent extends Account {
-    private String firstName;
-    private String lastName;
-    private Blob profilePicture; 
-    @JsonProperty("profilePicture")
-    public byte[] getProfilePictureBytes() throws SQLException, IOException {
-        if (profilePicture != null) {
-            return profilePicture.getBinaryStream().readAllBytes();
-        }
-        return null;
-    }
+public class Agent extends  Account{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @JsonProperty("profilePicture")
-    public void setProfilePictureBytes(byte[] profilePictureBytes) {
-        if (profilePictureBytes != null) {
-            try {
-                this.profilePicture = new SerialBlob(profilePictureBytes);
-            } catch (SQLException e) {
-                // Handle the exception here, e.g. log the error or throw a custom exception
-            }
-        }
-    }
     private int yearsOfExperience;
     private String bio;
     private String phoneNumber;
     private double salary;
+    
+    private String mr_ms;
+    private String telephone;
+    private String email;
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;
@@ -55,6 +38,10 @@ public class Agent extends Account {
     @OneToMany(mappedBy = "agent")
     private List<Premium> premiums;
 
-    
+    // // Actions field - Not sure how you want to handle this, it could be methods or an additional field
+    // // If it's just a string or JSON representation of actions, you could add it like this:
+    // private String actions;
 
+    // If Actions is a list of some kind of objects representing actions:
+    // private List<Action> actions;
 }

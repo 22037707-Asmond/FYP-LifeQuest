@@ -32,6 +32,7 @@ public class BlobConfig {
                 throw new IOException("Failed to serialize Blob", e);
             }
         }
+    }
 
     public static class BlobDeserializer extends JsonDeserializer<Blob> {
         @Override
@@ -45,5 +46,4 @@ public class BlobConfig {
             }
         }
     }
-}
 }

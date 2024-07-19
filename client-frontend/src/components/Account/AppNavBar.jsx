@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -12,76 +11,139 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import ArticleIcon from '@mui/icons-material/Article';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 export default function AppNavBar() {
   const navigate = useNavigate();
   return (
-    <AppBar position="static" sx={{ height: { xs: 56, sm: 64, md: 80, backgroundColor: "red" } }}>
-      <Toolbar sx={{ minHeight: { xs: 56, sm: 64, md: 80 }, px: { xs: 1, sm: 2, md: 3 } }}>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="open drawer"
-          sx={{ mr: { xs: 1, sm: 2 }, fontSize: { xs: 24, sm: 28, md: 32 } }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { xs: 'none', sm: 'block' }, fontSize: { sm: 20, md: 24 } }}
-          onClick={() => navigate('/AccountPage')}
-        >
-          CoinGuid
-
-        </Typography>
+    <AppBar position="static" sx={{ height: { xs: 64, sm: 72, md: 88 }, backgroundColor: "red" }}>
+      <Toolbar sx={{ minHeight: { xs: 64, sm: 72, md: 88 }, px: { xs: 1, sm: 2, md: 3 }, display: 'flex', justifyContent: 'center' }}>
+        <Link to='/AccountPage'>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/images/lifequest.png" style={{ height: '110px', marginTop: '15px', marginLeft: '-25px' }} alt="Logo" />
+          </Box>
+        </Link>
         <Box sx={{ flexGrow: 1 }} />
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: { xs: 1, sm: 2 } }}>
-          <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={1} color="secondary">
-              <MailIcon sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
-            </Badge>
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="show 17 new notifications"
-            color="inherit"
-          >
-            <Badge badgeContent={17} color="secondary">
-              <NotificationsIcon sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
-            </Badge>
-          </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: { xs: 10, sm: 5 } }}>
+          <Link to="/Chat" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new messages"
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: 'inherit',
+                  },
+                }}
+              >
+                <Badge color="secondary">
+                  <MailIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Chat</Typography>
+            </Box>
+          </Link>
+          <Link to="/Agents" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: 'inherit',
+                  },
+                }}
+              >
+                <Badge color="secondary">
+                  <SupportAgentIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Agents</Typography>
+            </Box>
+          </Link>
+          <Link to="/Calculator" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: 'inherit',
+                  },
+                }}
+              >
+                <Badge color="secondary">
+                  <CalculateIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calculator</Typography>
+            </Box>
+          </Link>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <IconButton
+              size="large"
+              aria-label="show new notifications"
+              color="inherit"
+            >
+              <Badge color="secondary">
+                <ArticleIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+              </Badge>
+            </IconButton>
+            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Articles</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <IconButton
+              size="large"
+              aria-label="show new notifications"
+              color="inherit"
+            >
+              <Badge color="secondary">
+                <CalendarMonthIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+              </Badge>
+            </IconButton>
+            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calendar</Typography>
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <IconButton
+              size="large"
+              aria-label="show new notifications"
+              color="inherit"
+            >
+              <Badge color="secondary">
+                <SmartToyIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+              </Badge>
+            </IconButton>
+            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>ChatBot</Typography>
+          </Box>
 
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-            sx={{
-              '&:hover': {
-                backgroundColor: 'transparent',
-              },
-              '&:focus': {
-                backgroundColor: 'transparent',
-              },
-              '&:active': {
-                backgroundColor: 'transparent',
-              },
-              '&:visited': {
-                backgroundColor: 'transparent',
-              },
-            }}
-          >
-            <Link to='/Profile'>
-              <AccountCircle sx={{ fontSize: { xs: 24, sm: 28, md: 32 }, color: 'white' }} />
-            </Link>
-          </IconButton>
-
+          <Link to="/Profile" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.3}}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: 'inherit',
+                  },
+                }}
+              >
+                <Badge color="secondary">
+                  <AccountCircle sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Profile</Typography>
+            </Box>
+          </Link>
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
@@ -91,7 +153,7 @@ export default function AppNavBar() {
             aria-haspopup="true"
             color="inherit"
           >
-            <MoreIcon sx={{ fontSize: { xs: 24, sm: 28, md: 32 } }} />
+            <MoreIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
           </IconButton>
         </Box>
       </Toolbar>

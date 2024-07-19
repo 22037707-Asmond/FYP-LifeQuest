@@ -2,6 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
 import { Box, IconButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Header from "../../Components/PageFragment/Header";
 import { delPost, getAllPosts, updatePost } from "./PostingAPI"; // Ensure this path is correct
 
@@ -9,6 +10,7 @@ function PostsListing() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -42,6 +44,7 @@ function PostsListing() {
     delPost(id)
       .then(() => {
         setArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+        navigate('/article');
       })
       .catch((error) => {
         console.error("Error deleting post:", error);
@@ -56,6 +59,7 @@ function PostsListing() {
         setArticles((prevArticles) =>
           prevArticles.map((article) => (article.id === id ? updatedArticle : article))
         );
+        navigate('/article');
       })
       .catch((error) => {
         console.error("Error updating post:", error);

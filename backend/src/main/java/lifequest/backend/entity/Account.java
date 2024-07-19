@@ -1,7 +1,7 @@
 package lifequest.backend.entity;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lifequest.backend.configs.BlobConfig;
 
 import java.security.MessageDigest;
@@ -30,17 +30,19 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     @NotNull
     private String firstName;
-
     @NotNull
     private String lastName;
+    
     private String username;
     private String password;
     private String email;
     private String role;
 
-    @JsonSerialize(using = JsonSerializer.class)
+    @JsonSerialize(using = BlobConfig.BlobSerializer.class)
+    @JsonDeserialize(using = BlobConfig.BlobDeserializer.class)
     private Blob profilePicture;
 
     public void setPassword(String password) {

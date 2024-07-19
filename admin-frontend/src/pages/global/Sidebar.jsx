@@ -1,10 +1,13 @@
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
@@ -69,6 +72,10 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+              Data
+            </Typography>
+
             <Item
               title="Article"
               to="/article"
@@ -79,7 +86,7 @@ const SideBar = () => {
 
             <Item
               title="Agents"
-              to="/Agents"
+              to="/agent"
               icon={<PeopleAltOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -95,7 +102,7 @@ const SideBar = () => {
 
             <Item
               title="Admin"
-              to="/Admins"
+              to="/admin"
               icon={<AdminPanelSettingsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -105,6 +112,34 @@ const SideBar = () => {
               title="Invoice"
               to="/Invoices"
               icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+              Charts
+            </Typography>
+
+            <Item
+              title="BarChart"
+              to="/bar"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="LineChart"
+              to="/LineChart"
+              icon={<TimelineOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="PieChart"
+              to="/pie"
+              icon={<PieChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
