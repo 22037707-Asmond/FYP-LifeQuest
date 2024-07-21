@@ -9,6 +9,7 @@ import LifeQuest from './pages/LifeQuest';
 import Profile from './pages/Profile';
 import Chat from './pages/Chat';
 import Agent from './pages/Agent';
+import Insurance from './pages/Insurance';
 import Calculator from './pages/Calculator';
 import PremiumTest from './pages/PremiumTest';
 import CalendarTest from './pages/CalendarTest';
@@ -41,6 +42,8 @@ function App() {
         <Route path="/chat/:agentId" element={<Chat />} />
 
         <Route path="Agents" element={<Agent/>}></Route>
+
+        <Route path="Insurance" element={<Insurance/>}></Route>
 
         <Route path="Calculator" element={< Calculator/>}></Route>
 
