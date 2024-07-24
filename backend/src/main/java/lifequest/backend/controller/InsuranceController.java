@@ -28,6 +28,7 @@ public class InsuranceController {
         insurances.forEach(insurance -> {
             System.out.println("Insurance ID: " + insurance.getId());
             System.out.println("Insurance Name: " + insurance.getName());
+            System.out.println("Insurance Description: " + insurance.getDescription());
         });
         return new ResponseEntity<>(insurances, HttpStatus.OK);
     }

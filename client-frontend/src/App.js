@@ -11,10 +11,9 @@ import Chat from './pages/Chat';
 import Agent from './pages/Agent';
 import Insurance from './pages/Insurance';
 import Calculator from './pages/Calculator';
-import PremiumTest from './pages/PremiumTest';
-import CalendarTest from './pages/CalendarTest';
 import MyInfoForm from './components/MyInfoForm';
-
+import Calendar from './pages/Calendar';
+import PaymentPage from './pages/PaymentPage';
 
 
 function App() {
@@ -33,9 +32,11 @@ function App() {
 
         <Route path='AccountPage' element={<AccountPage />}></Route>
 
+        <Route path="CalendarClient" element={<Calendar/>}></Route>
+
         <Route path="Profile" element={<Profile/>}></Route>
         
-        <Route path="PremiumTest" element={<PremiumTest/>}></Route>
+        <Route path="Payment" element={<PaymentPage/>}></Route>
 
         <Route path='Chat' element={<Chat/>}></Route>
 

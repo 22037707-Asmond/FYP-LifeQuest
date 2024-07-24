@@ -1,73 +1,50 @@
-package lifequest.backend.entity;
+// package lifequest.backend.entity;
 
-public class PaymentRequest {
-    private Double total;
-    private String currency;
-    private String method;
-    private String intent;
-    private String description;
-    private String cancelUrl;
-    private String successUrl;
+// public class PaymentRequest {
+//     private Long userId;
+//     private Long insuranceId;
+//     private double totalAmount;
+//     private String currency;
+//     private String method;
 
-    // Getters
-    public Double getTotal() {
-        return total;
-    }
+//     // Getters and Setters
+//     public Long getUserId() {
+//         return userId;
+//     }
 
-    public String getCurrency() {
-        return currency;
-    }
+//     public void setUserId(Long userId) {
+//         this.userId = userId;
+//     }
 
-    public String getMethod() {
-        return method;
-    }
+//     public Long getInsuranceId() {
+//         return insuranceId;
+//     }
 
-    public String getIntent() {
-        return intent;
-    }
+//     public void setInsuranceId(Long insuranceId) {
+//         this.insuranceId = insuranceId;
+//     }
 
-    public String getDescription() {
-        return description;
-    }
+//     public double getTotalAmount() {
+//         return totalAmount;
+//     }
 
-    public String getCancelUrl() {
-        return cancelUrl;
-    }
+//     public void setTotalAmount(double totalAmount) {
+//         this.totalAmount = totalAmount;
+//     }
 
-    public String getSuccessUrl() {
-        return successUrl;
-    }
+//     public String getCurrency() {
+//         return currency;
+//     }
 
-    // Setters
-    public void setTotal(Double total) {
-        this.total = total;
-    }
+//     public void setCurrency(String currency) {
+//         this.currency = currency;
+//     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
+//     public String getMethod() {
+//         return method;
+//     }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public void setIntent(String intent) {
-        this.intent = intent;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCancelUrl(String cancelUrl) {
-        this.cancelUrl = cancelUrl;
-    }
-
-    public void setSuccessUrl(String successUrl) {
-        this.successUrl = successUrl;
-    }
-
-    // Getters and Setters
-    
-}
-
+//     public void setMethod(String method) {
+//         this.method = method;
+//     }
+// }

@@ -38,5 +38,10 @@ public class Users extends Account{
     @OneToMany(mappedBy = "user")
     private List<Request> requests;
 
+    @OneToMany(mappedBy = "user")
+    private List<Payment> payments;
+
+    @OneToMany(mappedBy = "user")
+    private List<Billing> billings;
     
 }
