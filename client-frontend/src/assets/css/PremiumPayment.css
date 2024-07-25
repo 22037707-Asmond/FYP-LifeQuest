@@ -1,0 +1,32 @@
+.receipt {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.receipt h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.receipt p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.receipt .price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+.receipt .paypal-buttons {
+    margin-top: 30px;
+    text-align: center;
+}

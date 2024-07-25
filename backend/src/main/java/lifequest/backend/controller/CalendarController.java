@@ -1,37 +1,79 @@
 package lifequest.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import lifequest.backend.entity.Agent;
+import lifequest.backend.repository.AgentRepository;
 import lifequest.backend.entity.CalendarEvent;
-import lifequest.backend.entity.Users;
-import lifequest.backend.repository.CalendarRepository;
-import lifequest.backend.exception.ResourceNotFoundException; 
+import lifequest.backend.repository.CalendarEventRepository;
+import lifequest.backend.service.CalendarEventService;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/calendar")
 public class CalendarController {
-    @Autowired
-    private CalendarRepository calendarRepository;
 
-    @PostMapping("/request")
-    public CalendarEvent createMeetingRequest(@RequestBody CalendarEvent event) {
-        event.setAccepted(false);
-        return calendarRepository.save(event);
+    @Autowired
+    private CalendarEventService calendarEventService;
+
+    @Autowired
+    private AgentRepository agentRepository;
+
+    @Autowired
+    private CalendarEventRepository calendarEventRepository;
+
+    @GetMapping
+    public List<CalendarEvent> getAllCalendarEvents() {
+        return calendarEventService.getAllCalendarEvents();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<CalendarEvent> getCalendarEventById(@PathVariable Long id) {
+        return calendarEventService.getCalendarEventById(id);
+    }
+
+    @PostMapping
+    public CalendarEvent createCalendarEvent(@RequestBody CalendarEvent calendarEvent) {
+        Agent agent = agentRepository.findByUsername(calendarEvent.getAgent().getUsername());
+        calendarEvent.setAgent(agent);
+        return calendarEventService.saveCalendarEvent(calendarEvent);
     }
 
     @PostMapping("/accept/{id}")
-    public CalendarEvent acceptMeetingRequest(@PathVariable Long id) {
-      CalendarEvent event = calendarRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Event not found"));        
-      event.setAccepted(true);
-        return calendarRepository.save(event);
+    public ResponseEntity<?> acceptCalendarEvent(@PathVariable Long id) {
+        Optional<CalendarEvent> optionalEvent = calendarEventRepository.findById(id);
+        if (optionalEvent.isPresent()) {
+            CalendarEvent event = optionalEvent.get();
+            event.setAccepted(true);
+            calendarEventRepository.save(event);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/accepted/{userId}")
-    public List<CalendarEvent> getAcceptedMeetings(@PathVariable Long userId) {
-        Users user = new Users();
-        user.setId(userId);
-        return calendarRepository.findByUserAndAccepted(user, true);
+    @PutMapping("/{id}")
+    public CalendarEvent updateCalendarEvent(@PathVariable Long id, @RequestBody CalendarEvent calendarEvent) {
+        calendarEvent.setId(id);
+        return calendarEventService.saveCalendarEvent(calendarEvent);
     }
-    
+
+    @PutMapping("/status/{id}")
+    public ResponseEntity<CalendarEvent> updateCalendarEventStatus(@PathVariable Long id, @RequestBody String status) {
+        CalendarEvent updatedEvent = calendarEventService.updateCalendarEventStatus(id, status);
+        if (updatedEvent != null) {
+            return ResponseEntity.ok(updatedEvent);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCalendarEvent(@PathVariable Long id) {
+        calendarEventService.deleteCalendarEvent(id);
+    }
 }

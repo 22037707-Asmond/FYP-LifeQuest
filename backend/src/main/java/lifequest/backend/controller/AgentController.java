@@ -121,4 +121,11 @@ public class AgentController {
         }
     }
 
+    // @GetMapping("/agents/current")
+    // public ResponseEntity<Agent> getCurrentAgent() {
+
+    //     Agent currentAgent = agentService.getCurrentAgent();
+    //     return ResponseEntity.ok(currentAgent);
+    // }
+
 }

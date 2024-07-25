@@ -49,6 +49,7 @@ public class AgentService {
         Agent account = agentRepository.findByUsername(username);
         return account.getProfilePicture();
     }
+    
 
      // Method to hash the password using SHA-256
     private String hashPassword(String password) {

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import AppNavBar from '../components/Account/AppNavBar';
 import SideProfile from '../components/Account/SideProfile';
 import PostListings from '../components/Account/PostListings';
-import Calendar from '../components/Account/Calendar';
 import { Stack } from '@mui/material';
 import "../LifeQuest.css";
 import { LocalStorage } from '../services/LocalStorage';
@@ -30,9 +29,6 @@ function AccountPage() {
         <SideProfile acc={account} />
         {/* <PostListings user={account} /> */}
       </Stack>
-      <div style={{ marginTop: '20px' }}>
-        <Calendar />
-      </div>
     </div>
   );
 }
