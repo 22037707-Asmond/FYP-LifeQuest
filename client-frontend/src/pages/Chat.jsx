@@ -185,12 +185,16 @@ const ChatPage = () => {
     return (
         <>
             <AppNavBar />
+            <br />
             <MainContainer
                 responsive
                 style={{
-                    height: '90vh',
+                    height: '80vh',
                     display: 'flex',
                     flexDirection: 'row',
+                    width: '1500px',
+                    alignContent: 'center',
+                    margin: 'auto'
                 }}
             >
                 <Sidebar position="left" style={{ width: '300px' }}>

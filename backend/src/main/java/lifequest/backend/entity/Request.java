@@ -38,6 +38,9 @@ public class Request {
 
     private String insurance;
 
+    @Enumerated(EnumType.STRING)
+    private RequestType type;
+
     @OneToOne
     private Insurance insuranceObj;
 
@@ -48,4 +51,14 @@ public class Request {
         }
     }
 
+    public enum RequestEnum {
+        PENDING, ACCEPTED, REJECTED
+    }
+
+    public enum RequestType {
+        Claim, Application
+    }
+
 }
+
+

@@ -1,28 +1,34 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import AppNavBar from '../components/Account/AppNavBar';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
-import { getFullName } from '../services/AgentsAPI';
 import {
-    MainContainer,
-    Sidebar,
-    Search,
-    ConversationList,
-    Conversation,
-    Avatar,
-    ChatContainer,
-    ConversationHeader,
-    VoiceCallButton,
-    VideoCallButton,
-    InfoButton,
-    MessageList,
-    MessageSeparator,
-    Message,
-    TypingIndicator,
-    MessageInput,
-    ExpansionPanel
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Divider
+} from '@mui/material';
+import {
+  MainContainer,
+  Sidebar,
+  Search,
+  ConversationList,
+  Conversation,
+  Avatar,
+  ChatContainer,
+  ConversationHeader,
+  VoiceCallButton,
+  VideoCallButton,
+  InfoButton,
+  MessageList,
+  MessageSeparator,
+  Message,
+  TypingIndicator,
+  MessageInput,
+  ExpansionPanel
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
@@ -30,7 +36,7 @@ const ChatPage = () => {
     const { account, profilePictureUrl } = useAccount();
     const { agentId } = useParams();
     const location = useLocation();
-    const agentName = location.state?.agentUserName || "Agent";
+    const agentName = location.state?.agentName || "Agent";
     const [privateChats, setPrivateChats] = useState(new Map());
     const [publicChats, setPublicChats] = useState([]);
     const [tab, setTab] = useState(agentId ? agentName : 'CHATROOM');
@@ -39,7 +45,6 @@ const ChatPage = () => {
         receivername: agentName,
         message: ''
     });
-    const [agentNames, setAgentNames] = useState(new Map());
 
     const stompClientRef = useRef(null);
 
@@ -47,50 +52,29 @@ const ChatPage = () => {
         if (account) {
             setUserData((prevUserData) => ({ ...prevUserData, username: account.username }));
             connect(account.username);
+            console.log('Account:', account.username);
         }
     }, [account]);
 
     useEffect(() => {
-        if (account) {
-            const savedChats = JSON.parse(localStorage.getItem(`privateChats_${account.username}`));
-            if (savedChats) {
-                setPrivateChats(new Map(savedChats));
-            }
-
-            const savedPublicChats = JSON.parse(localStorage.getItem(`publicChats_${account.username}`));
-            if (savedPublicChats) {
-                setPublicChats(savedPublicChats);
-            }
+        const savedChats = JSON.parse(localStorage.getItem('privateChats'));
+        if (savedChats) {
+            setPrivateChats(new Map(savedChats));
         }
-    }, [account]);
+
+        const savedPublicChats = JSON.parse(localStorage.getItem('publicChats'));
+        if (savedPublicChats) {
+            setPublicChats(savedPublicChats);
+        }
+    }, []);
 
     useEffect(() => {
-        if (account) {
-            localStorage.setItem(`privateChats_${account.username}`, JSON.stringify([...privateChats]));
-        }
-    }, [privateChats, account]);
-
-    useEffect(() => {
-        if (account) {
-            localStorage.setItem(`publicChats_${account.username}`, JSON.stringify(publicChats));
-        }
-    }, [publicChats, account]);
-
-    useEffect(() => {
-        const fetchAgentNames = async () => {
-            const newAgentNames = new Map();
-            for (let username of privateChats.keys()) {
-                try {
-                    const fullName = await getFullName(username);
-                    newAgentNames.set(username, fullName);
-                } catch (error) {
-                    console.error(`Failed to fetch full name for user ${username}:`, error);
-                }
-            }
-            setAgentNames(newAgentNames);
-        };
-        fetchAgentNames();
+        localStorage.setItem('privateChats', JSON.stringify([...privateChats]));
     }, [privateChats]);
+
+    useEffect(() => {
+        localStorage.setItem('publicChats', JSON.stringify(publicChats));
+    }, [publicChats]);
 
     const connect = (username) => {
         const Sock = new SockJS('http://localhost:8080/ws');
@@ -162,7 +146,7 @@ const ChatPage = () => {
         if (stompClientRef.current) {
             const chatMessage = {
                 sender: userData.username,
-                receiver: userData.receivername,
+                receiver: tab,
                 content: userData.message,
                 timestamp: new Date().toISOString()
             };
@@ -175,6 +159,7 @@ const ChatPage = () => {
                 }
                 return updatedChats;
             });
+            console.log('Private receiver:', tab);
             stompClientRef.current.send("/app/private-message", {}, JSON.stringify(chatMessage));
             setUserData((prevUserData) => ({ ...prevUserData, message: "" }));
         } else {
@@ -184,7 +169,6 @@ const ChatPage = () => {
 
     return (
         <>
-            <AppNavBar />
             <MainContainer
                 responsive
                 style={{
@@ -200,12 +184,7 @@ const ChatPage = () => {
                             <Avatar src={profilePictureUrl} status="available" />
                         </Conversation>
                         {[...privateChats.keys()].map((name, index) => (
-                            <Conversation
-                                key={index}
-                                name={agentNames.get(name) || name}
-                                active={tab === name} onClick={() => setTab(name)}
-                                style={{ fontSize: '25px' }}
-                            >
+                            <Conversation key={index} name={name} active={tab === name} onClick={() => setTab(name)}>
                                 <Avatar src={profilePictureUrl} status="available" />
                             </Conversation>
                         ))}
@@ -225,19 +204,18 @@ const ChatPage = () => {
                     <MessageList>
                         <MessageSeparator content="Today" />
                         {(tab === "CHATROOM" ? publicChats : privateChats.get(tab) || []).map((chat, index) => (
-                            (chat.sender === userData.username || chat.receiver === userData.username) && (
-                                <Message
-                                    key={index}
-                                    model={{
-                                        direction: chat.sender === userData.username ? 'outgoing' : 'incoming',
-                                        message: chat.content,
-                                        position: 'single',
-                                        sender: chat.sender,
-                                        sentTime: new Date(chat.timestamp).toLocaleTimeString()
-                                    }}
-                                    style={{ fontSize: '30px' }}
-                                />
-                            )
+                            <Message
+                                key={index}
+                                model={{
+                                    direction: chat.sender === userData.username ? 'outgoing' : 'incoming',
+                                    message: chat.content,
+                                    position: 'single',
+                                    sender: chat.sender,
+                                    sentTime: new Date(chat.timestamp).toLocaleTimeString()
+                                }}
+                            >
+                                <Avatar src={profilePictureUrl} name={chat.sender} />
+                            </Message>
                         ))}
                     </MessageList>
                     <MessageInput

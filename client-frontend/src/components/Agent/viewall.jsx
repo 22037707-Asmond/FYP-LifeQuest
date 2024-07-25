@@ -5,14 +5,13 @@ import { allAgents } from '../../services/AgentAPI';
 
 const AgentTable = () => {
   const [agents, setAgents] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    allAgents().then((res) => {
-      setAgents(res.data);
-    });
+    allAgents().then((data) => setAgents(data));
   }, []);
-
+  
   const handleMessageClick = (agent) => {
     navigate(`/chat/${agent.id}`, { state: { agentName: `${agent.firstName} ${agent.lastName}` , agentUserName: `${agent.username}` } });
   };

@@ -1,6 +1,5 @@
 // localStorageWithHook.js
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 
 export const LocalStorage = {
     setAccount: (account) => {
@@ -16,6 +15,23 @@ export const LocalStorage = {
     },
     clearAccount: () => {
         window.localStorage.removeItem('account');
+    }
+};
+
+export const ReportStorage = {
+    setReport: (report) => {
+        window.localStorage.setItem('report', JSON.stringify(report));
+    },
+    getReport: async () => {
+        const reportData = window.localStorage.getItem('report');
+        if (reportData) {
+            const parsedReport = JSON.parse(reportData);
+            return parsedReport;
+        }
+        return null;
+    },
+    clearReport: () => {
+        window.localStorage.removeItem('report');
     }
 };
 

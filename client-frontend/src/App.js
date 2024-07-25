@@ -11,12 +11,10 @@ import Chat from './pages/Chat';
 import Agent from './pages/Agent';
 import Calculator from './pages/Calculator';
 import PremiumTest from './pages/PremiumTest';
-import CalendarTest from './pages/CalendarTest';
-import MyInfoForm from './components/MyInfoForm';
 
 
 
-function App() {
+function App() { 
   const isLoggedIn = false;
   return (
       <Routes>
@@ -43,6 +41,8 @@ function App() {
         <Route path="Agents" element={<Agent/>}></Route>
 
         <Route path="Calculator" element={< Calculator/>}></Route>
+
+        <Route path='Agent/:agentId'></Route>
 
       </Routes>
   );
