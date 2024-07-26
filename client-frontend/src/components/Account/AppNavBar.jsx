@@ -12,6 +12,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -69,6 +70,27 @@ export default function AppNavBar() {
               <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Agents</Typography>
             </Box>
           </Link>
+
+          <Link to="/Insurance" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                sx={{
+                  color: 'inherit',
+                  '&:hover': {
+                    color: 'inherit',
+                  },
+                }}
+              >
+                <Badge color="secondary">
+                  <LibraryBooksIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Insurance</Typography>
+            </Box>
+          </Link>
+
           <Link to="/Calculator" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <IconButton
@@ -100,18 +122,22 @@ export default function AppNavBar() {
             </IconButton>
             <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Articles</Typography>
           </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <IconButton
-              size="large"
-              aria-label="show new notifications"
-              color="inherit"
-            >
-              <Badge color="secondary">
-                <CalendarMonthIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
-              </Badge>
-            </IconButton>
-            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calendar</Typography>
-          </Box>
+
+          <Link to="/CalendarClient" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                color="inherit"
+              >
+                <Badge color="secondary">
+                  <CalendarMonthIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calendar</Typography>
+            </Box>
+          </Link>
+          
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <IconButton
               size="large"
@@ -126,7 +152,7 @@ export default function AppNavBar() {
           </Box>
 
           <Link to="/Profile" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.3}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.3 }}>
               <IconButton
                 size="large"
                 aria-label="show new notifications"

@@ -11,8 +11,8 @@ import Chat from './pages/Chat';
 import Agent from './pages/Agent';
 import Insurance from './pages/Insurance';
 import Calculator from './pages/Calculator';
-import PremiumTest from './pages/PremiumTest';
-
+import Calendar from './pages/Calendar';
+import PaymentPage from './pages/PaymentPage';
 
 
 function App() { 
