@@ -21,7 +21,11 @@ const InsuranceTable = () => {
   }, []);
 
   const handleMoreInfoClick = (insurance) => {
-    navigate(`/insurance/${insurance.id}`, { state: { insuranceName: insurance.name } });
+    navigate(`/insurance/${insurance.id}`, { state: { insurance } });
+  };
+
+  const handleBuyNowClick = (insurance) => {
+    navigate(`/Payment`, { state: { insuranceId: insurance.id } });
   };
 
   return (
@@ -51,6 +55,7 @@ const InsuranceTable = () => {
                   <Button
                     variant="contained"
                     style={{ flex: 1, backgroundColor: 'red', color: 'white' }}
+                    onClick={() => handleBuyNowClick(insurance)}
                   >
                     Buy Now
                   </Button>
