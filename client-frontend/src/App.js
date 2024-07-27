@@ -13,6 +13,8 @@ import Insurance from './pages/Insurance';
 import Calculator from './pages/Calculator';
 import Calendar from './pages/Calendar';
 import PaymentPage from './pages/PaymentPage';
+import ChatBot from './pages/ChatBot';
+
 
 
 function App() { 
@@ -48,6 +50,8 @@ function App() {
         <Route path="Calculator" element={< Calculator/>}></Route>
 
         <Route path='Agent/:agentId'></Route>
+
+        <Route path='ChatBot' element={<ChatBot/>}></Route>
 
       </Routes>
   );
