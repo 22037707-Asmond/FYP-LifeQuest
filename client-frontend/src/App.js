@@ -11,7 +11,9 @@ import Chat from './pages/Chat';
 import Agent from './pages/Agent';
 import Insurance from './pages/Insurance';
 import Calculator from './pages/Calculator';
-import PremiumTest from './pages/PremiumTest';
+import Calendar from './pages/Calendar';
+import PaymentPage from './pages/PaymentPage';
+import ChatBot from './pages/ChatBot';
 
 
 
@@ -48,6 +50,8 @@ function App() {
         <Route path="Calculator" element={< Calculator/>}></Route>
 
         <Route path='Agent/:agentId'></Route>
+
+        <Route path='ChatBot' element={<ChatBot/>}></Route>
 
       </Routes>
   );

@@ -15,7 +15,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'your_secret_key_here'
     
     # Enable CORS for all routes and allow requests from 'http://localhost:3000'
-    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+    CORS(app, resources={r"/*": {"origins": "*"}})
     
     # Initialize the database with the app
     db.init_app(app)
