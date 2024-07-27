@@ -17,6 +17,7 @@ public class Insurance {
     private Long id;
     private String name;
     private String description;
+    private double premium;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_type_id")
@@ -54,5 +55,13 @@ public class Insurance {
 
     public void setInsuranceType(InsuranceType insuranceType) {
         this.insuranceType = insuranceType;
+    }
+
+    public double getPremium() {
+        return premium;
+    }
+
+    public void setPremium(double premium) {
+        this.premium = premium;
     }
 }

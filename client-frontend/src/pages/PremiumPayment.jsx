@@ -6,10 +6,9 @@ import '../assets/css/PremiumPayment.css';
 const PremiumPayment = () => {
     const [user, setUser] = useState(null);
     const [insurance, setInsurance] = useState(null);
-    const userId = 3; 
-    const insuranceId = 1; 
+    const userId = 3; // Example user ID
+    const insuranceId = 1; // Example insurance ID
 
-    const insurancePrice = 100; 
     useEffect(() => {
         axios.get(`http://localhost:8080/api/accounts/id/${userId}`)
             .then(response => setUser(response.data))
@@ -18,13 +17,14 @@ const PremiumPayment = () => {
         axios.get(`http://localhost:8080/api/insurances/${insuranceId}`)
             .then(response => setInsurance(response.data))
             .catch(error => console.error('Error fetching insurance data:', error));
-    }, []);
+    }, [userId, insuranceId]);
 
     const createOrder = (data, actions) => {
+        const price = insurance.insuranceType.id === 1 ? 100 : insurance.premium; // Example price for microinsurance
         return actions.order.create({
             purchase_units: [{
                 amount: {
-                    value: insurancePrice
+                    value: price
                 }
             }]
         });
@@ -56,19 +56,19 @@ const PremiumPayment = () => {
     if (!user || !insurance) return <div>Loading...</div>;
 
     return (
-      <div className="receipt">
-          <h2>Premium Payment</h2>
-          <p>User: {user.firstName} {user.lastName}</p>
-          <p>Insurance: {insurance.name}</p>
-          <p className="price">Price: ${insurancePrice}</p>
-          <div className="paypal-buttons">
-              <PayPalButtons
-                  createOrder={createOrder}
-                  onApprove={onApprove}
-              />
-          </div>
-      </div>
-  );
+        <div className="receipt">
+            <h2>Premium Payment</h2>
+            <p>User: {user.firstName} {user.lastName}</p>
+            <p>Insurance: {insurance.name}</p>
+            <p className="price">Price: ${insurance.insuranceType.id === 1 ? 100 : insurance.premium}</p>
+            <div className="paypal-buttons">
+                <PayPalButtons
+                    createOrder={createOrder}
+                    onApprove={onApprove}
+                />
+            </div>
+        </div>
+    );
 };
 
 export default PremiumPayment;

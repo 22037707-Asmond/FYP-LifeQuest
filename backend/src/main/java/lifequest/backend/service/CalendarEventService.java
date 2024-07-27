@@ -28,6 +28,11 @@ public class CalendarEventService {
     public void deleteCalendarEvent(Long id) {
         calendarEventRepository.deleteById(id);
     }
+    
+    public List<CalendarEvent> getCalendarEventsByAgent(Long agentId) {
+        return calendarEventRepository.findByAgentId(agentId);
+    }
+    
 
     public CalendarEvent updateCalendarEventStatus(Long id, String status) {
         Optional<CalendarEvent> eventOpt = calendarEventRepository.findById(id);

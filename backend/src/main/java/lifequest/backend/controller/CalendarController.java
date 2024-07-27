@@ -76,4 +76,10 @@ public class CalendarController {
     public void deleteCalendarEvent(@PathVariable Long id) {
         calendarEventService.deleteCalendarEvent(id);
     }
+
+    @GetMapping("/agent/{agentId}")
+    public List<CalendarEvent> getCalendarEventsByAgent(@PathVariable Long agentId) {
+        return calendarEventService.getCalendarEventsByAgent(agentId);
+    }
+
 }

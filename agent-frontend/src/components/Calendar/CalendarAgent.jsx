@@ -6,6 +6,8 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './AgentCalendar.css';
+import { LocalStorage } from '../../services/LocalStorage';
+
 
 const AgentCalendar = () => {
   const [events, setEvents] = useState([]);
@@ -54,14 +56,22 @@ const AgentCalendar = () => {
       alert('Please fill in all fields.');
       return;
     }
+
+    const account = await LocalStorage.getAccount();
+    const agentId = account?.id; // Fetch agent ID from local storage
+
     try {
       const eventDate = new Date(newEvent.date.getTime() - newEvent.date.getTimezoneOffset() * 60000).toISOString().split('T')[0];
       const eventToSave = { 
         ...newEvent, 
         date: eventDate,
-        agent: { id: 1 },
-        user: { id: newEvent.userId } 
+        agent: { id: agentId }, // Use agent ID from local storage
+        user: { id: newEvent.userId },
+        status: 'Upcoming' // Set status to 'Upcoming' by default
       };
+
+      console.log('Saving event:', eventToSave); // Debugging line
+
       const response = await axios.post('http://localhost:8080/api/calendar', eventToSave); 
       setEvents([...events, {
         title: response.data.title,
