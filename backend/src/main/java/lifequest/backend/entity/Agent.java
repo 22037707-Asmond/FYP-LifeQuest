@@ -42,6 +42,9 @@ public class Agent extends Account {
     private List<Premium> premiums;
 
     @OneToMany(mappedBy = "agent")
+    private List<CalendarEvent> events;
+
+    @OneToMany(mappedBy = "agent")
     @JsonManagedReference
     private List<Request> requests;
 }

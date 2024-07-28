@@ -1,5 +1,7 @@
 package lifequest.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,25 +9,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-
 @Entity
 public class CalendarEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String title;
     private String date;
-    private String time; 
+    private String time;
     private boolean accepted;
     private String status;
-    
+
     @ManyToOne
     @JoinColumn(name = "agent_id")
+    @JsonIgnoreProperties("calendarEvents")
     private Agent agent;
-    
+
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("calendarEvents")
     private Users user;
 
     // Getters and setters
@@ -84,7 +87,7 @@ public class CalendarEvent {
     public void setUser(Users user) {
         this.user = user;
     }
-    
+
     public String getStatus() {
         return status;
     }

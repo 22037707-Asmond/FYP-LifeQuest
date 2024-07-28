@@ -5,7 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lifequest.backend.entity.Agent;
+import lifequest.backend.entity.CalendarDTO;
+import lifequest.backend.entity.Users;
 import lifequest.backend.repository.AgentRepository;
+import lifequest.backend.repository.UsersRepository;
 import lifequest.backend.entity.CalendarEvent;
 import lifequest.backend.repository.CalendarEventRepository;
 import lifequest.backend.service.CalendarEventService;
@@ -24,10 +27,13 @@ public class CalendarController {
     private AgentRepository agentRepository;
 
     @Autowired
+    private UsersRepository userRepository;
+
+    @Autowired
     private CalendarEventRepository calendarEventRepository;
 
     @GetMapping
-    public List<CalendarEvent> getAllCalendarEvents() {
+    public List<CalendarDTO> getAllCalendarEvents() {
         return calendarEventService.getAllCalendarEvents();
     }
 
@@ -36,10 +42,29 @@ public class CalendarController {
         return calendarEventService.getCalendarEventById(id);
     }
 
-    @PostMapping
-    public CalendarEvent createCalendarEvent(@RequestBody CalendarEvent calendarEvent) {
-        Agent agent = agentRepository.findByUsername(calendarEvent.getAgent().getUsername());
-        calendarEvent.setAgent(agent);
+    @PostMapping("/agent")
+    public CalendarEvent createCalendarEventForAgent(@RequestBody CalendarEvent calendarEvent) {
+        if (calendarEvent.getAgent() != null && calendarEvent.getAgent().getId() != null) {
+            Optional<Agent> agentOpt = agentRepository.findById(calendarEvent.getAgent().getId());
+            agentOpt.ifPresent(calendarEvent::setAgent);
+        }
+        if (calendarEvent.getUser() != null && calendarEvent.getUser().getId() != null) {
+            Optional<Users> userOpt = userRepository.findById(calendarEvent.getUser().getId());
+            userOpt.ifPresent(calendarEvent::setUser);
+        }
+        return calendarEventService.saveCalendarEvent(calendarEvent);
+    }
+
+    @PostMapping("/user")
+    public CalendarEvent createCalendarEventForUser(@RequestBody CalendarEvent calendarEvent) {
+        if (calendarEvent.getUser() != null && calendarEvent.getUser().getId() != null) {
+            Optional<Users> userOpt = userRepository.findById(calendarEvent.getUser().getId());
+            userOpt.ifPresent(calendarEvent::setUser);
+        }
+        if (calendarEvent.getAgent() != null && calendarEvent.getAgent().getId() != null) {
+            Optional<Agent> agentOpt = agentRepository.findById(calendarEvent.getAgent().getId());
+            agentOpt.ifPresent(calendarEvent::setAgent);
+        }
         return calendarEventService.saveCalendarEvent(calendarEvent);
     }
 
@@ -75,5 +100,15 @@ public class CalendarController {
     @DeleteMapping("/{id}")
     public void deleteCalendarEvent(@PathVariable Long id) {
         calendarEventService.deleteCalendarEvent(id);
+    }
+
+    @GetMapping("/agent/{agentId}")
+    public List<CalendarDTO> getCalendarEventsByAgent(@PathVariable Long agentId) {
+        return calendarEventService.getCalendarEventsByAgent(agentId);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<CalendarDTO> getCalendarEventsByUser(@PathVariable Long userId) {
+        return calendarEventService.getCalendarEventsByUser(userId);
     }
 }

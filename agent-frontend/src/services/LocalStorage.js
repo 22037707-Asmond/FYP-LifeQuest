@@ -1,4 +1,3 @@
-// localStorageWithHook.js
 import { useState, useEffect } from 'react';
 
 export const LocalStorage = {
@@ -15,6 +14,16 @@ export const LocalStorage = {
     },
     clearAccount: () => {
         window.localStorage.removeItem('account');
+    },
+
+    //avril edit
+    getAgentId: async () => {
+        const accountData = window.localStorage.getItem('account');
+        if (accountData) {
+            const parsedAccount = JSON.parse(accountData);
+            return parsedAccount.id;
+        }
+        return null;
     }
 };
 

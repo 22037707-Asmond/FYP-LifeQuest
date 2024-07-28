@@ -112,18 +112,20 @@ export default function AppNavBar() {
             <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Articles</Typography>
           </Box>
 
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <IconButton
-              size="large"
-              aria-label="show new notifications"
-              color="inherit"
-            >
-              <Badge color="secondary">
-                <CalendarMonthIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
-              </Badge>
-            </IconButton>
-            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calendar</Typography>
-          </Box>
+          <Link to="/CalendarAgent" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                color="inherit"
+              >
+                <Badge color="secondary">
+                  <CalendarMonthIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
+                </Badge>
+              </IconButton>
+              <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calendar</Typography>
+            </Box>
+          </Link>
 
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <IconButton
@@ -137,7 +139,7 @@ export default function AppNavBar() {
             </IconButton>
             <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>ChatBot</Typography>
           </Box>
-          
+
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.3 }}>
             <IconButton
               size="large"
