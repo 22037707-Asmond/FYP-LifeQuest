@@ -15,8 +15,8 @@ import Calculator from './pages/Calculator';
 import Calendar from './pages/Calendar';
 import PaymentPage from './pages/PaymentPage';
 import ChatBot from './pages/ChatBot';
-import UserInsurances from './components/Insurance/UserInsurance';
-import ReceiptPage from './components/Receipt';
+import MyInsurance from './pages/MyInsurance';
+import Receipt from './pages/ReceiptPage';
 
 
 
@@ -58,9 +58,9 @@ function App() {
 
         <Route path='ChatBot' element={<ChatBot/>}></Route>
 
-        <Route path='myInsurance' element={<UserInsurances/>}></Route>
+        <Route path='myInsurance' element={<MyInsurance/>}></Route>
 
-        <Route path= 'Receipt' element={<ReceiptPage/>}></Route>
+        <Route path='Receipt' element={<Receipt/>}></Route>
 
       </Routes>
   );

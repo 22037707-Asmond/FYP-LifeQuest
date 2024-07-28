@@ -29,8 +29,7 @@ public class Insurance {
     private InsuranceType insuranceType;
 
     @OneToMany(mappedBy = "insurance")
-    @JsonIgnore // Avoid circular reference
-    private List<Payment> payments;
+    @JsonIgnore 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

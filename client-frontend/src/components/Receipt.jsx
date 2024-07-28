@@ -14,7 +14,7 @@ const ReceiptPage = () => {
     const formattedDate = new Date(payment.createdDate).toLocaleString();
     
     return (
-        <div style={{ padding: '20px' }}>
+        <div>
             <Card style={{ margin: 'auto', maxWidth: '600px' }}>
                 <CardContent>
                     <Typography variant="h5" gutterBottom>

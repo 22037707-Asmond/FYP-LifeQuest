@@ -38,6 +38,9 @@ public class Agent extends  Account{
     @OneToMany(mappedBy = "agent")
     private List<Premium> premiums;
 
+    @OneToMany(mappedBy = "agent")
+    private List<CalendarEvent> events;
+
     // // Actions field - Not sure how you want to handle this, it could be methods or an additional field
     // // If it's just a string or JSON representation of actions, you could add it like this:
     // private String actions;

@@ -13,6 +13,7 @@ const ClientCalendar = () => {
       const user = await LocalStorage.getAccount();
       if (user) {
         setUserId(user.id);
+        console.log('Fetched user:', user); // Debug log
       }
     };
 
@@ -21,21 +22,25 @@ const ClientCalendar = () => {
 
   useEffect(() => {
     if (userId) {
-      fetchEvents();
+      fetchEvents(userId);
     }
   }, [userId]);
 
-  const fetchEvents = async () => {
+  const fetchEvents = async (userId) => {
     try {
       const response = await axios.get('http://localhost:8080/api/calendar');
-      const userEvents = response.data.filter(event => event.user.id === userId);
+      console.log('API Response:', response.data); // Debug log
+
+      const userEvents = response.data.filter(event => event.userId === userId);
+      console.log('Fetched user events:', userEvents); // Debug log
+
       setEvents(userEvents.map(event => ({
         title: event.title,
         start: `${event.date}T${event.time}`,
         id: event.id,
         accepted: event.accepted,
-        agent: event.agent,
-        user: event.user,
+        agentId: event.agentId,
+        userId: event.userId,
         status: event.status || 'Upcoming'
       })));
     } catch (error) {
@@ -44,8 +49,12 @@ const ClientCalendar = () => {
   };
 
   const handleEventClick = (clickInfo) => {
-    const event = events.find(event => event.id === clickInfo.event.id);
-    alert(`Event: ${event.title}\nDate: ${event.start.split('T')[0]}\nTime: ${event.start.split('T')[1]}\nStatus: ${event.status}\nAccepted: ${event.accepted ? 'Yes' : 'No'}\nAgent: ${event.agent ? event.agent.username : 'N/A'}\nUser: ${event.user ? event.user.username : 'N/A'}`);
+    const event = events.find(event => event.id === parseInt(clickInfo.event.id));
+    if (event) {
+      alert(`Event: ${event.title}\nDate: ${event.start.split('T')[0]}\nTime: ${event.start.split('T')[1]}\nStatus: ${event.status}\nAccepted: ${event.accepted ? 'Yes' : 'No'}\nAgent ID: ${event.agentId}`);
+    } else {
+      console.error('Event not found:', clickInfo.event.id);
+    }
   };
 
   return (

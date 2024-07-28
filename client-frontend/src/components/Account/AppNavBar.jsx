@@ -110,6 +110,8 @@ export default function AppNavBar() {
               <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Calculator</Typography>
             </Box>
           </Link>
+
+          <Link to="/myInsurance" style={{ textDecoration: 'none', color: 'inherit' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <IconButton
               size="large"
@@ -120,8 +122,9 @@ export default function AppNavBar() {
                 <ArticleIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36 } }} />
               </Badge>
             </IconButton>
-            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>Articles</Typography>
+            <Typography variant="caption" sx={{ fontSize: { xs: 14, sm: 16, md: 18 } }}>MyInsurance</Typography>
           </Box>
+          </Link>
 
           <Link to="/CalendarClient" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

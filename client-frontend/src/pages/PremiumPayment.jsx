@@ -44,19 +44,19 @@ const PremiumPayment = () => {
     }, [state]);
 
     const createOrder = (data, actions) => {
-        // Commented out original code for testing purposes
-        // if (!insurance || !insurance.premium) {
-        //     console.error('Insurance data is missing or incomplete');
-        //     return;
-        // }
-        // const price = insurance.premium.toString(); // Use the premium directly from the insurance object
-        
-        const price = '1.00'; // Fixed price for testing
+        if (!insurance || !insurance.premium) {
+            console.error('Insurance data is missing or incomplete');
+            return;
+        }
+        const price = insurance.premium.toString();
 
         return actions.order.create({
             purchase_units: [{
                 amount: {
                     value: price
+                },
+                payee: {
+                    email_address: 'sb-sznnq26655695@business.example.com' 
                 }
             }]
         });
