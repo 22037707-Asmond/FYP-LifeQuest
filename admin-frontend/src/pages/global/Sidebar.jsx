@@ -1,13 +1,14 @@
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import ArticleIcon from '@mui/icons-material/Article';
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
+import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
@@ -17,15 +18,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-      <MenuItem
-        active={selected === title}
-        style={{ color: colors.grey[100] }}
-        onClick={() => setSelected(title)}
-        icon={icon}
-        href={to}
-      >
-        <Typography>{title}</Typography>
-      </MenuItem>
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.grey[100] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
+      href={to}
+    >
+      <Typography>{title}</Typography>
+    </MenuItem>
   );
 };
 
@@ -39,7 +40,8 @@ const SideBar = () => {
     <>
       <Sidebar
         collapsed={isCollapsed}
-        rootStyles={{ backgroundColor: `${colors.primary[400]}`}}>
+        rootStyles={{ backgroundColor: `${colors.primary[400]}` }}
+      >
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -72,7 +74,11 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 15px 20px" }}
+            >
               Data
             </Typography>
 
@@ -109,6 +115,14 @@ const SideBar = () => {
             />
 
             <Item
+              title="Insurance"
+              to="/insurance"
+              icon={<ArticleIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
               title="Invoice"
               to="/Invoices"
               icon={<ReceiptOutlinedIcon />}
@@ -116,7 +130,11 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 15px 20px" }}
+            >
               Charts
             </Typography>
 

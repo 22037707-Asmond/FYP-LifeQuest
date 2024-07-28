@@ -4,10 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/PageFragment/Header';
 import { addPost } from './PostingAPI';
-import './Postings.css';
 
-const PostingsAdd = () => {
-    const [uploads, setUploads] = useState(null);
+const AddInsurance = () => {
     const [messages, setMessages] = useState('');
     const [title, setTitle] = useState('');
     const [error, setError] = useState('');
@@ -24,7 +22,6 @@ const PostingsAdd = () => {
     };
 
     const handleClear = () => {
-        setUploads(null);
         setMessages('');
         setTitle('');
         setFile(null);
@@ -88,19 +85,6 @@ const PostingsAdd = () => {
                                 />
                             </div>
 
-                            {file && (
-                                <div className="mb-3 col-5">
-                                    {fileType.startsWith('video/') ? (
-                                        <video width="100%" controls>
-                                            <source src={file} type={fileType} />
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    ) : (
-                                        <img src={file} alt="Preview" className="img-fluid" />
-                                    )}
-                                </div>
-                            )}
-
                             <div className="mb-3 col-10">
                                 <label htmlFor="item_description" className="form-label">Message</label>
                                 <textarea
@@ -138,4 +122,4 @@ const PostingsAdd = () => {
     );
 };
 
-export default PostingsAdd;
+export default AddInsurance;

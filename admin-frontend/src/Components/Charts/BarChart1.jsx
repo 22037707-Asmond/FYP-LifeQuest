@@ -1,28 +1,21 @@
 import { useTheme } from '@mui/material';
 import { ResponsiveBar } from '@nivo/bar';
-import { mockdataPremium as rawData } from '../../Mockdata';
+import React from 'react';
 import { tokens } from '../../theme';
 
-const preprocessData = (data) => {
-    const result = {};
-    data.forEach(item => {
-        if (!result[item.agent_id]) {
-            result[item.agent_id] = 0;
-        }
-        result[item.agent_id] += item.payment;
-    });
-
-    return Object.keys(result).map(agent_id => ({
-        agent_id,
-        payment: result[agent_id],
-    }));
-};
-
-const data = preprocessData(rawData);
-
-const BarChart = ({ isDashboard = false }) => {
+const BarChart = ({ data }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+
+    // Validate data structure
+    const isDataValid = data && Array.isArray(data) && data.every(
+        item => item.agent_id !== undefined && item.payment !== undefined
+    );
+
+    if (!isDataValid) {
+        console.error('Invalid data structure for BarChart:', data);
+        return <div>Invalid data for the chart</div>;
+    }
 
     return (
         <ResponsiveBar
@@ -54,26 +47,24 @@ const BarChart = ({ isDashboard = false }) => {
                         fill: colors.grey[100],
                     },
                 },
+                tooltip: {
+                    container: {
+                        color: colors.primary[500],
+                    },
+                },
             }}
-            tooltip={({ id, value }) => (
-                <div style={{ background: 'white', padding: '8px', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
-                    <p style={{ color: 'black', margin: 0 }}><strong>{id}</strong></p>
-                    <p style={{ color: 'black', margin: 0 }}>Payment: {value}</p>
-                </div>
-            )}
             keys={['payment']}
             indexBy="agent_id"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
             padding={0.3}
-            valueScale={{ type: 'linear' }}
-            indexScale={{ type: 'band', round: true }}
+            groupMode="grouped"
             colors={{ scheme: 'nivo' }}
             defs={[
                 {
                     id: 'dots',
                     type: 'patternDots',
                     background: 'inherit',
-                    color: '#38bcb2',
+                    color: 'rgba(255, 255, 255, 0.3)',
                     size: 4,
                     padding: 1,
                     stagger: true,
@@ -82,15 +73,31 @@ const BarChart = ({ isDashboard = false }) => {
                     id: 'lines',
                     type: 'patternLines',
                     background: 'inherit',
-                    color: '#eed312',
+                    color: 'rgba(255, 255, 255, 0.3)',
                     rotation: -45,
                     lineWidth: 6,
                     spacing: 10,
                 },
             ]}
+            fill={[
+                {
+                    match: {
+                        id: 'fries',
+                    },
+                    id: 'dots',
+                },
+                {
+                    match: {
+                        id: 'sandwich',
+                    },
+                    id: 'lines',
+                },
+            ]}
             borderColor={{
                 from: 'color',
-                modifiers: [['darker', 1.6]],
+                modifiers: [
+                    ['darker', 1.6],
+                ],
             }}
             axisTop={null}
             axisRight={null}
@@ -98,27 +105,25 @@ const BarChart = ({ isDashboard = false }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: isDashboard ? undefined : 'Agent',
+                legend: 'Agent ID',
                 legendPosition: 'middle',
                 legendOffset: 32,
-                truncateTickAt: 0,
             }}
             axisLeft={{
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: isDashboard ? undefined : 'Payment',
+                legend: 'Payment',
                 legendPosition: 'middle',
                 legendOffset: -40,
-                truncateTickAt: 0,
             }}
-            enableGridX={true}
-            enableLabel={false}
             labelSkipWidth={12}
             labelSkipHeight={12}
             labelTextColor={{
                 from: 'color',
-                modifiers: [['darker', 1.6]],
+                modifiers: [
+                    ['darker', 1.6],
+                ],
             }}
             legends={[
                 {
@@ -144,9 +149,6 @@ const BarChart = ({ isDashboard = false }) => {
                     ],
                 },
             ]}
-            role="application"
-            ariaLabel="Nivo bar chart demo"
-            barAriaLabel={(e) => `${e.id}: ${e.formattedValue} in agent: ${e.indexValue}`}
         />
     );
 };
