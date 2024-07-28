@@ -14,46 +14,29 @@ import Calculator from './pages/Calculator';
 import Calendar from './pages/Calendar';
 import PaymentPage from './pages/PaymentPage';
 import ChatBot from './pages/ChatBot';
+import ViewAgent from './pages/viewAgent';
 
-
-
-function App() { 
-  const isLoggedIn = false;
+function App() {
   return (
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-
-        <Route path='SignUp' element={<SignUp />} ></Route>
-
-        <Route path='AboutUS' element={<AboutUs />}></Route>
-
-        <Route path='Login' element={<Login />}></Route>
-
-        <Route path='LifeQuest' element={<LifeQuest />}></Route>
-
-        <Route path='AccountPage' element={<AccountPage />}></Route>
-
-        <Route path="CalendarClient" element={<Calendar/>}></Route>
-
-        <Route path="Profile" element={<Profile/>}></Route>
-        
-        <Route path="Payment" element={<PaymentPage/>}></Route>
-
-        <Route path='Chat' element={<Chat/>}></Route>
-
-        <Route path="/chat/:agentId" element={<Chat />} />
-
-        <Route path="Agents" element={<Agent/>}></Route>
-
-        <Route path="Insurance" element={<Insurance/>}></Route>
-
-        <Route path="Calculator" element={< Calculator/>}></Route>
-
-        <Route path='Agent/:agentId'></Route>
-
-        <Route path='ChatBot' element={<ChatBot/>}></Route>
-
-      </Routes>
+    <Routes>
+      <Route path='/' element={<Homepage />} />
+      <Route path='signup' element={<SignUp />} />
+      <Route path='aboutus' element={<AboutUs />} />
+      <Route path='login' element={<Login />} />
+      <Route path='lifequest' element={<LifeQuest />} />
+      <Route path='accountpage' element={<AccountPage />} />
+      <Route path='calendarclient' element={<Calendar />} />
+      <Route path='profile' element={<Profile />} />
+      <Route path='payment' element={<PaymentPage />} />
+      <Route path='chat' element={<Chat />} />
+      <Route path='/chat/:agentId' element={<Chat />} />
+      <Route path='agents' element={<Agent />} />
+      <Route path='insurance' element={<Insurance />} />
+      <Route path='calculator' element={<Calculator />} />
+      <Route path='agent/:agentId' element={<Agent />} />
+      <Route path='chatbot' element={<ChatBot />} />
+      <Route path='viewagent/:agentId' element={<ViewAgent />} />
+    </Routes>
   );
 }
 

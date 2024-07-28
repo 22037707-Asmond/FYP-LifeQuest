@@ -17,15 +17,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
-      <MenuItem
-        active={selected === title}
-        style={{ color: colors.grey[100] }}
-        onClick={() => setSelected(title)}
-        icon={icon}
-        href={to}
-      >
-        <Typography>{title}</Typography>
-      </MenuItem>
+    <MenuItem
+      active={selected === title}
+      style={{ color: colors.grey[100] }}
+      onClick={() => setSelected(title)}
+      icon={icon}
+      href={to}
+    >
+      <Typography>{title}</Typography>
+    </MenuItem>
   );
 };
 
@@ -39,7 +39,7 @@ const SideBar = () => {
     <>
       <Sidebar
         collapsed={isCollapsed}
-        rootStyles={{ backgroundColor: `${colors.primary[400]}`}}>
+        rootStyles={{ backgroundColor: `${colors.primary[400]}` }}>
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -72,7 +72,7 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 15px 20px" }}>
               Data
             </Typography>
 
@@ -116,7 +116,15 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m:"15px 0 15px 20px" }}>
+            <Item
+              title="Requests"
+              to="/requests"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 15px 20px" }}>
               Charts
             </Typography>
 

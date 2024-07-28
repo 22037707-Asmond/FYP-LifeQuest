@@ -2,15 +2,19 @@ package lifequest.backend.entity;
 
 import java.sql.Blob;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Lob;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lifequest.backend.configs.BlobConfig;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +32,20 @@ public class Request {
     private Long id;
 
     @ManyToOne
-    private Users user;
+    @JsonBackReference
+    private Agent agent;
 
-    @Lob
+    private Long agentid;
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+        this.agentid = agent.getId();
+    }
+
+    private int userid;
+
+    @JsonSerialize(using = BlobConfig.BlobSerializer.class)
+    @JsonDeserialize(using = BlobConfig.BlobDeserializer.class)
     private Blob documents; 
 
     @Enumerated(EnumType.STRING)
@@ -41,16 +56,6 @@ public class Request {
     @Enumerated(EnumType.STRING)
     private RequestType type;
 
-    @OneToOne
-    private Insurance insuranceObj;
-
-    public void setInsuranceObj(Insurance insuranceObj) {
-        this.insuranceObj = insuranceObj;
-        if (insuranceObj != null) {
-            this.insurance = insuranceObj.getName();
-        }
-    }
-
     public enum RequestEnum {
         PENDING, ACCEPTED, REJECTED
     }
@@ -58,7 +63,4 @@ public class Request {
     public enum RequestType {
         Claim, Application
     }
-
 }
-
-

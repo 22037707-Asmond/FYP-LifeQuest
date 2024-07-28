@@ -16,6 +16,7 @@ import Sidebar from "./pages/global/Sidebar";
 import Topbar from "./pages/global/Topbar";
 import HiredAgents from './pages/HiredAgents';
 import { ColorModeContext, useMode } from "./theme";
+import RequestsListing from "./pages/requests/ClaimsView";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -47,6 +48,7 @@ function App() {
               <Route path="/bar" element={<Bar/>} />
               <Route path="/pie" element={<Pie/>} />
               <Route path="/LineChart" element={<Line/>} />
+              <Route path="/requests" element={<RequestsListing />} />
               {/* <Route path="/Customers" element={<CustomersView />} /> */}
               {/* <Route path="/Admins" element={<AdminsView />} /> */}
               {/* <Route path="/Invoices" element={<InvoicesView />} /> */}

@@ -10,6 +10,15 @@ export const getAccounts = () => {
     return axios.get(`${REST_API_URL}/accounts`);
 };
 
+export const updateAccount = async (id, account) => {
+  try {
+    const response = await axios.post(`${REST_API_URL}/accounts/update/${id}`, account);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating account:', error);
+    throw error;
+  }
+};
 
 export const getAccountByUsr = (username) => {
     return axios.get(`${REST_API_URL}/accounts/${username}`);

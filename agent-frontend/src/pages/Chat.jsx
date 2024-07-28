@@ -3,6 +3,7 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
+import AppNavBar from '../components/Account/AppNavBar'
 import {
   Box,
   List,
@@ -169,12 +170,13 @@ const ChatPage = () => {
 
     return (
         <>
+            <AppNavBar />
             <MainContainer
                 responsive
                 style={{
                     height: '90vh',
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: 'row'
                 }}
             >
                 <Sidebar position="left" style={{ width: '300px' }}>
