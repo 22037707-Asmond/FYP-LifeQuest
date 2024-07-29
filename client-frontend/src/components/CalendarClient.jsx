@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import FullCalendar from '@fullcalendar/react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { LocalStorage } from '../services/LocalStorage';
 
 const ClientCalendar = () => {

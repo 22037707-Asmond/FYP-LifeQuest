@@ -15,8 +15,10 @@ import Dashboard from "./pages/dashboard/index";
 import Sidebar from "./pages/global/Sidebar";
 import Topbar from "./pages/global/Topbar";
 import HiredAgents from './pages/HiredAgents';
-import { ColorModeContext, useMode } from "./theme";
+import AddInsurances from "./pages/insurances/AddInsurances";
+import ViewInsurances from "./pages/insurances/ViewInsurance";
 import RequestsListing from "./pages/requests/ClaimsView";
+import { ColorModeContext, useMode } from "./theme";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -33,7 +35,6 @@ function App() {
             <Routes>
               <Route path="/article" element={<PostsListing/>} />
               <Route path="/article/add" element={<PostingsAdd />} />
-              //Agent Routes
               <Route path="/agents" element={<AllAgents />} />
               <Route path="/hiredAgents" element={<HiredAgents />} />
               <Route path="/Home" element={<Dashboard />} />
@@ -48,6 +49,8 @@ function App() {
               <Route path="/bar" element={<Bar/>} />
               <Route path="/pie" element={<Pie/>} />
               <Route path="/LineChart" element={<Line/>} />
+              <Route path="/insurance/add" element={<AddInsurances />} />
+              <Route path="/insurance" element={<ViewInsurances />} />
               <Route path="/requests" element={<RequestsListing />} />
               {/* <Route path="/Customers" element={<CustomersView />} /> */}
               {/* <Route path="/Admins" element={<AdminsView />} /> */}

@@ -65,7 +65,6 @@ public class AccountService {
         account.setLastName(updatedAccount.getLastName());
         account.setUsername(updatedAccount.getUsername());
         account.setEmail(updatedAccount.getEmail());
-        account.setPassword(updatedAccount.getPassword());
         return accountRepository.save(account);
     } 
 

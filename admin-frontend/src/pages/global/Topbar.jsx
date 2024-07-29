@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box, IconButton, useTheme } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ColorModeContext, tokens } from '../../theme';
 
 const Topbar = () => {
@@ -24,6 +24,8 @@ const Topbar = () => {
             navigate("/add_articles");
         } else if (location.pathname.includes("/admin")) {
             navigate("/add_admins");
+        } else if (location.pathname.includes("/insurance")) {
+            navigate("/insurance/add");
         }
     };
 

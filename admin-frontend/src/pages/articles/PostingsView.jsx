@@ -1,6 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
-import { Box, IconButton } from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from "../../Components/PageFragment/Header";
@@ -10,35 +10,30 @@ function PostsListing() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [formData, setFormData] = useState({ title: "", content: "" });
+
   const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
     setError(null);
 
-    console.log("Fetching posts..."); // Log before fetching posts
-
     getAllPosts()
       .then((response) => {
-        console.log("API Response:", response); // Log the API response
         if (Array.isArray(response)) {
           setArticles(response); // Set the articles state with the fetched data
         } else {
-          console.error("Invalid API response structure:", response);
           setError("Invalid response from server");
         }
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching posts:", error);
         setError(error.message || "Failed to fetch posts");
         setLoading(false);
       });
   }, []);
-
-  useEffect(() => {
-    console.log("Current articles state:", articles); // Log articles whenever it changes
-  }, [articles]);
 
   const handleDelete = (id) => {
     delPost(id)
@@ -47,24 +42,37 @@ function PostsListing() {
         navigate('/article');
       })
       .catch((error) => {
-        console.error("Error deleting post:", error);
         setError(error.message || "Failed to delete post");
       });
   };
 
-  const handleUpdate = (id) => {
-    // Implement the update logic here
-    updatePost(id)
+  const handleUpdateClick = (article) => {
+    setSelectedArticle(article);
+    setFormData({ title: article.title, content: article.content });
+    setOpen(true);
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleFormSubmit = () => {
+    updatePost(selectedArticle.id, formData.title, formData.content)
       .then((updatedArticle) => {
         setArticles((prevArticles) =>
-          prevArticles.map((article) => (article.id === id ? updatedArticle : article))
+          prevArticles.map((article) => (article.id === selectedArticle.id ? updatedArticle : article))
         );
+        setOpen(false);
         navigate('/article');
       })
       .catch((error) => {
-        console.error("Error updating post:", error);
         setError(error.message || "Failed to update post");
       });
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   if (loading) {
@@ -77,7 +85,7 @@ function PostsListing() {
 
   return (
     <Box m="20px">
-      <Header title="Articles" subtitle="Manage Articles Posted"/>
+      <Header title="Articles" subtitle="Manage Articles Posted" />
       <Box height="65vh" overflow="auto" p="20px">
         {articles.length > 0 ? (
           articles.map((article) => (
@@ -103,7 +111,7 @@ function PostsListing() {
                   <IconButton onClick={() => handleDelete(article.id)}>
                     <DeleteIcon />
                   </IconButton>
-                  <IconButton onClick={() => handleUpdate(article.id)}>
+                  <IconButton onClick={() => handleUpdateClick(article)}>
                     <UpdateIcon />
                   </IconButton>
                 </Box>
@@ -114,6 +122,38 @@ function PostsListing() {
           <div>No articles available</div>
         )}
       </Box>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Update Article</DialogTitle>
+        <DialogContent>
+          <TextField
+            margin="dense"
+            name="title"
+            label="Title"
+            type="text"
+            fullWidth
+            value={formData.title}
+            onChange={handleFormChange}
+          />
+          <TextField
+            margin="dense"
+            name="content"
+            label="Content"
+            type="text"
+            fullWidth
+            value={formData.content}
+            onChange={handleFormChange}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleFormSubmit} color="primary">
+            Update
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

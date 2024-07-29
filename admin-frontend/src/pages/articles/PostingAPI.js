@@ -39,9 +39,9 @@ export const delPost = async (id) => {
     }
 };
 
-export const updatePost = async (id, updatedData) => {
+export const updatePost = async (id, title, content) => {
     try {
-        const response = await axios.put(`${REST_API_URL}/article/update/${id}`, updatedData, {
+        const response = await axios.put(`${REST_API_URL}/article/update/${id}`, { title, content }, {
             headers: {
                 'Content-Type': 'application/json'
             }

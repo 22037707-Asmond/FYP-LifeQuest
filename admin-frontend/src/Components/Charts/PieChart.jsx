@@ -1,8 +1,184 @@
+// import { useTheme } from '@mui/material';
+// import { ResponsivePie } from '@nivo/pie';
+// import { mockdataUsers as rawData } from '../../Mockdata';
+// import { tokens } from '../../theme';
+
+// const getAge = dob => {
+//     const birthDate = new Date(dob);
+//     const today = new Date();
+//     let age = today.getFullYear() - birthDate.getFullYear();
+//     const monthDifference = today.getMonth() - birthDate.getMonth();
+
+//     if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+//         age--;
+//     }
+
+//     return age;
+// };
+
+// const binUsersByAge = users => {
+//     const bins = {
+//         Adolescence: { label: '(10-17)', count: 0 },
+//         EarlyAdulthood: { label: '(18-35)', count: 0 },
+//         Midlife: { label: '(36-50)', count: 0 },
+//         MatureAdulthood: { label: '(51-65)', count: 0 },
+//         LateAdulthood: { label: '(66+)', count: 0 },
+//     };
+
+//     users.forEach(user => {
+//         const age = getAge(user.dob);
+
+//         if (age >= 10 && age <= 17) bins.Adolescence.count++;
+//         else if (age >= 18 && age <= 35) bins.EarlyAdulthood.count++;
+//         else if (age >= 36 && age <= 50) bins.Midlife.count++;
+//         else if (age >= 51 && age <= 65) bins.MatureAdulthood.count++;
+//         else if (age >= 66) bins.LateAdulthood.count++;
+//     });
+
+//     return Object.values(bins)
+//         .filter(bin => bin.count > 0)
+//         .map(bin => ({
+//             id: bin.label,
+//             label: bin.label,
+//             value: bin.count,
+//         }));
+// };
+
+// const PieChart = () => {
+//     const theme = useTheme();
+//     const colors = tokens(theme.palette.mode);
+//     const data = binUsersByAge(rawData);
+
+//     return (
+//         <ResponsivePie
+//             data={data}
+//             theme={{
+//                 axis: {
+//                     domain: {
+//                         line: {
+//                             stroke: colors.grey[100]
+//                         }
+//                     },
+//                     legend: {
+//                         text: {
+//                             fill: colors.grey[100]
+//                         }
+//                     },
+//                     ticks: {
+//                         line: {
+//                             stroke: colors.grey[100],
+//                             strokeWidth: 1
+//                         },
+//                         text: {
+//                             fill: colors.grey[100]
+//                         }
+//                     }
+//                 },
+//                 legends: {
+//                     text: {
+//                         fill: colors.grey[100]
+//                     }
+//                 }
+//             }}
+//             margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+//             innerRadius={0.5}
+//             padAngle={0.7}
+//             cornerRadius={3}
+//             activeOuterRadiusOffset={8}
+//             borderWidth={1}
+//             borderColor={{
+//                 from: 'color',
+//                 modifiers: [
+//                     [
+//                         'darker',
+//                         0.2
+//                     ]
+//                 ]
+//             }}
+//             arcLinkLabelsSkipAngle={10}
+//             arcLinkLabelsTextColor={colors.grey[100]}
+//             arcLinkLabelsThickness={2}
+//             arcLinkLabelsColor={{ from: 'color' }}
+//             enableArcLabels={false}
+//             arcLabelsSkipAngle={10}
+//             arcLabelsTextColor={{
+//                 from: 'color',
+//                 modifiers: [
+//                     [
+//                         'darker',
+//                         2
+//                     ]
+//                 ]
+//             }}
+//             defs={[
+//                 {
+//                     id: 'dots',
+//                     type: 'patternDots',
+//                     background: 'inherit',
+//                     color: 'rgba(255, 255, 255, 0.3)',
+//                     size: 4,
+//                     padding: 1,
+//                     stagger: true
+//                 },
+//                 {
+//                     id: 'lines',
+//                     type: 'patternLines',
+//                     background: 'inherit',
+//                     color: 'rgba(255, 255, 255, 0.3)',
+//                     rotation: -45,
+//                     lineWidth: 6,
+//                     spacing: 10
+//                 }
+//             ]}
+//             legends={[
+//                 {
+//                     anchor: 'bottom',
+//                     direction: 'row',
+//                     justify: false,
+//                     translateX: 0,
+//                     translateY: 56,
+//                     itemsSpacing: 0,
+//                     itemWidth: 100,
+//                     itemHeight: 18,
+//                     itemTextColor: '#999',
+//                     itemDirection: 'left-to-right',
+//                     itemOpacity: 1,
+//                     symbolSize: 18,
+//                     symbolShape: 'circle',
+//                     effects: [
+//                         {
+//                             on: 'hover',
+//                             style: {
+//                                 itemTextColor: '#000'
+//                             }
+//                         }
+//                     ]
+//                 }
+//             ]}
+//             tooltip={({ datum: { id, value, color } }) => (
+//                 <div
+//                     style={{
+//                         padding: '5px 10px',
+//                         color,
+//                         background: '#222',
+//                     }}
+//                 >
+//                     <strong>{id}</strong>: {value}
+//                 </div>
+//             )}
+//         />
+//     );
+// };
+
+// export default PieChart;
+
 import { useTheme } from '@mui/material';
 import { ResponsivePie } from '@nivo/pie';
-import { mockdataUsers as rawData } from '../../Mockdata';
+import React from 'react';
 import { tokens } from '../../theme';
+import { getUserAges } from './lifequestDataAPI'; // Import the function to fetch real data
 
+// Function to calculate age from date of birth
 const getAge = dob => {
     const birthDate = new Date(dob);
     const today = new Date();
@@ -16,6 +192,7 @@ const getAge = dob => {
     return age;
 };
 
+// Function to bin users by age
 const binUsersByAge = users => {
     const bins = {
         Adolescence: { label: '(10-17)', count: 0 },
@@ -47,7 +224,39 @@ const binUsersByAge = users => {
 const PieChart = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const data = binUsersByAge(rawData);
+    const [data, setData] = React.useState([]);
+    const [error, setError] = React.useState(null);
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const realData = await getUserAges(); // Fetch real data from the API
+                console.log('Fetched data:', realData); // Log fetched data to check its structure
+
+                if (Array.isArray(realData)) {
+                    const processedData = binUsersByAge(realData); // Process the data
+                    setData(processedData); // Update the state with processed data
+                } else {
+                    console.error('Data is not an array:', realData);
+                    setError('Data is not an array'); // Set a general error message
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setError('Error fetching data'); // Set a general error message
+            }
+        };
+
+        fetchData();
+    }, []); // Empty dependency array ensures this runs once when the component mounts
+
+    if (error) {
+        return <div>Error: {error}</div>; // Display error message if there is an error
+    }
+
+    // Handle the case where no data is available
+    if (!data.length) {
+        return <div>No data available</div>;
+    }
 
     return (
         <ResponsivePie
@@ -56,29 +265,29 @@ const PieChart = () => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: colors.grey[100]
-                        }
+                            stroke: colors.grey[100],
+                        },
                     },
                     legend: {
                         text: {
-                            fill: colors.grey[100]
-                        }
+                            fill: colors.grey[100],
+                        },
                     },
                     ticks: {
                         line: {
                             stroke: colors.grey[100],
-                            strokeWidth: 1
+                            strokeWidth: 1,
                         },
                         text: {
-                            fill: colors.grey[100]
-                        }
-                    }
+                            fill: colors.grey[100],
+                        },
+                    },
                 },
                 legends: {
                     text: {
-                        fill: colors.grey[100]
-                    }
-                }
+                        fill: colors.grey[100],
+                    },
+                },
             }}
             margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
             innerRadius={0.5}
@@ -89,11 +298,8 @@ const PieChart = () => {
             borderColor={{
                 from: 'color',
                 modifiers: [
-                    [
-                        'darker',
-                        0.2
-                    ]
-                ]
+                    ['darker', 0.2],
+                ],
             }}
             arcLinkLabelsSkipAngle={10}
             arcLinkLabelsTextColor={colors.grey[100]}
@@ -104,11 +310,8 @@ const PieChart = () => {
             arcLabelsTextColor={{
                 from: 'color',
                 modifiers: [
-                    [
-                        'darker',
-                        2
-                    ]
-                ]
+                    ['darker', 2],
+                ],
             }}
             defs={[
                 {
@@ -118,7 +321,7 @@ const PieChart = () => {
                     color: 'rgba(255, 255, 255, 0.3)',
                     size: 4,
                     padding: 1,
-                    stagger: true
+                    stagger: true,
                 },
                 {
                     id: 'lines',
@@ -127,8 +330,8 @@ const PieChart = () => {
                     color: 'rgba(255, 255, 255, 0.3)',
                     rotation: -45,
                     lineWidth: 6,
-                    spacing: 10
-                }
+                    spacing: 10,
+                },
             ]}
             legends={[
                 {
@@ -149,11 +352,11 @@ const PieChart = () => {
                         {
                             on: 'hover',
                             style: {
-                                itemTextColor: '#000'
-                            }
-                        }
-                    ]
-                }
+                                itemTextColor: '#000',
+                            },
+                        },
+                    ],
+                },
             ]}
             tooltip={({ datum: { id, value, color } }) => (
                 <div

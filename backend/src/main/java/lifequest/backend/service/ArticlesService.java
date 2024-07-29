@@ -51,4 +51,16 @@ public class ArticlesService {
             return false;
         }
     }
+    
+
+    public Articles updateArticles(Long id, Articles articlesDetails) {
+        Articles articles = articlesRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Article not found with id: " + id));
+
+        articles.setTitle(articlesDetails.getTitle());
+        articles.setContent(articlesDetails.getContent());
+        articles.setMedia(articlesDetails.getMedia());
+
+        return articlesRepository.save(articles);
+    }
 }

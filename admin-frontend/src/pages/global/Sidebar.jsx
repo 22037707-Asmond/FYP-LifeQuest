@@ -1,13 +1,14 @@
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
+import ArticleIcon from '@mui/icons-material/Article';
+import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
+import PieChartOutlinedIcon from "@mui/icons-material/PieChartOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
@@ -109,6 +110,14 @@ const SideBar = () => {
             />
 
             <Item
+              title="Insurance"
+              to="/insurance"
+              icon={<ArticleIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
               title="Invoice"
               to="/Invoices"
               icon={<ReceiptOutlinedIcon />}
@@ -129,7 +138,7 @@ const SideBar = () => {
             </Typography>
 
             <Item
-              title="BarChart"
+              title="Sales per Agents"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
@@ -137,7 +146,7 @@ const SideBar = () => {
             />
 
             <Item
-              title="LineChart"
+              title="Profit line"
               to="/LineChart"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
@@ -145,7 +154,7 @@ const SideBar = () => {
             />
 
             <Item
-              title="PieChart"
+              title="Age User Range"
               to="/pie"
               icon={<PieChartOutlinedIcon />}
               selected={selected}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import AppNavBar from '../components/Account/AppNavBar';
 import UserInsurances from '../components/Insurance/UserInsurance';
 

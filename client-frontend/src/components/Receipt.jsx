@@ -1,6 +1,6 @@
+import { Button, Card, CardContent, Typography } from '@mui/material';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Card, CardContent, Typography, Button } from '@mui/material';
 
 const ReceiptPage = () => {
     const location = useLocation();

@@ -34,7 +34,7 @@ const PostingsAdd = () => {
         document.getElementById('item_title').value = '';
     };
 
-    function savePost(e) {
+    const savePost = async (e) => {
         e.preventDefault();
         setError('');
 
@@ -47,21 +47,20 @@ const PostingsAdd = () => {
             formData.append('title', title);
             formData.append('content', messages);
 
-            addPost(formData)
-                .then((response) => {
-                    console.log(response.data);
-                    if (response.data === "Article created successfully") {
-                        navigate('/article');
-                    } else {
-                        setError(response.data);
-                    }
-                })
-                .catch((error) => {
-                    console.error("There was an error creating the post!", error);
-                    setError("There was an error creating the post!");
-                });
+            try {
+                const response = await addPost(formData);
+                console.log('API Response:', response);
+                if (response === "Article created successfully") {
+                    navigate('/article');
+                } else {
+                    setError(response || "Unexpected error occurred");
+                }
+            } catch (error) {
+                console.error("There was an error creating the post!", error);
+                setError("There was an error creating the post!");
+            }
         }
-    }
+    };
 
     useEffect(() => {
         return () => {

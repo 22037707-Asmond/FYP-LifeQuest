@@ -2,18 +2,17 @@ package lifequest.backend.entity;
 
 import java.sql.Blob;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Lob;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lifequest.backend.configs.BlobConfig;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,20 +1,27 @@
 package lifequest.backend.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import lifequest.backend.entity.Agent;
 import lifequest.backend.entity.CalendarDTO;
+import lifequest.backend.entity.CalendarEvent;
 import lifequest.backend.entity.Users;
 import lifequest.backend.repository.AgentRepository;
-import lifequest.backend.repository.UsersRepository;
-import lifequest.backend.entity.CalendarEvent;
 import lifequest.backend.repository.CalendarEventRepository;
+import lifequest.backend.repository.UsersRepository;
 import lifequest.backend.service.CalendarEventService;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/calendar")

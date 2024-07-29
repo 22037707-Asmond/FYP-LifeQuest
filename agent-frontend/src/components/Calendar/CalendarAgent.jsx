@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './AgentCalendar.css';
 import { LocalStorage } from '../../services/LocalStorage';
+import './AgentCalendar.css';
 
 const AgentCalendar = () => {
   const [events, setEvents] = useState([]);

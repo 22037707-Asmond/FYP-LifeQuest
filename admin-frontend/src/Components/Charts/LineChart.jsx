@@ -1,73 +1,25 @@
 import { useTheme } from '@mui/material';
 import { ResponsiveLine } from '@nivo/line';
-import moment from 'moment';
-import { mockdataAgents, mockdataPremium } from '../../Mockdata';
+import React from 'react';
 import { tokens } from '../../theme';
 
-// Helper function to sum payments by month on the same date
-const sumByMonthOnSameDate = (data, dateKey, valueKey) => {
-    const result = {};
-    data.forEach(item => {
-        let month = moment(item[dateKey], 'MM/DD/YYYY');
-        while (month.isBefore(moment())) {
-            const monthKey = month.format('YYYY-MM');
-            if (!result[monthKey]) {
-                result[monthKey] = 0;
-            }
-            result[monthKey] += item[valueKey];
-            month.add(1, 'month');
-        }
-    });
-
-    // Ensure current month is included
-    const currentMonth = moment().format('YYYY-MM');
-    if (!result[currentMonth]) {
-        result[currentMonth] = 0;
-    }
-
-    return result;
-};
-
-// Sum payments per month
-const paymentsByMonth = sumByMonthOnSameDate(mockdataPremium, 'purchase_date', 'payment');
-
-// Sum salaries per month (assuming salary is paid monthly and same every month)
-const salariesByMonth = mockdataAgents.reduce((acc, agent) => {
-    for (const month in paymentsByMonth) {
-        if (!acc[month]) {
-            acc[month] = 0;
-        }
-        acc[month] += agent.Salary;
-    }
-    return acc;
-}, {});
-
-// Calculate profit or loss per month
-const profitOrLossByMonth = {};
-for (const month in paymentsByMonth) {
-    profitOrLossByMonth[month] = paymentsByMonth[month] - (salariesByMonth[month] || 0);
-}
-
-// Prepare data for chart and sort by month
-const chartData = [
-    {
-        id: 'Profit/Loss',
-        data: Object.keys(profitOrLossByMonth)
-            .sort() // Ensure the data is sorted chronologically
-            .map(month => ({
-                x: month,
-                y: profitOrLossByMonth[month],
-            })),
-    },
-];
-
-const LineChart = ({ isDashboard = false }) => {
+const LineChart = ({ isDashboard = false, data }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
+    // Validate data structure
+    const isDataValid = data && Array.isArray(data) && data.every(
+        series => series.id && Array.isArray(series.data) && series.data.every(d => d.x !== undefined && d.y !== undefined)
+    );
+
+    if (!isDataValid) {
+        console.error('Invalid data structure for LineChart:', data);
+        return <div>Invalid data for the chart</div>;
+    }
+
     return (
         <ResponsiveLine
-            data={chartData}
+            data={data}
             theme={{
                 axis: {
                     domain: {
