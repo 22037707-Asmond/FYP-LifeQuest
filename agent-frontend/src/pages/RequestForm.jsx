@@ -79,7 +79,6 @@ const RequestForm = () => {
 
     return (
         <>
-            <AppNavBar />
             <Container maxWidth="sm">
                 <Box sx={{ mt: 4, mb: 4, p: 3, border: '1px solid #ccc', borderRadius: '4px' }}>
                     <Typography variant="h4" component="h1" gutterBottom>

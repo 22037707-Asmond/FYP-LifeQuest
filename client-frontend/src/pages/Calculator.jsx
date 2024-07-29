@@ -4,6 +4,7 @@ import AppNavBar from '../components/Account/AppNavBar';
 import { ReportStorage } from '../services/LocalStorage';
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Report from '../components/Report';
+import ChatBot from './ChatBot';
 
 export default function Calculator() {
     const [age, setAge] = useState('');
@@ -27,6 +28,7 @@ export default function Calculator() {
     const handleSmokerChange = (event) => {
         setSmoker(event.target.value);
     };
+
 
     const handleCalculate = async () => {
         setLoading(true); // Set loading to true when request starts
@@ -206,6 +208,8 @@ export default function Calculator() {
                     )}
                 </Box>
             </Box>
+            <ChatBot />
+
         </>
     );
 }

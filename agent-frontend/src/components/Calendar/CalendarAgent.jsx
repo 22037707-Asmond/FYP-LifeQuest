@@ -66,8 +66,8 @@ const AgentCalendar = () => {
       const eventToSave = {
         ...newEvent,
         date: eventDate,
-        agentId: agentId,
-        userId: newEvent.userId,
+        agentId: {id : agentId},
+        userId:{id: newEvent.userId},
         status: 'Upcoming'
       };
 
@@ -79,8 +79,8 @@ const AgentCalendar = () => {
         start: `${response.data.date}T${response.data.time}`,
         id: response.data.id,
         accepted: response.data.accepted,
-        agentId: response.data.agentId,
-        userId: response.data.userId,
+        agentId: response.data.agentId ? response.data.agentId.id : agentId,
+        userId: response.data.userId ? response.data.userId.id : newEvent.userId,
         status: response.data.status || 'Upcoming'
       };
       setEvents([...events, newSavedEvent]);

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, TextField, DialogActions, Button, DialogContent, Avatar } from '@mui/material';
-import { updateAccount } from '../../services/AccountsAPI';
+import { updateAccount, addImage } from '../../services/AccountsAPI';
+import { LocalStorage } from '../../services/LocalStorage';
 
-export default function EditUser({ account, open, handleClose }) {
+export default function EditUser({ account, open, handleClose, onAccountUpdate }) {
     const [firstName, setFirstName] = useState(account.firstName || '');
     const [lastName, setLastName] = useState(account.lastName || '');
     const [username, setUsername] = useState(account.username || '');
@@ -14,29 +15,39 @@ export default function EditUser({ account, open, handleClose }) {
     const [preview, setPreview] = useState(account.profilePictureUrl || '');
 
     const handleSave = async () => {
-        console.log("account", account);
-        if (password !== confirmPassword) {
+        // Check if password and confirmPassword are not empty and match
+        if (password !== '' && password !== confirmPassword) {
             setError("Passwords do not match");
             return;
         }
-        
+
         const updatedAccount = {
             firstName,
             lastName,
             username,
-            email,
-            password
+            email
         };
+
+        if (password !== '') {
+            updatedAccount.password = password; // Only add password if it's not empty
+        }
 
         try {
             await updateAccount(account.id, updatedAccount);
+            if (profilePicture) {
+                await addImage(profilePicture, account.id);
+            }
+            const newAccount = { ...account, ...updatedAccount, profilePictureUrl: preview };
+            LocalStorage.setAccount(newAccount);
+            if (typeof onAccountUpdate === 'function') {
+                onAccountUpdate(newAccount);
+            }
             handleClose(); // Close the dialog after saving
         } catch (error) {
             setError("Failed to update account");
             console.error('Error updating account:', error);
         }
     };
-
 
     const handleProfilePictureChange = (e) => {
         const file = e.target.files[0];
@@ -63,8 +74,26 @@ export default function EditUser({ account, open, handleClose }) {
                 </label>
                 <TextField
                     required
+                    id="outlined-first-name"
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                />
+                <TextField
+                    required
+                    id="outlined-last-name"
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    fullWidth
+                    margin="normal"
+                />
+                <TextField
+                    required
                     id="outlined-username"
-                    label="Edit Username"
+                    label="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     fullWidth
@@ -73,7 +102,7 @@ export default function EditUser({ account, open, handleClose }) {
                 <TextField
                     required
                     id="outlined-email"
-                    label="Edit Email"
+                    label="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     fullWidth

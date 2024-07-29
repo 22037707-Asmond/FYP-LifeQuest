@@ -25,7 +25,6 @@ public class Insurance {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "insurance_type_id")
-    @JsonIgnore
     private InsuranceType insuranceType;
 
     @OneToMany(mappedBy = "insurance")
@@ -33,7 +32,6 @@ public class Insurance {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-
     private Users user;
 
     // Getters and setters

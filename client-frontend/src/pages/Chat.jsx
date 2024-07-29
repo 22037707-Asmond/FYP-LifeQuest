@@ -4,7 +4,7 @@ import SockJS from 'sockjs-client';
 import AppNavBar from '../components/Account/AppNavBar';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
-import { getFullName } from '../services/AgentAPI';
+import { getFullName, getPictureUrl } from '../services/AgentAPI';
 import {
     MainContainer,
     Sidebar,
@@ -40,6 +40,7 @@ const ChatPage = () => {
         message: ''
     });
     const [agentNames, setAgentNames] = useState(new Map());
+    const [agentPictures, setAgentPicture] = useState(new Map());
 
     const stompClientRef = useRef(null);
 
@@ -90,6 +91,23 @@ const ChatPage = () => {
             setAgentNames(newAgentNames);
         };
         fetchAgentNames();
+    }, [privateChats]);
+
+    useEffect(() => {
+        const fetchAgentPicture = async () => {
+            const newAgentPictures = new Map();
+            for (let username of privateChats.keys()) {
+                try {
+                    const pictureUrl = await getPictureUrl(username);
+                    newAgentPictures.set(username, pictureUrl);
+                    console.log(`Picture URL for ${username}: ${pictureUrl}`); // Debugging
+                } catch (error) {
+                    console.error(`Failed to fetch picture for user ${username}:`, error);
+                }
+            }
+            setAgentPicture(newAgentPictures);
+        };
+        fetchAgentPicture();
     }, [privateChats]);
 
     const connect = (username) => {
@@ -182,6 +200,21 @@ const ChatPage = () => {
         }
     };
 
+
+    const fileInputRef = useRef(null);
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        console.log('Selected file:', file);
+        // Handle the file upload or processing here
+    };
+
+    const handleAttachClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
     return (
         <>
             <AppNavBar />
@@ -208,9 +241,9 @@ const ChatPage = () => {
                                 key={index}
                                 name={agentNames.get(name) || name}
                                 active={tab === name} onClick={() => setTab(name)}
-                                style={{ fontSize: '25px' }}
+                                style={{ fontSize: '20px' }}
                             >
-                                <Avatar src={profilePictureUrl} status="available" />
+                                <Avatar src={agentPictures.get(name)} status="available" style={{ width: '80px', height: '80px', objectFit: 'contain' }} />
                             </Conversation>
                         ))}
                     </ConversationList>
@@ -249,6 +282,13 @@ const ChatPage = () => {
                         value={userData.message}
                         onChange={handleMessage}
                         onSend={tab === "CHATROOM" ? sendValue : sendPrivateValue}
+                        onAttachClick={handleAttachClick}
+                    />
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        onChange={handleFileChange}
                     />
                 </ChatContainer>
             </MainContainer>

@@ -36,4 +36,22 @@ export const authUser = async (username, password) => {
       // Handle errors
     }
   };
+
+  export const addImage = async (file, id) => {
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('id', id);
+
+        const response = await axios.post(`${REST_API_URL}/accounts/addPhoto`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error uploading image:', error);
+        throw error;
+    }
+};
   

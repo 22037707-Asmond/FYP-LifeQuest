@@ -5,7 +5,6 @@ import AgentCalendar from '../components/Calendar/CalendarAgent'
 export default function Calendar() {
   return (
     <>
-      <AppNavBar />
       <AgentCalendar />
     </>
   );

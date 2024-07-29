@@ -3,35 +3,36 @@ import { CompatClient, Stomp } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { useAccount } from '../services/LocalStorage';
 import { useParams, useLocation } from 'react-router-dom';
-import AppNavBar from '../components/Account/AppNavBar'
 import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Divider
+    Box,
+    List,
+    ListItem,
+    ListItemText,
+    Paper,
+    Divider
 } from '@mui/material';
 import {
-  MainContainer,
-  Sidebar,
-  Search,
-  ConversationList,
-  Conversation,
-  Avatar,
-  ChatContainer,
-  ConversationHeader,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  MessageList,
-  MessageSeparator,
-  Message,
-  TypingIndicator,
-  MessageInput,
-  ExpansionPanel
+    MainContainer,
+    Sidebar,
+    Search,
+    ConversationList,
+    Conversation,
+    Avatar,
+    ChatContainer,
+    ConversationHeader,
+    VoiceCallButton,
+    VideoCallButton,
+    InfoButton,
+    MessageList,
+    MessageSeparator,
+    Message,
+    TypingIndicator,
+    MessageInput,
+    ExpansionPanel
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import { getFullName, getPictureUrl } from '../services/UserAPI';
+
 
 const ChatPage = () => {
     const { account, profilePictureUrl } = useAccount();
@@ -46,6 +47,47 @@ const ChatPage = () => {
         receivername: agentName,
         message: ''
     });
+
+    const [userNames, setUserNames] = useState(new Map());
+    const [userPictures, setUserPictures] = useState(new Map());
+
+    useEffect(() => {
+        const fetchUserNames = async () => {
+            const names = new Map();
+            for (let username of privateChats.keys()) {
+                try {
+                    const fullName = await getFullName(username);
+                    names.set(username, fullName);
+                } catch (error) {
+                    console.error('Error fetching full name:', error);
+                }
+            }
+            setUserNames(names);
+        };
+        fetchUserNames();
+    }, [privateChats]);
+
+
+    useEffect(() => {
+        const fetchUserPicture = async () => {
+            const newUserPics = new Map();
+            for (let username of privateChats.keys()) {
+                try {
+                    const pictureUrl = await getPictureUrl(username);
+                    newUserPics.set(username, pictureUrl);
+                    console.log(`Picture URL for ${username}: ${pictureUrl}`); // Debugging
+                } catch (error) {
+                    console.error(`Failed to fetch picture for user ${username}:`, error);
+                }
+            }
+            setUserPictures(newUserPics);
+        };
+        fetchUserPicture();
+    }, [privateChats]);
+
+
+
+
 
     const stompClientRef = useRef(null);
 
@@ -170,7 +212,6 @@ const ChatPage = () => {
 
     return (
         <>
-            <AppNavBar />
             <MainContainer
                 responsive
                 style={{

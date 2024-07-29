@@ -15,3 +15,9 @@ export const getAgent = async (id) => {
     const response = await axios.get(`http://localhost:8080/api/agents/${id}`);
     return response.data;
 };
+
+export const getPictureUrl = async (username) => {
+    const response = await axios.get(`${REST_API_URL}/agents/profilepicture/${username}`, { responseType: 'arraybuffer' });
+    const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+    return `data:image/jpeg;base64,${base64}`;
+};

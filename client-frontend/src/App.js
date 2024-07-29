@@ -21,6 +21,7 @@ import ViewAgent from './pages/viewAgent';
 
 function App() {
   return (
+     <>
       <Routes>
         <Route path='/' element={<Homepage />} />
 
@@ -54,13 +55,15 @@ function App() {
 
         <Route path='Agent/:agentId'></Route>
 
-        <Route path='ChatBot' element={<ChatBot/>}></Route>
+        <Route path='ViewAgent/:agentId' element={<ViewAgent/>}></Route>
 
         <Route path='myInsurance' element={<MyInsurance/>}></Route>
 
         <Route path='Receipt' element={<Receipt/>}></Route>
 
       </Routes>
+     
+     </>
   );
 }
 

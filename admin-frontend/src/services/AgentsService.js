@@ -23,6 +23,8 @@ class AgentsService {
     deleteAgent(agentId){
         return axios.delete(AGENTS_BASE_REST_API_URL + '/' + agentId);
     }
+
+    
 }
 
 const agentsService = new AgentsService();

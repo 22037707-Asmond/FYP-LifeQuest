@@ -3,6 +3,7 @@ package lifequest.backend.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,7 +44,6 @@ public class Users extends Account {
 
     // avr edit
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<Insurance> insurances;
 
 }
