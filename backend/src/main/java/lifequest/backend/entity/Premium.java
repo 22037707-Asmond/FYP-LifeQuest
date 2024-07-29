@@ -22,7 +22,7 @@ public class Premium {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double payment;
+    private double amount;
 
     private String purchaseDate; 
     
@@ -33,7 +33,9 @@ public class Premium {
     private Insurance insurance; 
 
     @ManyToOne
-    private Agent agent; 
+    private Agent agent;
+    
+    private boolean active; // true => yes, false => no
 
     
     public void setPurchaseDateToCurrentDate() {

@@ -8,6 +8,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Payment {
     @Id
@@ -17,14 +20,18 @@ public class Payment {
     private double amount;
     private String currency;
     private String method;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd' @ 'HH:mm:ss")
     private LocalDateTime createdDate;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users user;
 
     @ManyToOne
     @JoinColumn(name = "insurance_id")
+    @JsonIgnore
     private Insurance insurance;
 
     // Getters and Setters

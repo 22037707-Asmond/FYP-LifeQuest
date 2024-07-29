@@ -40,6 +40,7 @@ public class PaymentController {
         payment.setCurrency(paymentRequest.getCurrency());
         payment.setMethod(paymentRequest.getMethod());
         payment.setCreatedDate(LocalDateTime.now());
+        payment.setPaymentId(paymentRequest.getPaymentId()); // PayPal payment ID
 
         Optional<Users> userOpt = usersRepository.findById(paymentRequest.getUserId());
         Optional<Insurance> insuranceOpt = insuranceRepository.findById(paymentRequest.getInsuranceId());
@@ -57,10 +58,11 @@ public class PaymentController {
         paymentRepository.save(payment);
 
         Billing billing = new Billing();
-        billing.setPaymentId(payment.getPaymentId().toString());
+        billing.setPaymentId(payment.getPaymentId());
         billing.setTotalAmount(payment.getAmount());
         billing.setBillingDate(LocalDateTime.now());
         billing.setUser(user);
+        billing.setInsurance(insurance);
 
         billingRepository.save(billing);
 
@@ -74,6 +76,7 @@ class PaymentRequest {
     private double totalAmount;
     private String currency;
     private String method;
+    private String paymentId; // PayPal payment ID
 
     // Getters and Setters
     public Long getUserId() {
@@ -114,5 +117,13 @@ class PaymentRequest {
 
     public void setMethod(String method) {
         this.method = method;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 }

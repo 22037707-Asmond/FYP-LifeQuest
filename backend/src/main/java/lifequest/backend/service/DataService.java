@@ -61,7 +61,7 @@ public class DataService {
         return premiums.stream()
                 .collect(Collectors.groupingBy(
                     Premium::getAgent,
-                    Collectors.summingDouble(Premium::getPayment)
+                    Collectors.summingDouble(Premium::getAmount)
                 ));
     }
 
@@ -80,7 +80,7 @@ public class DataService {
             LocalDate purchaseDate = LocalDate.parse(premium.getPurchaseDate());
             while (purchaseDate.isBefore(now)) {
                 String monthKey = purchaseDate.format(formatter);
-                paymentsByMonth.put(monthKey, paymentsByMonth.getOrDefault(monthKey, 0.0) + premium.getPayment());
+                paymentsByMonth.put(monthKey, paymentsByMonth.getOrDefault(monthKey, 0.0) + premium.getAmount());
                 purchaseDate = purchaseDate.plusMonths(1);
             }
         }

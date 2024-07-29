@@ -5,5 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import lifequest.backend.entity.Insurance;
 
 public interface InsuranceRepository extends JpaRepository<Insurance, Long>{
-    
 }

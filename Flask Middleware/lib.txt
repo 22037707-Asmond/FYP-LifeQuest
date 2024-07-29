@@ -1,0 +1,7 @@
+Flask
+pandas
+numpy
+joblib
+Flask-Cors
+Flask-SQLAlchemy
+Flask-Migrate

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { Box, Typography, TextField, Button, Select, MenuItem, FormControl, InputLabel, CircularProgress } from '@mui/material';
 import AppNavBar from '../components/Account/AppNavBar';
+import { ReportStorage } from '../services/LocalStorage';
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Report from '../components/Report';
 
 export default function Calculator() {
     const [age, setAge] = useState('');
@@ -9,6 +12,13 @@ export default function Calculator() {
     const [children, setChildren] = useState('');
     const [smoker, setSmoker] = useState('');
     const [prediction, setPrediction] = useState(null);
+    const [message, setMessage] = useState(null);
+    const [monthly, setMonthly] = useState(null);
+    const [yearly, setYearly] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false); // Add loading state
+
+    ReportStorage.setReport(message);
 
     const handleSexChange = (event) => {
         setSex(event.target.value);
@@ -19,29 +29,47 @@ export default function Calculator() {
     };
 
     const handleCalculate = async () => {
+        setLoading(true); // Set loading to true when request starts
         const data = {
             age: [parseInt(age)],
             sex: [parseInt(sex)],
             bmi: [parseFloat(bmi)],
             children: [parseInt(children)],
-            smoker: [parseInt(smoker)],
+            smoker: [parseInt(smoker)]
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/predict', {
+            const response = await fetch('http://127.0.0.1:5000/report', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
+                mode: 'cors',
             });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             const result = await response.json();
             console.log('API Response:', result);
             setPrediction(result.prediction ? result.prediction[0] : null);
+            setMessage(result.message || null);
+            setMonthly(result.monthly || null);
+            setYearly(result.yearly || null);
+            setLoading(false); // Set loading to false when request completes
         } catch (error) {
             console.error('Error:', error);
+            setError('Error making request');
+            setLoading(false); // Set loading to false if request fails
         }
+    };
+
+    const formatText = (text) => {
+        return text.split('\n').map((line, index) => (
+            <p key={index}>{line}</p>
+        ));
     };
 
     return (
@@ -92,8 +120,8 @@ export default function Calculator() {
                             label="Sex"
                             onChange={handleSexChange}
                         >
-                            <MenuItem value={0}>Male</MenuItem>
-                            <MenuItem value={1}>Female</MenuItem>
+                            <MenuItem value={'0'}>Male</MenuItem>
+                            <MenuItem value={'1'}>Female</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl fullWidth margin="normal">
@@ -105,8 +133,8 @@ export default function Calculator() {
                             label="Smoker"
                             onChange={handleSmokerChange}
                         >
-                            <MenuItem value={0}>No</MenuItem>
-                            <MenuItem value={1}>Yes</MenuItem>
+                            <MenuItem value={'0'}>No</MenuItem>
+                            <MenuItem value={'1'}>Yes</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField
@@ -134,13 +162,46 @@ export default function Calculator() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2, bgcolor: 'red' }}
                         onClick={handleCalculate}
+                        disabled={loading} // Disable button while loading
                     >
-                        Calculate
+                        {loading ? <CircularProgress size={24} /> : 'Calculate'} {/* Show loading spinner */}
                     </Button>
-                    
+
                     {prediction !== null && (
                         <Typography variant="h6" sx={{ mt: 2 }}>
                             Predicted Premium: ${prediction.toFixed(2)}
+                        </Typography>
+                    )}
+                    {monthly && (
+                        <Typography variant="h6" sx={{ mt: 2 }}>
+                            Monthly Premium: ${monthly}
+                        </Typography>
+                    )}
+                    {yearly && (
+                        <Typography variant="h6" sx={{ mt: 2 }}>
+                            Yearly Premium: ${yearly}
+                        </Typography>
+                    )}
+                    {message && ( // Conditionally render PDFDownloadLink only if message is set
+                        <PDFDownloadLink document={<Report />} fileName="FORM">
+                            {({ blob, url, loading, error }) =>
+                                loading ? (
+                                    'Loading document...'
+                                ) : (
+                                    <Button
+                                        type="button"
+                                        variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}
+                                    >
+                                        Download Report
+                                    </Button>
+                                )
+                            }
+                        </PDFDownloadLink>
+                    )}
+                    {error && (
+                        <Typography color="error" sx={{ mt: 2 }}>
+                            {error}
                         </Typography>
                     )}
                 </Box>

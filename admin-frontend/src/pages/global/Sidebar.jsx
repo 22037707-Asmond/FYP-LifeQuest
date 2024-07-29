@@ -139,7 +139,7 @@ const SideBar = () => {
             </Typography>
 
             <Item
-              title="BarChart"
+              title="Sales per Agents"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
@@ -147,7 +147,7 @@ const SideBar = () => {
             />
 
             <Item
-              title="LineChart"
+              title="Profit line"
               to="/LineChart"
               icon={<TimelineOutlinedIcon />}
               selected={selected}
@@ -155,7 +155,7 @@ const SideBar = () => {
             />
 
             <Item
-              title="PieChart"
+              title="Age User Range"
               to="/pie"
               icon={<PieChartOutlinedIcon />}
               selected={selected}

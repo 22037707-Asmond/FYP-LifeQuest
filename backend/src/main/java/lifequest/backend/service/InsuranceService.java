@@ -64,4 +64,10 @@ public class InsuranceService {
             .orElseThrow(() -> new RuntimeException("Insurance not found with id: " + id));
         insuranceRepository.delete(insurance);
     }
+
+    public void deleteInsuranceType(Long id) {
+        InsuranceType insuranceType = insuranceTypeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("InsuranceType not found with id: " + id));
+        insuranceTypeRepository.delete(insuranceType);
+    }
 }

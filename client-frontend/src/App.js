@@ -10,13 +10,17 @@ import Profile from './pages/Profile';
 import Chat from './pages/Chat';
 import Agent from './pages/Agent';
 import Insurance from './pages/Insurance';
+import InsuranceDetails from './pages/InsuranceDetails';
 import Calculator from './pages/Calculator';
-import MyInfoForm from './components/MyInfoForm';
 import Calendar from './pages/Calendar';
 import PaymentPage from './pages/PaymentPage';
+import ChatBot from './pages/ChatBot';
+import UserInsurances from './components/Insurance/UserInsurance';
+import ReceiptPage from './components/Receipt';
 
 
-function App() {
+
+function App() { 
   const isLoggedIn = false;
   return (
       <Routes>
@@ -46,7 +50,17 @@ function App() {
 
         <Route path="Insurance" element={<Insurance/>}></Route>
 
+        <Route path="Insurance/:id" element={<InsuranceDetails />} />
+
         <Route path="Calculator" element={< Calculator/>}></Route>
+
+        <Route path='Agent/:agentId'></Route>
+
+        <Route path='ChatBot' element={<ChatBot/>}></Route>
+
+        <Route path='myInsurance' element={<UserInsurances/>}></Route>
+
+        <Route path= 'Receipt' element={<ReceiptPage/>}></Route>
 
       </Routes>
   );

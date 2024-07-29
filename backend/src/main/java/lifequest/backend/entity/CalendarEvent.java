@@ -18,6 +18,7 @@ public class CalendarEvent {
     private String date;
     private String time; 
     private boolean accepted;
+    private String status;
     
     @ManyToOne
     @JoinColumn(name = "agent_id")
@@ -82,5 +83,13 @@ public class CalendarEvent {
 
     public void setUser(Users user) {
         this.user = user;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

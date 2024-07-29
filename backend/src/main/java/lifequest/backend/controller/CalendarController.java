@@ -62,8 +62,24 @@ public class CalendarController {
         return calendarEventService.saveCalendarEvent(calendarEvent);
     }
 
+    @PutMapping("/status/{id}")
+    public ResponseEntity<CalendarEvent> updateCalendarEventStatus(@PathVariable Long id, @RequestBody String status) {
+        CalendarEvent updatedEvent = calendarEventService.updateCalendarEventStatus(id, status);
+        if (updatedEvent != null) {
+            return ResponseEntity.ok(updatedEvent);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @DeleteMapping("/{id}")
     public void deleteCalendarEvent(@PathVariable Long id) {
         calendarEventService.deleteCalendarEvent(id);
     }
+
+    @GetMapping("/agent/{agentId}")
+    public List<CalendarEvent> getCalendarEventsByAgent(@PathVariable Long agentId) {
+        return calendarEventService.getCalendarEventsByAgent(agentId);
+    }
+
 }

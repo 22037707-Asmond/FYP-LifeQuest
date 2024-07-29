@@ -120,12 +120,4 @@ public class AgentController {
             return ResponseEntity.badRequest().body("Error retrieving profile picture");
         }
     }
-
-    // @GetMapping("/agents/current")
-    // public ResponseEntity<Agent> getCurrentAgent() {
-
-    //     Agent currentAgent = agentService.getCurrentAgent();
-    //     return ResponseEntity.ok(currentAgent);
-    // }
-
 }

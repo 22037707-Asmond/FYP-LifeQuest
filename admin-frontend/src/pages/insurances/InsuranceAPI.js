@@ -14,7 +14,7 @@ export const getAllInsuranceTypes = async () => {
 
 export const getAllInsurances = async () => {
     try {
-        const response = await axios.get(`${REST_API_URL}/Insurance/all`);
+        const response = await axios.get(`${REST_API_URL}/all`);
         return response.data;
     } catch (error) {
         console.error('Error fetching insurances:', error);
@@ -24,7 +24,11 @@ export const getAllInsurances = async () => {
 
 export const addInsuranceType = async (formData) => {
     try {
-        const response = await axios.post(`${REST_API_URL}/Category/add`, formData);
+        const response = await axios.post(`${REST_API_URL}/Category/add`, formData, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         return response.data;
     } catch (error) {
         console.error('Error adding insurance type:', error);
@@ -34,7 +38,7 @@ export const addInsuranceType = async (formData) => {
 
 export const addInsurance = async (formData) => {
     try {
-        const response = await axios.post(`${REST_API_URL}/Insurance/add`, formData, {
+        const response = await axios.post(`${REST_API_URL}/add`, formData, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -48,8 +52,7 @@ export const addInsurance = async (formData) => {
 
 export const delInsurance = async (id) => {
     try {
-        const response = await axios.delete(`${REST_API_URL}/Insurance/delete/${id}`);
-        return response.data;
+        await axios.delete(`${REST_API_URL}/delete/${id}`);
     } catch (error) {
         console.error('Error deleting insurance:', error);
         throw error;
@@ -58,7 +61,7 @@ export const delInsurance = async (id) => {
 
 export const updateInsurance = async (id, updatedData) => {
     try {
-        const response = await axios.put(`${REST_API_URL}/Insurance/update/${id}`, updatedData, {
+        const response = await axios.put(`${REST_API_URL}/update/${id}`, updatedData, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -72,7 +75,7 @@ export const updateInsurance = async (id, updatedData) => {
 
 export const getInsuranceType = async (id) => {
     try {
-        const response = await axios.get(`${REST_API_URL}/Category/${id}`);
+        const response = await axios.get(`${REST_API_URL}/categories/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching insurance type:', error);
