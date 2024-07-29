@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lifequest.backend.entity.Account;
 import lifequest.backend.entity.Users;
+import lifequest.backend.model.AccountRequest;
 import lifequest.backend.service.AccountService;
 import lifequest.backend.service.UsersService;
 
@@ -19,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 
 @RestController
 @RequestMapping("/api")
@@ -55,13 +55,14 @@ public class UsersController {
 
     @GetMapping("/accounts/auth/{username}/{password}")
     public ResponseEntity<?> authAccount(@PathVariable String username, @PathVariable String password) {
-       return ResponseEntity.ok(usersService.authAccount(username, password));
+        return ResponseEntity.ok(usersService.authAccount(username, password));
     }
 
     @PostMapping("/accounts/addPhoto")
     public ResponseEntity<String> addImage(@RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
         String result = accService.addImage(file, id);
-        if ("User profile picture updated successfully".equals(result) || "Agent profile picture updated successfully".equals(result)) {
+        if ("User profile picture updated successfully".equals(result)
+                || "Agent profile picture updated successfully".equals(result)) {
             return ResponseEntity.ok(result);
         } else {
             return ResponseEntity.badRequest().body(result);
@@ -74,9 +75,7 @@ public class UsersController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    
-
-     @GetMapping("/accounts/id/{id}")
+    @GetMapping("/accounts/id/{id}")
     public ResponseEntity<?> getAccountById(@PathVariable Long id) {
         Account account = usersService.getUserById(id);
         if (account == null) {
@@ -87,7 +86,7 @@ public class UsersController {
     }
 
     @PostMapping("/accounts/update/{id}")
-    public ResponseEntity<?> updateAccount(@PathVariable Long id,  @RequestBody Account updatedAccount) {
+    public ResponseEntity<?> updateAccount(@PathVariable Long id, @RequestBody AccountRequest updatedAccount) {
         Account account = accService.updateAccount(id, updatedAccount);
         if (updatedAccount == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
@@ -95,6 +94,5 @@ public class UsersController {
 
         return ResponseEntity.ok(account);
     }
-       
-    
+
 }

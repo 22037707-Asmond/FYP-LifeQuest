@@ -17,6 +17,7 @@ import Topbar from "./pages/global/Topbar";
 import HiredAgents from './pages/HiredAgents';
 import AddInsurances from "./pages/insurances/AddInsurances";
 import ViewInsurances from "./pages/insurances/ViewInsurance";
+import RequestsListing from "./pages/requests/ClaimsView";
 import { ColorModeContext, useMode } from "./theme";
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
               <Route path="/LineChart" element={<Line/>} />
               <Route path="/insurance/add" element={<AddInsurances />} />
               <Route path="/insurance" element={<ViewInsurances />} />
+              <Route path="/requests" element={<RequestsListing />} />
+              {/* <Route path="/Customers" element={<CustomersView />} /> */}
+              {/* <Route path="/Admins" element={<AdminsView />} /> */}
               {/* <Route path="/Invoices" element={<InvoicesView />} /> */}
             </Routes>
           </main>

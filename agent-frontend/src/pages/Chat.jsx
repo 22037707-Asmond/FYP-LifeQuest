@@ -1,36 +1,26 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { CompatClient, Stomp } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
-import { useAccount } from '../services/LocalStorage';
-import { useParams, useLocation } from 'react-router-dom';
 import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Divider
-} from '@mui/material';
-import {
-  MainContainer,
-  Sidebar,
-  Search,
-  ConversationList,
-  Conversation,
-  Avatar,
-  ChatContainer,
-  ConversationHeader,
-  VoiceCallButton,
-  VideoCallButton,
-  InfoButton,
-  MessageList,
-  MessageSeparator,
-  Message,
-  TypingIndicator,
-  MessageInput,
-  ExpansionPanel
+    Avatar,
+    ChatContainer,
+    Conversation,
+    ConversationHeader,
+    ConversationList,
+    InfoButton,
+    MainContainer,
+    Message,
+    MessageInput,
+    MessageList,
+    MessageSeparator,
+    Search,
+    Sidebar,
+    VideoCallButton,
+    VoiceCallButton
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import { Stomp } from '@stomp/stompjs';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import SockJS from 'sockjs-client';
+import { useAccount } from '../services/LocalStorage';
 
 const ChatPage = () => {
     const { account, profilePictureUrl } = useAccount();
@@ -174,7 +164,7 @@ const ChatPage = () => {
                 style={{
                     height: '90vh',
                     display: 'flex',
-                    flexDirection: 'row',
+                    flexDirection: 'row'
                 }}
             >
                 <Sidebar position="left" style={{ width: '300px' }}>

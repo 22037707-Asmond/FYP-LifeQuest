@@ -1,17 +1,27 @@
 package lifequest.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import lifequest.backend.entity.Agent;
-import lifequest.backend.repository.AgentRepository;
-import lifequest.backend.entity.CalendarEvent;
-import lifequest.backend.repository.CalendarEventRepository;
-import lifequest.backend.service.CalendarEventService;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lifequest.backend.entity.Agent;
+import lifequest.backend.entity.CalendarDTO;
+import lifequest.backend.entity.CalendarEvent;
+import lifequest.backend.entity.Users;
+import lifequest.backend.repository.AgentRepository;
+import lifequest.backend.repository.CalendarEventRepository;
+import lifequest.backend.repository.UsersRepository;
+import lifequest.backend.service.CalendarEventService;
 
 @RestController
 @RequestMapping("/api/calendar")
@@ -24,10 +34,13 @@ public class CalendarController {
     private AgentRepository agentRepository;
 
     @Autowired
+    private UsersRepository userRepository;
+
+    @Autowired
     private CalendarEventRepository calendarEventRepository;
 
     @GetMapping
-    public List<CalendarEvent> getAllCalendarEvents() {
+    public List<CalendarDTO> getAllCalendarEvents() {
         return calendarEventService.getAllCalendarEvents();
     }
 
@@ -36,10 +49,29 @@ public class CalendarController {
         return calendarEventService.getCalendarEventById(id);
     }
 
-    @PostMapping
-    public CalendarEvent createCalendarEvent(@RequestBody CalendarEvent calendarEvent) {
-        Agent agent = agentRepository.findByUsername(calendarEvent.getAgent().getUsername());
-        calendarEvent.setAgent(agent);
+    @PostMapping("/agent")
+    public CalendarEvent createCalendarEventForAgent(@RequestBody CalendarEvent calendarEvent) {
+        if (calendarEvent.getAgent() != null && calendarEvent.getAgent().getId() != null) {
+            Optional<Agent> agentOpt = agentRepository.findById(calendarEvent.getAgent().getId());
+            agentOpt.ifPresent(calendarEvent::setAgent);
+        }
+        if (calendarEvent.getUser() != null && calendarEvent.getUser().getId() != null) {
+            Optional<Users> userOpt = userRepository.findById(calendarEvent.getUser().getId());
+            userOpt.ifPresent(calendarEvent::setUser);
+        }
+        return calendarEventService.saveCalendarEvent(calendarEvent);
+    }
+
+    @PostMapping("/user")
+    public CalendarEvent createCalendarEventForUser(@RequestBody CalendarEvent calendarEvent) {
+        if (calendarEvent.getUser() != null && calendarEvent.getUser().getId() != null) {
+            Optional<Users> userOpt = userRepository.findById(calendarEvent.getUser().getId());
+            userOpt.ifPresent(calendarEvent::setUser);
+        }
+        if (calendarEvent.getAgent() != null && calendarEvent.getAgent().getId() != null) {
+            Optional<Agent> agentOpt = agentRepository.findById(calendarEvent.getAgent().getId());
+            agentOpt.ifPresent(calendarEvent::setAgent);
+        }
         return calendarEventService.saveCalendarEvent(calendarEvent);
     }
 
@@ -78,8 +110,12 @@ public class CalendarController {
     }
 
     @GetMapping("/agent/{agentId}")
-    public List<CalendarEvent> getCalendarEventsByAgent(@PathVariable Long agentId) {
+    public List<CalendarDTO> getCalendarEventsByAgent(@PathVariable Long agentId) {
         return calendarEventService.getCalendarEventsByAgent(agentId);
     }
 
+    @GetMapping("/user/{userId}")
+    public List<CalendarDTO> getCalendarEventsByUser(@PathVariable Long userId) {
+        return calendarEventService.getCalendarEventsByUser(userId);
+    }
 }

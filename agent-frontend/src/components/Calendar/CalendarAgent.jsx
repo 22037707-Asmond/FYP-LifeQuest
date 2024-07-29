@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import FullCalendar from '@fullcalendar/react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './AgentCalendar.css';
 import { LocalStorage } from '../../services/LocalStorage';
-
+import './AgentCalendar.css';
 
 const AgentCalendar = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [editEvent, setEditEvent] = useState(null);
   const defaultDate = new Date();
   defaultDate.setDate(defaultDate.getDate() + 1);
   const [newEvent, setNewEvent] = useState({ title: 'Meeting With ---', date: defaultDate, time: '14:00:00', userId: '' });
@@ -23,16 +21,19 @@ const AgentCalendar = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/calendar');
-      setEvents(response.data.map(event => ({
+      const account = await LocalStorage.getAccount();
+      const agentId = account?.id;
+      const response = await axios.get(`http://localhost:8080/api/calendar/agent/${agentId}`);
+      const eventsData = response.data.map(event => ({
         title: event.title,
         start: `${event.date}T${event.time}`,
         id: event.id,
         accepted: event.accepted,
-        agent: event.agent,
-        user: event.user,
+        agentId: event.agentId,
+        userId: event.userId,
         status: event.status || 'Upcoming'
-      })));
+      }));
+      setEvents(eventsData);
     } catch (error) {
       console.error('Error fetching calendar events', error);
     }
@@ -58,30 +59,31 @@ const AgentCalendar = () => {
     }
 
     const account = await LocalStorage.getAccount();
-    const agentId = account?.id; // Fetch agent ID from local storage
+    const agentId = account?.id;
 
     try {
       const eventDate = new Date(newEvent.date.getTime() - newEvent.date.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-      const eventToSave = { 
-        ...newEvent, 
+      const eventToSave = {
+        ...newEvent,
         date: eventDate,
-        agent: { id: agentId }, // Use agent ID from local storage
-        user: { id: newEvent.userId },
-        status: 'Upcoming' // Set status to 'Upcoming' by default
+        agentId: agentId,
+        userId: newEvent.userId,
+        status: 'Upcoming'
       };
 
-      console.log('Saving event:', eventToSave); // Debugging line
+      console.log('Saving event:', eventToSave);
 
-      const response = await axios.post('http://localhost:8080/api/calendar', eventToSave); 
-      setEvents([...events, {
+      const response = await axios.post('http://localhost:8080/api/calendar', eventToSave);
+      const newSavedEvent = {
         title: response.data.title,
         start: `${response.data.date}T${response.data.time}`,
         id: response.data.id,
         accepted: response.data.accepted,
-        agent: response.data.agent,
-        user: response.data.user,
+        agentId: response.data.agentId,
+        userId: response.data.userId,
         status: response.data.status || 'Upcoming'
-      }]);
+      };
+      setEvents([...events, newSavedEvent]);
       setNewEvent({ title: 'Meeting With ---', date: defaultDate, time: '14:00:00', userId: '' });
     } catch (error) {
       console.error('Error saving event', error);
@@ -89,14 +91,19 @@ const AgentCalendar = () => {
   };
 
   const handleEventClick = (clickInfo) => {
-    setSelectedEvent({
-      id: clickInfo.event.id,
-      title: clickInfo.event.title,
-      start: clickInfo.event.start,
-      status: clickInfo.event.extendedProps.status,
-      user: clickInfo.event.extendedProps.user,
-      time: clickInfo.event.start.toISOString().split('T')[1].split('.')[0]
-    });
+    const event = events.find(event => event.id === parseInt(clickInfo.event.id));
+    if (event) {
+      setSelectedEvent({
+        id: event.id,
+        title: event.title,
+        start: new Date(event.start),
+        status: event.status,
+        userId: event.userId,
+        time: event.start.split('T')[1]
+      });
+    } else {
+      console.error('Event not found:', clickInfo.event.id);
+    }
   };
 
   const handleEventAction = async (action) => {
@@ -107,7 +114,7 @@ const AgentCalendar = () => {
 
     try {
       await axios.put(`http://localhost:8080/api/calendar/status/${eventId}`, { status: updatedStatus });
-      setEvents(events.map(event => 
+      setEvents(events.map(event =>
         event.id === eventId ? { ...event, status: updatedStatus } : event
       ));
       setSelectedEvent(null);
@@ -126,20 +133,20 @@ const AgentCalendar = () => {
   };
 
   const handleUpdateEvent = async () => {
-    if (!selectedEvent.title || !selectedEvent.start || !selectedEvent.time || !selectedEvent.user.id) {
+    if (!selectedEvent.title || !selectedEvent.start || !selectedEvent.time || !selectedEvent.userId) {
       alert('Please fill in all fields.');
       return;
     }
     try {
       const eventDate = new Date(selectedEvent.start.getTime() - selectedEvent.start.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-      const eventToUpdate = { 
-        ...selectedEvent, 
+      const eventToUpdate = {
+        ...selectedEvent,
         date: eventDate,
         time: selectedEvent.time,
-        user: { id: selectedEvent.user.id } 
+        userId: selectedEvent.userId
       };
       await axios.put(`http://localhost:8080/api/calendar/${selectedEvent.id}`, eventToUpdate);
-      setEvents(events.map(event => 
+      setEvents(events.map(event =>
         event.id === selectedEvent.id ? { ...event, ...eventToUpdate, start: `${eventDate}T${selectedEvent.time}` } : event
       ));
       setSelectedEvent(null);
@@ -214,7 +221,7 @@ const AgentCalendar = () => {
             />
             <label>Meeting Date:</label>
             <DatePicker
-              selected={new Date(selectedEvent.start)}
+              selected={selectedEvent.start} 
               onChange={handleEditDateChange}
               dateFormat="yyyy-MM-dd"
             />
@@ -235,8 +242,8 @@ const AgentCalendar = () => {
             <label>Enter the User's ID:</label>
             <input
               type="text"
-              name="user.id"
-              value={selectedEvent.user.id}
+              name="userId"
+              value={selectedEvent.userId}
               onChange={handleEditInputChange}
             />
             <button onClick={handleUpdateEvent}>Update Meeting</button>

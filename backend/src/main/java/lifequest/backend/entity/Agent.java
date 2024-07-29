@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Agent extends  Account{
+public class Agent extends Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,21 +28,23 @@ public class Agent extends  Account{
     private String bio;
     private String phoneNumber;
     private double salary;
-    
+
     private String mr_ms;
     private String telephone;
     private String email;
+    private String license;
 
     @ManyToMany(mappedBy = "agents")
     private List<Users> users;
 
     @OneToMany(mappedBy = "agent")
+    @JsonManagedReference
     private List<Premium> premiums;
 
-    // // Actions field - Not sure how you want to handle this, it could be methods or an additional field
-    // // If it's just a string or JSON representation of actions, you could add it like this:
-    // private String actions;
+    @OneToMany(mappedBy = "agent")
+    private List<CalendarEvent> events;
 
-    // If Actions is a list of some kind of objects representing actions:
-    // private List<Action> actions;
+    @OneToMany(mappedBy = "agent")
+    @JsonManagedReference
+    private List<Request> requests;
 }

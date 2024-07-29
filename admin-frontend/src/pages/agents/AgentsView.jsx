@@ -64,9 +64,7 @@ const AgentsListing = () => {
           });
     };
 
-    const handlePaySalary = (id) => {
-        // Implement pay salary logic here
-    };
+ 
 
     const columns = [
         { field: "mr_ms", headerName: "Mr/Ms", flex: 1, cellClassName: "name-column--cell" },

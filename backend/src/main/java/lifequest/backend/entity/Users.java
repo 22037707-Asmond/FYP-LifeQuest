@@ -2,7 +2,10 @@ package lifequest.backend.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -32,12 +35,14 @@ public class Users extends Account {
     private List<Premium> premiums;
 
     @OneToMany(mappedBy = "user")
-    private List<Request> requests;
-
-    @OneToMany(mappedBy = "user")
     private List<Payment> payments;
 
     @OneToMany(mappedBy = "user")
     private List<Billing> billings;
+
+    // avr edit
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Insurance> insurances;
 
 }

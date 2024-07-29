@@ -1,6 +1,6 @@
+import { Button, Card, CardContent, Typography } from '@mui/material';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Card, CardContent, Typography, Button } from '@mui/material';
 
 const ReceiptPage = () => {
     const location = useLocation();
@@ -14,7 +14,7 @@ const ReceiptPage = () => {
     const formattedDate = new Date(payment.createdDate).toLocaleString();
     
     return (
-        <div style={{ padding: '20px' }}>
+        <div>
             <Card style={{ margin: 'auto', maxWidth: '600px' }}>
                 <CardContent>
                     <Typography variant="h5" gutterBottom>

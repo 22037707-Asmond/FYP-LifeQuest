@@ -35,7 +35,7 @@ public class Premium {
     @ManyToOne
     private Agent agent;
     
-    private boolean active; // true => yes, false => no
+    private boolean active;
 
     
     public void setPurchaseDateToCurrentDate() {

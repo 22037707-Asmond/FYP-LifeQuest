@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 import AppNavBar from '../components/Account/AppNavBar';
-import { Typography } from '@mui/material'
-import UserInsurances from '../components/Insurance/UserInsurance'
+import UserInsurances from '../components/Insurance/UserInsurance';
 
-export default function Agent() {
+export default function MyInsurance() {
   return (
    <>
     <AppNavBar />

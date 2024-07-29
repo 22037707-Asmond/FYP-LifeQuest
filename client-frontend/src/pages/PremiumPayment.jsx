@@ -1,11 +1,11 @@
 // src/components/PremiumPayment.jsx
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LocalStorage } from '../services/LocalStorage';
 import '../assets/css/PremiumPayment.css';
+import { LocalStorage } from '../services/LocalStorage';
 
 const PremiumPayment = () => {
     const [user, setUser] = useState(null);
@@ -44,19 +44,19 @@ const PremiumPayment = () => {
     }, [state]);
 
     const createOrder = (data, actions) => {
-        // Commented out original code for testing purposes
-        // if (!insurance || !insurance.premium) {
-        //     console.error('Insurance data is missing or incomplete');
-        //     return;
-        // }
-        // const price = insurance.premium.toString(); // Use the premium directly from the insurance object
-        
-        const price = '1.00'; // Fixed price for testing
+        if (!insurance || !insurance.premium) {
+            console.error('Insurance data is missing or incomplete');
+            return;
+        }
+        const price = insurance.premium.toString();
 
         return actions.order.create({
             purchase_units: [{
                 amount: {
                     value: price
+                },
+                payee: {
+                    email_address: 'sb-sznnq26655695@business.example.com' 
                 }
             }]
         });

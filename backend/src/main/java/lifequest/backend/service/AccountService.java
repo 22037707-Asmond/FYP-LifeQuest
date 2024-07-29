@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lifequest.backend.entity.Account;
 import lifequest.backend.entity.Agent;
 import lifequest.backend.entity.Users;
+import lifequest.backend.model.AccountRequest;
 import lifequest.backend.repository.AccountRepository;
 import lifequest.backend.repository.AgentRepository;
 import lifequest.backend.repository.UsersRepository;
@@ -58,7 +59,7 @@ public class AccountService {
         }
     }
 
-    public Account updateAccount(Long id, Account updatedAccount) {
+      public Account updateAccount(Long id, AccountRequest updatedAccount) {
         Account account = accountRepository.findById(id).orElse(null);
         account.setFirstName(updatedAccount.getFirstName());
         account.setLastName(updatedAccount.getLastName());
@@ -66,4 +67,6 @@ public class AccountService {
         account.setEmail(updatedAccount.getEmail());
         return accountRepository.save(account);
     } 
+
+    
 }

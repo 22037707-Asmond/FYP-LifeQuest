@@ -40,8 +40,7 @@ const SideBar = () => {
     <>
       <Sidebar
         collapsed={isCollapsed}
-        rootStyles={{ backgroundColor: `${colors.primary[400]}` }}
-      >
+        rootStyles={{ backgroundColor: `${colors.primary[400]}` }}>
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -74,11 +73,7 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 15px 20px" }}
-            >
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 15px 20px" }}>
               Data
             </Typography>
 
@@ -130,11 +125,15 @@ const SideBar = () => {
               setSelected={setSelected}
             />
 
-            <Typography
-              variant="h6"
-              color={colors.grey[300]}
-              sx={{ m: "15px 0 15px 20px" }}
-            >
+            <Item
+              title="Requests"
+              to="/requests"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 15px 20px" }}>
               Charts
             </Typography>
 

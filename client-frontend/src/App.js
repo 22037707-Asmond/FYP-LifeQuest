@@ -1,27 +1,24 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import SignUp from './components/Auth/SignUp';
 import Login from './components/Auth/Login';
-import AccountPage from './pages/AccountPage';
+import SignUp from './components/Auth/SignUp';
 import AboutUs from './pages/AboutUs';
-import LifeQuest from './pages/LifeQuest';
-import Profile from './pages/Profile';
-import Chat from './pages/Chat';
+import AccountPage from './pages/AccountPage';
 import Agent from './pages/Agent';
-import Insurance from './pages/Insurance';
-import InsuranceDetails from './pages/InsuranceDetails';
 import Calculator from './pages/Calculator';
 import Calendar from './pages/Calendar';
-import PaymentPage from './pages/PaymentPage';
+import Chat from './pages/Chat';
 import ChatBot from './pages/ChatBot';
-import UserInsurances from './components/Insurance/UserInsurance';
-import ReceiptPage from './components/Receipt';
+import Homepage from './pages/Homepage';
+import Insurance from './pages/Insurance';
+import InsuranceDetails from './pages/InsuranceDetails';
+import LifeQuest from './pages/LifeQuest';
+import MyInsurance from './pages/MyInsurance';
+import PaymentPage from './pages/PaymentPage';
+import Profile from './pages/Profile';
+import Receipt from './pages/ReceiptPage';
 
-
-
-function App() { 
-  const isLoggedIn = false;
+function App() {
   return (
       <Routes>
         <Route path='/' element={<Homepage />} />
@@ -58,9 +55,9 @@ function App() {
 
         <Route path='ChatBot' element={<ChatBot/>}></Route>
 
-        <Route path='myInsurance' element={<UserInsurances/>}></Route>
+        <Route path='myInsurance' element={<MyInsurance/>}></Route>
 
-        <Route path= 'Receipt' element={<ReceiptPage/>}></Route>
+        <Route path='Receipt' element={<Receipt/>}></Route>
 
       </Routes>
   );
