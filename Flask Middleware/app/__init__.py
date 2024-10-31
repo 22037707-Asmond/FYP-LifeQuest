@@ -14,7 +14,6 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'your_secret_key_here'
     
-    # Enable CORS for all routes and allow requests from 'http://localhost:3000'
     CORS(app, resources={r"/*": {"origins": "*"}})
     
     # Initialize the database with the app
@@ -28,7 +27,7 @@ def create_app():
     app.register_blueprint(predict_bp)
 
     with app.app_context():
-        db.create_all()  # Create database tables if they don't exist
+        db.create_all()  
 
     return app
 

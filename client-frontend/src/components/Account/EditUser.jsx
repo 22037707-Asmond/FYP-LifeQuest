@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTitle, TextField, DialogActions, Button, DialogContent, Avatar } from '@mui/material';
 import { updateAccount, addImage } from '../../services/AccountsAPI';
-import { LocalStorage } from '../../services/LocalStorage';
+import { LocalStorage, pwdStorage } from '../../services/LocalStorage';
 
 export default function EditUser({ account, open, handleClose, onAccountUpdate }) {
     const [firstName, setFirstName] = useState(account.firstName || '');
@@ -13,6 +13,22 @@ export default function EditUser({ account, open, handleClose, onAccountUpdate }
     const [error, setError] = useState('');
     const [profilePicture, setProfilePicture] = useState(null);
     const [preview, setPreview] = useState(account.profilePictureUrl || '');
+
+    useEffect(() => {
+        const fetchPassword = async () => {
+            try {
+                const storedPwd = await pwdStorage.getPwd();
+                if (storedPwd) {
+                    setPassword(storedPwd);
+                    setConfirmPassword(storedPwd); // Set confirm password field to match stored password
+                }
+            } catch (error) {
+                console.error('Error fetching stored password:', error);
+            }
+        };
+
+        fetchPassword();
+    }, []);
 
     const handleSave = async () => {
         // Check if password and confirmPassword are not empty and match
@@ -39,6 +55,7 @@ export default function EditUser({ account, open, handleClose, onAccountUpdate }
             }
             const newAccount = { ...account, ...updatedAccount, profilePictureUrl: preview };
             LocalStorage.setAccount(newAccount);
+            pwdStorage.setPwd(password); // Save the updated password in localStorage
             if (typeof onAccountUpdate === 'function') {
                 onAccountUpdate(newAccount);
             }
@@ -113,6 +130,7 @@ export default function EditUser({ account, open, handleClose, onAccountUpdate }
                     label="Password"
                     type="password"
                     autoComplete="current-password"
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     fullWidth
                     margin="normal"

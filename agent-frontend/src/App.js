@@ -6,21 +6,25 @@ import AccountPage from './pages/AccountPage';
 import Calendar from './pages/Calendar';
 import RequestForm from './pages/RequestForm';
 import SideBar from './components/Account/Sidebar';
+import Dashboard from './pages/Chart_Dashboard/Dashboard';
 
 function App() {
   const location = useLocation();
-  const isLoggedIn = false;
+
+  // Check if the current route is the login page
+  const isLoginPage = location.pathname === '/';
 
   return (
     <div style={styles.appContainer}>
-      <SideBar />
-      <main style={styles.mainContent}>
+      {!isLoginPage && <SideBar />}
+      <main style={isLoginPage ? styles.mainContentFull : styles.mainContentWithSidebar}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/CalendarAgent" element={<Calendar />} />
           <Route path="/Profile" element={<AccountPage />} />
           <Route path="/RequestForm" element={<RequestForm />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
       </main>
     </div>
@@ -32,10 +36,16 @@ const styles = {
     display: 'flex',
     height: '100vh',
   },
-  mainContent: {
+  mainContentWithSidebar: {
     flexGrow: 1,
     padding: '16px',
     overflowY: 'auto',
+  },
+  mainContentFull: {
+    flexGrow: 1,
+    padding: '16px',
+    overflowY: 'auto',
+    width: '100%', // Take the full width of the container when the sidebar is hidden
   },
 };
 

@@ -1,7 +1,7 @@
-import dayGridPlugin from '@fullcalendar/daygrid';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { LocalStorage } from '../services/LocalStorage';
 
 const ClientCalendar = () => {
@@ -13,7 +13,7 @@ const ClientCalendar = () => {
       const user = await LocalStorage.getAccount();
       if (user) {
         setUserId(user.id);
-        console.log('Fetched user:', user); // Debug log
+        console.log('Fetched user:', user);
       }
     };
 
@@ -51,7 +51,7 @@ const ClientCalendar = () => {
   const handleEventClick = (clickInfo) => {
     const event = events.find(event => event.id === parseInt(clickInfo.event.id));
     if (event) {
-      alert(`Event: ${event.title}\nDate: ${event.start.split('T')[0]}\nTime: ${event.start.split('T')[1]}\nStatus: ${event.status}\nAccepted: ${event.accepted ? 'Yes' : 'No'}\nAgent ID: ${event.agentId}`);
+      alert(`Event: ${event.title}\nDate: ${event.start.split('T')[0]}\nTime: ${event.start.split('T')[1]}\nStatus: ${event.status}\nAgent ID: ${event.agentId}`);
     } else {
       console.error('Event not found:', clickInfo.event.id);
     }

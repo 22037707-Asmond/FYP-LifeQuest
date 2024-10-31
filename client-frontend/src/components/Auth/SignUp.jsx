@@ -9,23 +9,27 @@ import Box from '@mui/material/Box';
 import LockOpenOutlined from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
 import HomepageHeader from '../homepageHeader';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { addAccount } from '../../services/AccountsAPI';
 
-
 const defaultTheme = createTheme();
 
 export default function Signup() {
-
     const [firstname, setFirstname] = React.useState('');
     const [lastname, setLastname] = React.useState('');
-    const [dob, setdob] = React.useState(null);
+    const [dateOfBirth, setDateOfBirth] = React.useState('');
     const [username, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [password2, setPassword2] = React.useState('');
+    const [ic, setIc] = React.useState('');
+    const [sex, setSex] = React.useState(''); // Updated to handle dropdown
     const [role] = React.useState('User');
     const [error, setError] = React.useState('');
 
@@ -38,34 +42,39 @@ export default function Signup() {
         if (password !== password2) {
             setError("Passwords do not match!");
             return;
-        } else {
-            const account = {
-                firstName: firstname,
-                lastName: lastname,
-                username,
-                email,
-                password,
-                role,
-                dob
-            };
-
-            addAccount(account)
-                .then((response) => {
-                    console.log(response.data);
-                    if (response.data.success) {
-                        navigate('Login');
-                    } else {
-                        setError(response.data.message);
-                    }
-
-                })
-                .catch((error) => {
-                    console.error("There was an error creating the account!", error);
-                    setError("There was an error creating the account!");
-                });
         }
-    }
 
+        if (!['M', 'F'].includes(sex)) {
+            setError("Please select a valid gender!");
+            return;
+        }
+
+        const account = {
+            firstName: firstname,
+            lastName: lastname,
+            username,
+            email,
+            password,
+            role,
+            dateOfBirth,
+            ic,
+            sex,
+        };
+
+        addAccount(account)
+            .then((response) => {
+                console.log(response.data);
+                if (response.data.success) {
+                    navigate('/Login'); // Navigate to Login page after successful signup
+                } else {
+                    setError(response.data.message);
+                }
+            })
+            .catch((error) => {
+                console.error("There was an error creating the account!", error);
+                setError("There was an error creating the account!");
+            });
+    }
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -98,7 +107,7 @@ export default function Signup() {
                             fullWidth
                             id="firstname"
                             label="First Name"
-                            name="first name"
+                            name="firstname"
                             autoComplete="name"
                             autoFocus
                             value={firstname}
@@ -110,13 +119,49 @@ export default function Signup() {
                             fullWidth
                             id="lastname"
                             label="Last Name"
-                            name="last name"
+                            name="lastname"
                             autoComplete="name"
                             value={lastname}
                             onChange={(e) => setLastname(e.target.value)}
                         />
-
-
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="dateOfBirth"
+                            label="Date of Birth"
+                            name="dateOfBirth"
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            value={dateOfBirth}
+                            onChange={(e) => setDateOfBirth(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="ic"
+                            label="IC"
+                            name="ic"
+                            autoComplete="ic"
+                            value={ic}
+                            onChange={(e) => setIc(e.target.value)}
+                        />
+                        <FormControl fullWidth margin="normal" required>
+                            <InputLabel id="gender-label">Gender</InputLabel>
+                            <Select
+                                labelId="gender-label"
+                                id="sex"
+                                value={sex}
+                                label="Gender"
+                                onChange={(e) => setSex(e.target.value)}
+                            >
+                                <MenuItem value="M">Male</MenuItem>
+                                <MenuItem value="F">Female</MenuItem>
+                            </Select>
+                        </FormControl>
                         <TextField
                             margin="normal"
                             required

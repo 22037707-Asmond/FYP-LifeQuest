@@ -3,7 +3,7 @@ import axios from 'axios';
 const REST_API_URL = 'http://localhost:8080/api';
 
 export const getFullName = async (username) =>{
-    return (await axios.get(REST_API_URL + '/accounts/fullname/' + username)).data;
+    return (await axios.get(REST_API_URL + '/users/fullname/' + username)).data;
   }
 
 

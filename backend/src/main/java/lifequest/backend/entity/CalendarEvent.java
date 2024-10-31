@@ -1,5 +1,6 @@
 package lifequest.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -23,12 +24,12 @@ public class CalendarEvent {
 
     @ManyToOne
     @JoinColumn(name = "agent_id")
-    @JsonIgnoreProperties("calendarEvents")
+    @JsonBackReference
     private Agent agent;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties("calendarEvents")
+    @JsonIgnoreProperties("events")
     private Users user;
 
     // Getters and setters

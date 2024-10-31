@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const REST_API_URL = 'http://localhost:8080/api/v1';
-const REST_API_PAYMENT = 'http://localhost:8080/api';
+const REST_API_URL = 'http://localhost:5002/api/v1';
+const REST_API_PAYMENT = 'http://localhost:5002/api';
 
 export const getAllAgents = async () => {
     const response = await fetch(`${REST_API_URL}/agents`);
@@ -27,6 +27,24 @@ export const updateAgent = (id, agentDetails) => {
     return axios.put(`${REST_API_URL}/agents/${id}`, agentDetails);
 };
 
+export const payoutAgent = async (recipientEmail, amount) => {
+    const response = await fetch(
+      `${REST_API_PAYMENT}/payouts?recipientEmail=${recipientEmail}&amount=${amount}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  
+    if (!response.ok) {
+      throw new Error("Failed to process payout");
+    }
+  
+    return await response.json(); // Assuming the response contains the payout details
+  };
+  
 // export const createPayout = (payoutData) => {
 //     return axios.post(`${REST_API_PAYMENT}/v1/payments/payouts`, payoutData, {
 //         headers: {

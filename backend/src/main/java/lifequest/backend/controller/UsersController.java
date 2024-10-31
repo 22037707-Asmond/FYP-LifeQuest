@@ -11,8 +11,13 @@ import lifequest.backend.model.AccountRequest;
 import lifequest.backend.service.AccountService;
 import lifequest.backend.service.UsersService;
 
+import java.sql.Blob;
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,6 +88,28 @@ public class UsersController {
         }
 
         return ResponseEntity.ok(account);
+    }
+
+
+    @GetMapping("/users/profilepicture/{username}")
+    public ResponseEntity<byte[]> getProfilePicture(@PathVariable String username) {
+        Blob profilePicture = usersService.getProfilePicture(username);
+        try {
+            byte[] imageBytes = profilePicture.getBytes(1, (int) profilePicture.length());
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG); // Assuming the image is a JPEG. Adjust if needed.
+            headers.setContentLength(imageBytes.length);
+
+            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+    @GetMapping("/users/fullname/{username}")
+    public ResponseEntity<?> getFullName(@PathVariable String username) {
+        return ResponseEntity.ok(usersService.getFullName(username));
     }
 
     @PostMapping("/accounts/update/{id}")

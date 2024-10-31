@@ -75,7 +75,7 @@ export const updateInsurance = async (id, updatedData) => {
 
 export const getInsuranceType = async (id) => {
     try {
-        const response = await axios.get(`${REST_API_URL}/categories/${id}`);
+        const response = await axios.get(`${REST_API_URL}/Category/${id}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching insurance type:', error);

@@ -6,17 +6,22 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import PieChartOutlinedIcon from '@mui/icons-material/PieChartOutlined';
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Box, IconButton, Typography } from "@mui/material";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { LocalStorage } from '../../services/LocalStorage'; 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DashboardCustomizeIcon from '@mui/icons-material/DashboardCustomize';
 
-const Item = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected, onClick }) => {
   return (
     <MenuItem
       active={selected === title}
-      onClick={() => setSelected(title)}
+      onClick={() => {
+        setSelected(title);
+        if (onClick) onClick(); // Call onClick if provided
+      }}
       icon={icon}
       href={to}
       style={{ marginBottom: '20px' }} // Add margin-bottom for spacing
@@ -29,6 +34,12 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const SideBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleLogout = () => {
+    localStorage.removeItem('account');
+    window.location.href = '/';
+};
 
   return (
     <>
@@ -56,8 +67,15 @@ const SideBar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/Home"
-              icon={<HomeOutlinedIcon />}
+              to="/Dashboard"
+              icon={<DashboardCustomizeIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+             <Item
+              title="Profile"
+              to="/Profile"
+              icon={<AccountCircleIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -81,6 +99,14 @@ const SideBar = () => {
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+            />
+            <Item
+              title='Logout'
+              to='/'
+              icon={<LogoutIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              onClick={handleLogout} // Attach the logout handler here
             />
           </Box>
         </Menu>

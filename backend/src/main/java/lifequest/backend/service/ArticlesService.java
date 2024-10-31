@@ -59,7 +59,6 @@ public class ArticlesService {
 
         articles.setTitle(articlesDetails.getTitle());
         articles.setContent(articlesDetails.getContent());
-        articles.setMedia(articlesDetails.getMedia());
 
         return articlesRepository.save(articles);
     }

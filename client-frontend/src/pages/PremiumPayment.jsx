@@ -1,11 +1,9 @@
-// src/components/PremiumPayment.jsx
-
-import { PayPalButtons } from "@paypal/react-paypal-js";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../assets/css/PremiumPayment.css';
 import { LocalStorage } from '../services/LocalStorage';
+import '../assets/css/PremiumPayment.css';
 
 const PremiumPayment = () => {
     const [user, setUser] = useState(null);
@@ -97,7 +95,7 @@ const PremiumPayment = () => {
 
     if (loading) return <div>Loading...</div>;
 
-    if (!user || !user.id || !insurance || !insurance.id) {
+    if (!user  || !user.id || !insurance || !insurance.id) {
         console.error('User or insurance data is incomplete', { user, insurance });
         return <div>Error loading data. Please try again.</div>;
     }

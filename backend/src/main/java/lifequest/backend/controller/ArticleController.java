@@ -67,18 +67,17 @@ public class ArticleController {
             return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
-    @PutMapping("article/update/{id}")
+
+    @PutMapping("/article/update/{id}")
     public ResponseEntity<Articles> updateArticles(@PathVariable Long id, @RequestBody Articles articlesDetails) {
-        Articles updateArticles = articlesRepository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Article not exist with id: " + id));
+        Articles existingArticle = articlesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Article not exist with id: " + id));
 
-        updateArticles.setTitle(articlesDetails.getTitle());
-        updateArticles.setContent(articlesDetails.getContent());
-        updateArticles.setMedia(articlesDetails.getMedia());
+        existingArticle.setTitle(articlesDetails.getTitle());
+        existingArticle.setContent(articlesDetails.getContent());
 
-        articlesRepository.save(articlesDetails);
+        articlesRepository.save(existingArticle);
 
-        return ResponseEntity.ok(articlesDetails);
+        return ResponseEntity.ok(existingArticle);
     }
 }

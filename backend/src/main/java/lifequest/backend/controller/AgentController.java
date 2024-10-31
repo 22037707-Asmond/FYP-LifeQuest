@@ -16,6 +16,10 @@ import lifequest.backend.repository.AgentRepository;
 import lifequest.backend.service.AgentService;
 import javax.sql.rowset.serial.SerialBlob;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+
 @RestController
 @RequestMapping("/api")
 public class AgentController {
@@ -111,13 +115,18 @@ public class AgentController {
     }
 
     @GetMapping("/agents/profilepicture/{username}")
-    public ResponseEntity<?> getProfilePicture(@PathVariable String username) {
+    public ResponseEntity<byte[]> getProfilePicture(@PathVariable String username) {
         Blob profilePicture = agentService.getProfilePicture(username);
         try {
-            return ResponseEntity.ok(new SerialBlob(profilePicture.getBytes(1, (int) profilePicture.length())));
+            byte[] imageBytes = profilePicture.getBytes(1, (int) profilePicture.length());
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            headers.setContentLength(imageBytes.length);
+
+            return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error retrieving profile picture");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 }

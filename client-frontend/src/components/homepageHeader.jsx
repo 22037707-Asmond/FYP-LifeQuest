@@ -6,7 +6,7 @@ const HomepageHeader = () => {
     return (
         <>
             <Link to="/"> 
-                <img className="logo" src="/images/tee up.png" alt="" />
+                <img className="logo" src="\images\lifequest.png" alt="" />
             </Link>            
             <div className="container">
                 <div className="d-flex justify-content-center adjustNav">

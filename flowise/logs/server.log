@@ -1,0 +1,832 @@
+2024-07-23 18:20:25 [INFO]: Starting Flowise...
+2024-07-23 18:20:25 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-23 18:20:36 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-23 18:20:36 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-23 18:21:13 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-23 18:21:58 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-07-23 18:22:02 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-23 18:22:15 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-23 18:22:15 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-23 18:22:31 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-23 18:24:04 [INFO]: ❌ DELETE /api/v1/chatmessage/83038015-e890-47bd-aabe-992a4195cb4a?chatId=5bdacaf0-01a0-42f0-b528-e5fa108a74b4&chatType=INTERNAL
+2024-07-23 18:24:04 [INFO]: Clearing OpenAI Thread thread_Hmjqrk6ADzHUfXPt5gnGksSF
+2024-07-23 18:24:04 [INFO]: Successfully cleared OpenAI Thread thread_Hmjqrk6ADzHUfXPt5gnGksSF
+2024-07-23 18:37:47 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-23 18:37:47 [INFO]: [server]: Request originated from undefined
+2024-07-23 18:37:48 [ERROR]: [server]: Error: Error: 400 Invalid type for 'content': expected one of a string or array of objects, but got an object instead.
+Error: Error: 400 Invalid type for 'content': expected one of a string or array of objects, but got an object instead.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-23 18:39:20 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-23 18:39:20 [INFO]: [server]: Request originated from undefined
+2024-07-23 18:43:28 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-23 18:43:28 [INFO]: [server]: Request originated from undefined
+2024-07-24 00:21:59 [INFO]: Shutting down Flowise...
+2024-07-24 20:13:50 [INFO]: Starting Flowise...
+2024-07-24 20:13:50 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-24 20:14:06 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-24 20:14:06 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-24 20:14:33 [INFO]: Shutting down Flowise...
+2024-07-24 20:18:04 [INFO]: Starting Flowise...
+2024-07-24 20:18:04 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-24 20:18:10 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-24 20:18:10 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-24 20:18:35 [INFO]: Shutting down Flowise...
+2024-07-24 20:18:44 [INFO]: Starting Flowise...
+2024-07-24 20:18:44 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-24 20:18:48 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-24 20:18:48 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-24 20:18:52 [INFO]: Shutting down Flowise...
+2024-07-24 20:19:08 [INFO]: Starting Flowise...
+2024-07-24 20:19:08 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-24 20:19:12 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-24 20:19:12 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-24 20:19:49 [INFO]: Shutting down Flowise...
+2024-07-24 20:20:06 [INFO]: Starting Flowise...
+2024-07-24 20:20:06 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-24 20:20:11 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-24 20:20:11 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-24 20:21:02 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-24 20:23:17 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:23:17 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-24 20:23:26 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:24:04 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:24:04 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:24:06 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:26:35 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:26:35 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:26:36 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:30:58 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:30:58 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:30:59 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:31:21 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:31:21 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:31:23 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:33:23 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:33:23 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:33:25 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:37:39 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:37:39 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:45:43 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:45:43 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:45:44 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:45:59 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:46:11 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:47:10 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:47:10 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:47:11 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:47:14 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:47:14 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:47:15 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:49:43 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:49:43 [INFO]: [server]: Request originated from undefined
+2024-07-24 20:58:40 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 20:58:40 [INFO]: [server]: Request originated from undefined
+2024-07-24 21:11:39 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-24 21:11:39 [INFO]: [server]: Request originated from undefined
+2024-07-24 23:36:07 [INFO]: ⬆️ POST /api/v1/assistants
+2024-07-24 23:36:14 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-24 23:36:29 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-24 23:36:46 [INFO]: ⬆️ POST /api/v1/chatflows
+2024-07-24 23:37:17 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-24 23:37:17 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-24 23:37:40 [INFO]: ❌ DELETE /api/v1/chatmessage/96ab0264-08bd-4d41-afb2-8356e520de58?chatId=645d99eb-aa22-4511-83c5-b2d6b3a9840a&chatType=INTERNAL
+2024-07-24 23:37:40 [INFO]: Clearing OpenAI Thread thread_8eKk6vb0ky5TinO7i1QK2fpW
+2024-07-24 23:37:40 [INFO]: Successfully cleared OpenAI Thread thread_8eKk6vb0ky5TinO7i1QK2fpW
+2024-07-24 23:37:49 [INFO]: 🖊 PUT /api/v1/chatflows/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-24 23:37:49 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 updated inSync=false in ChatflowPool
+2024-07-25 02:04:00 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 02:04:00 [INFO]: [server]: Request originated from undefined
+2024-07-25 02:05:50 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-25 02:07:22 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 02:07:22 [INFO]: [server]: Request originated from undefined
+2024-07-25 02:08:17 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 02:08:17 [INFO]: [server]: Request originated from undefined
+2024-07-25 02:45:11 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 02:45:11 [INFO]: [server]: Request originated from undefined
+2024-07-25 02:47:17 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 02:47:17 [INFO]: [server]: Request originated from undefined
+2024-07-25 02:49:03 [INFO]: Shutting down Flowise...
+2024-07-25 11:31:21 [INFO]: Starting Flowise...
+2024-07-25 11:31:21 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-25 11:31:29 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-25 11:31:29 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-25 11:32:10 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-25 11:32:49 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-25 11:46:30 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 11:46:30 [INFO]: [server]: Request originated from undefined
+2024-07-25 11:46:30 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-25 11:47:56 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 11:47:56 [INFO]: [server]: Request originated from undefined
+2024-07-25 11:49:00 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 11:49:00 [INFO]: [server]: Request originated from undefined
+2024-07-25 12:54:27 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 12:54:27 [INFO]: [server]: Request originated from undefined
+2024-07-25 15:30:27 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 15:30:27 [INFO]: [server]: Request originated from undefined
+2024-07-25 15:32:21 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 15:32:21 [INFO]: [server]: Request originated from undefined
+2024-07-25 15:38:08 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 15:38:08 [INFO]: [server]: Request originated from undefined
+2024-07-25 16:05:21 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-25 16:06:09 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-25 16:06:09 [INFO]: [server]: Request originated from undefined
+2024-07-26 10:41:27 [INFO]: Shutting down Flowise...
+2024-07-26 16:19:37 [INFO]: Starting Flowise...
+2024-07-26 16:19:37 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-26 16:19:53 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-26 16:19:53 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-26 16:22:08 [INFO]: Shutting down Flowise...
+2024-07-26 16:22:38 [INFO]: Starting Flowise...
+2024-07-26 16:22:38 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-26 16:22:42 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-26 16:22:42 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-26 16:22:57 [INFO]: Shutting down Flowise...
+2024-07-26 16:25:27 [INFO]: Starting Flowise...
+2024-07-26 16:25:27 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-26 16:25:32 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-26 16:25:32 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-26 16:26:48 [INFO]: Shutting down Flowise...
+2024-07-26 16:28:07 [INFO]: Starting Flowise...
+2024-07-26 16:28:07 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-26 16:28:20 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-26 16:28:20 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-26 16:28:32 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-26 16:28:32 [INFO]: [server]: Request originated from undefined
+2024-07-26 16:28:32 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-26 16:31:53 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-26 16:31:53 [INFO]: [server]: Request originated from undefined
+2024-07-26 17:03:13 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-26 17:03:55 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-26 17:03:55 [INFO]: [server]: Request originated from http://localhost:3005
+2024-07-26 17:03:55 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-27 11:51:53 [INFO]: Shutting down Flowise...
+2024-07-27 11:52:09 [INFO]: Starting Flowise...
+2024-07-27 11:52:09 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-27 11:52:20 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-27 11:52:20 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-27 12:05:45 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 12:05:45 [INFO]: [server]: Request originated from undefined
+2024-07-27 12:05:45 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-27 13:13:25 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:13:25 [INFO]: [server]: Request originated from undefined
+2024-07-27 13:40:32 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:40:32 [INFO]: [server]: Request originated from undefined
+2024-07-27 13:43:23 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-07-27 13:43:30 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-27 13:43:40 [INFO]: ❌ DELETE /api/v1/chatmessage/83038015-e890-47bd-aabe-992a4195cb4a?chatId=2d73af5a-b38b-46cd-96ab-1e8526a329f6&chatType=INTERNAL
+2024-07-27 13:43:40 [INFO]: Clearing OpenAI Thread thread_ZFvbp6AlWMeFGMmSaZDEnlfv
+2024-07-27 13:43:40 [INFO]: Successfully cleared OpenAI Thread thread_ZFvbp6AlWMeFGMmSaZDEnlfv
+2024-07-27 13:43:53 [INFO]: ❌ DELETE /api/v1/chatmessage/83038015-e890-47bd-aabe-992a4195cb4a?chatId=d25908cf-5950-499d-bdd3-0fe36b99df03&chatType=INTERNAL
+2024-07-27 13:43:53 [INFO]: Clearing OpenAI Thread thread_t2wEccAXHDDfonifnCtBZews
+2024-07-27 13:43:53 [INFO]: Successfully cleared OpenAI Thread thread_t2wEccAXHDDfonifnCtBZews
+2024-07-27 13:43:59 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:45:10 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-07-27 13:45:17 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-07-27 13:45:20 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-27 13:46:06 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:46:06 [INFO]: [server]: Request originated from http://localhost:3005
+2024-07-27 13:46:06 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-27 13:47:24 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:47:24 [INFO]: [server]: Request originated from undefined
+2024-07-27 13:47:24 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-27 13:48:20 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-27 13:48:20 [INFO]: [server]: Request originated from undefined
+2024-07-27 13:51:10 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-29 02:31:24 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-29 02:31:57 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 02:31:57 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-29 02:32:30 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 02:45:44 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 02:45:44 [INFO]: [server]: Request originated from http://localhost:3000
+2024-07-29 02:53:53 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 02:53:53 [INFO]: [server]: Request originated from http://localhost:3000
+2024-07-29 03:09:46 [INFO]: 🖊 PUT /api/v1/chatflows/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 03:09:46 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 updated inSync=false in ChatflowPool
+2024-07-29 03:10:09 [INFO]: 🖊 PUT /api/v1/chatflows/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 03:10:09 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 updated inSync=false in ChatflowPool
+2024-07-29 03:23:59 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 03:23:59 [INFO]: [server]: Request originated from http://localhost:3000
+2024-07-29 03:23:59 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-29 12:23:52 [INFO]: Shutting down Flowise...
+2024-07-29 14:59:55 [INFO]: Starting Flowise...
+2024-07-29 14:59:55 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-29 15:00:13 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-29 15:00:13 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-29 15:08:23 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-29 15:08:23 [INFO]: [server]: Request originated from undefined
+2024-07-29 15:08:23 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-29 15:09:32 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-29 15:09:32 [INFO]: [server]: Request originated from http://localhost:3002
+2024-07-29 15:09:32 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-30 21:40:23 [INFO]: Starting Flowise...
+2024-07-30 21:40:23 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-30 21:40:33 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-30 21:40:33 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-30 21:40:48 [INFO]: Shutting down Flowise...
+2024-07-30 21:41:23 [INFO]: Starting Flowise...
+2024-07-30 21:41:23 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-30 21:41:43 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-30 21:41:43 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-30 21:42:38 [INFO]: Shutting down Flowise...
+2024-07-30 21:42:53 [INFO]: Starting Flowise...
+2024-07-30 21:42:53 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-30 21:43:01 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-30 21:43:01 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-30 21:43:16 [INFO]: Shutting down Flowise...
+2024-07-30 21:43:36 [INFO]: Starting Flowise...
+2024-07-30 21:43:36 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-30 21:43:51 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-30 21:43:51 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-07-30 21:44:00 [INFO]: Shutting down Flowise...
+2024-07-30 21:44:14 [INFO]: Starting Flowise...
+2024-07-30 21:44:15 [INFO]: 📦 [server]: Data Source is initializing...
+2024-07-30 21:44:29 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-07-30 21:44:29 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-07-30 21:44:51 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-30 21:44:51 [INFO]: [server]: Request originated from undefined
+2024-07-30 21:44:51 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-07-30 21:47:48 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-07-30 21:47:48 [INFO]: [server]: Request originated from http://localhost:3000
+2024-07-30 21:47:48 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-07-30 21:49:24 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-30 21:49:24 [INFO]: [server]: Request originated from undefined
+2024-07-30 22:53:42 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-07-30 22:53:43 [INFO]: [server]: Request originated from undefined
+2024-07-30 22:55:54 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-07-30 22:58:46 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-08-01 06:22:14 [INFO]: Starting Flowise...
+2024-08-01 06:22:14 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 06:22:24 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 06:22:24 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-01 06:22:32 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-08-01 06:22:32 [INFO]: [server]: Request originated from undefined
+2024-08-01 06:22:32 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-08-01 06:23:45 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-01 06:23:45 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-01 06:23:45 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-08-01 13:23:03 [INFO]: Starting Flowise...
+2024-08-01 13:23:03 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:23:17 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:23:17 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:41:38 [INFO]: Starting Flowise...
+2024-08-01 13:41:38 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:41:51 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:41:51 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:41:55 [INFO]: Shutting down Flowise...
+2024-08-01 13:42:17 [INFO]: Starting Flowise...
+2024-08-01 13:42:17 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:42:24 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:42:24 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:42:34 [INFO]: Shutting down Flowise...
+2024-08-01 13:42:49 [INFO]: Starting Flowise...
+2024-08-01 13:42:49 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:42:56 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:42:56 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:43:03 [INFO]: Shutting down Flowise...
+2024-08-01 13:43:58 [INFO]: Starting Flowise...
+2024-08-01 13:43:58 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:44:04 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:44:04 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:44:06 [INFO]: Shutting down Flowise...
+2024-08-01 13:44:47 [INFO]: Starting Flowise...
+2024-08-01 13:44:47 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:44:53 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:44:53 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 13:45:01 [INFO]: Shutting down Flowise...
+2024-08-01 13:46:03 [INFO]: Starting Flowise...
+2024-08-01 13:46:03 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 13:46:09 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 13:46:09 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-01 16:14:03 [INFO]: Shutting down Flowise...
+2024-08-01 16:18:05 [INFO]: Starting Flowise...
+2024-08-01 16:18:06 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 16:18:29 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 16:18:29 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-01 16:37:22 [INFO]: Starting Flowise...
+2024-08-01 16:37:22 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 16:37:43 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 16:37:43 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-01 16:45:07 [INFO]: Shutting down Flowise...
+2024-08-01 16:45:33 [INFO]: Starting Flowise...
+2024-08-01 16:45:33 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-01 16:45:37 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-01 16:45:37 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-01 17:04:11 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-08-01 17:04:11 [INFO]: [server]: Request originated from undefined
+2024-08-01 17:04:11 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-08-01 17:08:37 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-01 17:08:37 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-01 17:08:37 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-08-01 17:47:29 [INFO]: Shutting down Flowise...
+2024-08-02 23:37:38 [INFO]: Starting Flowise...
+2024-08-02 23:37:38 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-02 23:38:00 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-02 23:38:00 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-03 02:43:57 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 02:43:57 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 02:43:57 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-08-03 02:56:28 [INFO]: Shutting down Flowise...
+2024-08-03 11:10:18 [INFO]: Starting Flowise...
+2024-08-03 11:10:18 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-03 11:10:27 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-03 11:10:27 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-03 12:06:16 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-08-03 12:06:16 [INFO]: [server]: Request originated from undefined
+2024-08-03 12:06:16 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-08-03 12:06:34 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 12:06:34 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 12:06:34 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-08-03 12:59:05 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 12:59:05 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 12:59:28 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 12:59:28 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 12:59:45 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 12:59:45 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 14:56:57 [INFO]: Starting Flowise...
+2024-08-03 14:56:57 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-03 14:57:16 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-03 14:57:16 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-08-03 15:02:52 [INFO]: Shutting down Flowise...
+2024-08-03 15:03:47 [INFO]: Starting Flowise...
+2024-08-03 15:03:47 [INFO]: 📦 [server]: Data Source is initializing...
+2024-08-03 15:03:51 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-08-03 15:03:51 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-08-03 15:24:40 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-08-03 15:24:40 [INFO]: [server]: Request originated from undefined
+2024-08-03 15:24:41 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-08-03 15:25:11 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 15:25:11 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 15:25:11 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-08-03 15:25:29 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-08-03 15:25:29 [INFO]: [server]: Request originated from http://localhost:3001
+2024-08-03 22:37:35 [INFO]: Shutting down Flowise...
+2024-09-04 23:59:35 [INFO]: Starting Flowise...
+2024-09-04 23:59:35 [INFO]: 📦 [server]: Data Source is initializing...
+2024-09-04 23:59:42 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-09-04 23:59:42 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-09-05 00:00:01 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-05 00:00:59 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-05 00:02:40 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-05 00:11:46 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-08 16:11:21 [INFO]: Shutting down Flowise...
+2024-09-12 22:28:47 [INFO]: Starting Flowise...
+2024-09-12 22:28:47 [INFO]: 📦 [server]: Data Source is initializing...
+2024-09-12 22:29:06 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-09-12 22:29:06 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-09-12 22:29:34 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:29:58 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:29:58 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-09-12 22:29:59 [ERROR]: [server]: Error: Error: 401 Incorrect API key provided: sk-proj-********************************************MbXc. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: Error: 401 Incorrect API key provided: sk-proj-********************************************MbXc. You can find your API key at https://platform.openai.com/account/api-keys.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-12 22:31:10 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:31:37 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-12 22:32:25 [INFO]: ⬆️ POST /api/v1/credentials
+2024-09-12 22:32:28 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-12 22:32:34 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:33:02 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:33:40 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:34:32 [ERROR]: [server]: Error: Error: The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_0f4e2ed934c644c3e236c47e5d5407e1 in your email.)
+Error: Error: The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_0f4e2ed934c644c3e236c47e5d5407e1 in your email.)
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-12 22:36:15 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:38:33 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-12 22:38:38 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:38:55 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:53:32 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:53:32 [INFO]: [server]: Request originated from undefined
+2024-09-12 22:55:11 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:55:11 [INFO]: [server]: Request originated from undefined
+2024-09-12 22:57:16 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:57:16 [INFO]: [server]: Request originated from undefined
+2024-09-12 22:58:05 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:58:05 [INFO]: [server]: Request originated from undefined
+2024-09-12 22:59:04 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:59:07 [INFO]: 🖊 PUT /api/v1/chatflows/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:59:07 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 updated inSync=false in ChatflowPool
+2024-09-12 22:59:12 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 22:59:25 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 22:59:25 [INFO]: [server]: Chatflow 96ab0264-08bd-4d41-afb2-8356e520de58 added into ChatflowPool
+2024-09-12 22:59:53 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-12 22:59:59 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 23:00:32 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 23:00:43 [INFO]: ❌ DELETE /api/v1/chatmessage/96ab0264-08bd-4d41-afb2-8356e520de58?chatId=bd36ac0f-185c-4ecf-acd3-75262fccd729&chatType=INTERNAL
+2024-09-12 23:00:43 [INFO]: Clearing OpenAI Thread thread_tyOGpCCK18jbNOEBRH7OSVL8
+2024-09-12 23:00:44 [INFO]: Successfully cleared OpenAI Thread thread_tyOGpCCK18jbNOEBRH7OSVL8
+2024-09-12 23:00:50 [INFO]: ⬆️ POST /api/v1/internal-prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-12 23:00:57 [ERROR]: [server]: Error: Error: 404 No thread found with id 'thread_tyOGpCCK18jbNOEBRH7OSVL8'.
+Error: Error: 404 No thread found with id 'thread_tyOGpCCK18jbNOEBRH7OSVL8'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-12 23:01:12 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-12 23:01:20 [INFO]: ❌ DELETE /api/v1/chatflows/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-13 20:39:06 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-13 20:39:26 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-09-13 20:40:03 [INFO]: ⬆️ POST /api/v1/chatflows
+2024-09-13 20:40:19 [INFO]: ⬆️ POST /api/v1/internal-prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:40:19 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-09-13 20:41:11 [INFO]: ⬆️ POST /api/v1/internal-prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:41:39 [INFO]: ⬆️ POST /api/v1/internal-prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:42:33 [INFO]: 🖊 PUT /api/v1/chatflows/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:42:33 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d updated inSync=false in ChatflowPool
+2024-09-13 20:43:07 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-13 20:43:08 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-13 20:43:50 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-09-13 20:44:06 [INFO]: 🖊 PUT /api/v1/chatflows/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:44:06 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d updated inSync=false in ChatflowPool
+2024-09-13 20:45:21 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:45:21 [INFO]: [server]: Request originated from undefined
+2024-09-13 20:45:21 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-09-13 20:46:33 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:46:33 [INFO]: [server]: Request originated from undefined
+2024-09-13 20:50:22 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:50:22 [INFO]: [server]: Request originated from undefined
+2024-09-13 20:55:21 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:55:21 [INFO]: [server]: Request originated from undefined
+2024-09-13 20:55:59 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:55:59 [INFO]: [server]: Request originated from undefined
+2024-09-13 20:58:16 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 20:58:16 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:02:00 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:02:00 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:03:13 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:03:13 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:03:37 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:03:37 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:05:06 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:05:06 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:06:26 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:06:26 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:06:40 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:06:40 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:09:08 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:09:08 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:10:45 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:10:45 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:22:02 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 21:22:02 [INFO]: [server]: Request originated from undefined
+2024-09-13 21:25:16 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-13 21:31:36 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-09-13 22:20:21 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:20:21 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:20:52 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:20:52 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:49:18 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:49:18 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:53:29 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:53:29 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:53:38 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:53:38 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:54:41 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:54:41 [INFO]: [server]: Request originated from undefined
+2024-09-13 22:55:08 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 22:55:08 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:24:29 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:24:29 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:24:51 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:24:51 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:42:13 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:42:13 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:42:31 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:42:31 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:46:59 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:46:59 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:47:12 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:47:12 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:58:47 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:58:47 [INFO]: [server]: Request originated from undefined
+2024-09-13 23:59:03 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-13 23:59:03 [INFO]: [server]: Request originated from undefined
+2024-09-14 08:17:26 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 08:17:26 [INFO]: [server]: Request originated from undefined
+2024-09-14 08:17:31 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 08:17:31 [INFO]: [server]: Request originated from undefined
+2024-09-14 08:17:46 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 08:17:46 [INFO]: [server]: Request originated from undefined
+2024-09-14 09:21:06 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 09:21:06 [INFO]: [server]: Request originated from undefined
+2024-09-14 09:21:19 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 09:21:19 [INFO]: [server]: Request originated from undefined
+2024-09-14 11:56:55 [INFO]: Starting Flowise...
+2024-09-14 11:56:55 [INFO]: 📦 [server]: Data Source is initializing...
+2024-09-14 11:57:14 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-09-14 11:57:14 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-09-14 11:58:35 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 11:58:35 [INFO]: [server]: Request originated from undefined
+2024-09-14 11:58:35 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-09-14 11:58:47 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 11:58:47 [INFO]: [server]: Request originated from undefined
+2024-09-14 11:58:54 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-09-14 11:58:54 [INFO]: [server]: Request originated from undefined
+2024-09-14 14:37:14 [INFO]: Starting Flowise...
+2024-09-14 14:37:14 [INFO]: 📦 [server]: Data Source is initializing...
+2024-09-14 14:37:20 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-09-14 20:57:05 [INFO]: Starting Flowise...
+2024-09-14 20:57:05 [INFO]: 📦 [server]: Data Source is initializing...
+2024-09-14 20:57:12 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-09-14 20:57:12 [INFO]: ⚡️ [server]: Flowise Server is listening at :3000
+2024-10-17 11:38:06 [INFO]: ⬆️ POST /api/v1/assistants
+2024-10-17 11:38:21 [INFO]: ⬆️ POST /api/v1/assistants
+2024-10-17 11:38:28 [INFO]: ⬆️ POST /api/v1/assistants
+2024-10-17 11:39:53 [INFO]: ❌ DELETE /api/v1/apikey/ada9c90bda4b488bbe99257a7c7b0383
+2024-10-17 11:40:02 [INFO]: ❌ DELETE /api/v1/credentials/68f1e485-c11d-4e3d-8a69-7369422895e2
+2024-10-17 11:40:12 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 11:40:17 [INFO]: ⬆️ POST /api/v1/internal-prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-17 11:40:17 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-10-17 11:40:17 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 11:41:38 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-10-17 11:49:46 [INFO]: ⬆️ POST /api/v1/credentials
+2024-10-17 11:49:52 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-10-17 12:47:23 [INFO]: ⬆️ POST /api/v1/assistants
+2024-10-17 12:47:34 [INFO]: 🖊 PUT /api/v1/assistants/a0230ac4-6245-45a6-91e4-1962ad4a8894
+2024-10-17 12:47:47 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 12:49:54 [INFO]: ⬆️ POST /api/v1/chatflows
+2024-10-17 12:50:22 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 12:50:22 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 12:50:37 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 12:51:25 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 12:51:35 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-10-17 12:52:05 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 12:52:11 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 12:52:12 [ERROR]: [server]: Error: Error: 404 No thread found with id '7cc595fa-f563-48d1-863a-133673cb4f25'.
+Error: Error: 404 No thread found with id '7cc595fa-f563-48d1-863a-133673cb4f25'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 12:52:21 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 12:53:21 [INFO]: 🖊 PUT /api/v1/credentials/16ddf7fa-75a6-4a1c-9cd2-f8e58e3e9b21
+2024-10-17 12:53:28 [INFO]: 🖊 PUT /api/v1/assistants/a0230ac4-6245-45a6-91e4-1962ad4a8894
+2024-10-17 12:53:32 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 12:53:41 [INFO]: ❌ DELETE /api/v1/chatmessage/5b71edcb-b367-4354-b92d-2ac1f1a163d9?chatId=7cc595fa-f563-48d1-863a-133673cb4f25&chatType=INTERNAL
+2024-10-17 12:53:41 [INFO]: Clearing OpenAI Thread 7cc595fa-f563-48d1-863a-133673cb4f25
+2024-10-17 12:53:41 [ERROR]: Error clearing OpenAI Thread 7cc595fa-f563-48d1-863a-133673cb4f25
+2024-10-17 12:53:46 [INFO]: 🖊 PUT /api/v1/chatflows/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 12:53:46 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 updated inSync=false in ChatflowPool
+2024-10-17 12:53:51 [INFO]: ❌ DELETE /api/v1/chatmessage/5b71edcb-b367-4354-b92d-2ac1f1a163d9?chatId=8e70259f-1462-4b72-89c6-eb6bc847165d&chatType=INTERNAL
+2024-10-17 12:53:51 [INFO]: Clearing OpenAI Thread 8e70259f-1462-4b72-89c6-eb6bc847165d
+2024-10-17 12:53:51 [ERROR]: Error clearing OpenAI Thread 8e70259f-1462-4b72-89c6-eb6bc847165d
+2024-10-17 12:54:02 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 12:54:02 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 13:04:42 [INFO]: 🖊 PUT /api/v1/credentials/16ddf7fa-75a6-4a1c-9cd2-f8e58e3e9b21
+2024-10-17 13:04:45 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 13:04:57 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:04:58 [ERROR]: [server]: Error: Error: 404 No assistant found with id 'asst_qkoLyvg64mMjBK6cnEN00RF7'.
+Error: Error: 404 No assistant found with id 'asst_qkoLyvg64mMjBK6cnEN00RF7'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 13:05:15 [INFO]: ❌ DELETE /api/v1/assistants/a0230ac4-6245-45a6-91e4-1962ad4a8894?isDeleteBoth=true
+2024-10-17 13:05:35 [INFO]: ⬆️ POST /api/v1/assistants
+2024-10-17 13:05:40 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 13:05:48 [INFO]: 🖊 PUT /api/v1/chatflows/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:05:48 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 updated inSync=false in ChatflowPool
+2024-10-17 13:05:52 [INFO]: ❌ DELETE /api/v1/chatmessage/5b71edcb-b367-4354-b92d-2ac1f1a163d9?chatId=e0f2f213-3cc4-473b-967e-cfe9c76cb1fd&chatType=INTERNAL
+2024-10-17 13:05:52 [INFO]: Clearing OpenAI Thread e0f2f213-3cc4-473b-967e-cfe9c76cb1fd
+2024-10-17 13:05:52 [ERROR]: Error clearing OpenAI Thread e0f2f213-3cc4-473b-967e-cfe9c76cb1fd
+2024-10-17 13:06:01 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:06:01 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 13:06:58 [INFO]: 🖊 PUT /api/v1/assistants/d883faf3-dc31-47a8-940b-939a13234117
+2024-10-17 13:07:07 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-17 13:07:30 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:07:53 [INFO]: ⬆️ POST /api/v1/internal-prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:08:37 [INFO]: 🖊 PUT /api/v1/chatflows/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:08:37 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 updated inSync=false in ChatflowPool
+2024-10-17 13:08:53 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:08:53 [INFO]: [server]: Request originated from http://localhost:3000
+2024-10-17 13:08:53 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 13:09:48 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:09:48 [INFO]: [server]: Request originated from http://localhost:3000
+2024-10-17 13:09:48 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 13:22:51 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:22:51 [INFO]: [server]: Request originated from undefined
+2024-10-17 13:22:51 [INFO]: [server]: Chatflow 5b71edcb-b367-4354-b92d-2ac1f1a163d9 added into ChatflowPool
+2024-10-17 13:23:13 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:23:13 [INFO]: [server]: Request originated from undefined
+2024-10-17 13:23:21 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:23:21 [INFO]: [server]: Request originated from undefined
+2024-10-17 13:35:33 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 13:35:33 [INFO]: [server]: Request originated from undefined
+2024-10-17 14:17:14 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 14:17:14 [INFO]: [server]: Request originated from undefined
+2024-10-17 14:17:24 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 14:17:24 [INFO]: [server]: Request originated from undefined
+2024-10-17 14:17:47 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 14:17:47 [INFO]: [server]: Request originated from undefined
+2024-10-17 14:19:05 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 14:19:05 [INFO]: [server]: Request originated from undefined
+2024-10-17 14:19:26 [INFO]: ⬆️ POST /api/v1/prediction/5b71edcb-b367-4354-b92d-2ac1f1a163d9
+2024-10-17 14:19:26 [INFO]: [server]: Request originated from undefined
+2024-10-29 20:04:08 [INFO]: Shutting down Flowise...
+2024-10-29 20:22:30 [INFO]: Starting Flowise...
+2024-10-29 20:22:30 [INFO]: 📦 [server]: Data Source is initializing...
+2024-10-29 20:23:11 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-10-29 20:23:11 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-10-29 20:23:55 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 20:23:55 [INFO]: [server]: Request originated from undefined
+2024-10-29 20:23:55 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-10-29 20:23:56 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:23:59 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 20:23:59 [INFO]: [server]: Request originated from undefined
+2024-10-29 20:23:59 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:24:11 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 20:24:11 [INFO]: [server]: Request originated from undefined
+2024-10-29 20:24:11 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:25:07 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 20:25:07 [INFO]: [server]: Request originated from undefined
+2024-10-29 20:25:07 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:25:43 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-29 20:25:53 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-10-29 20:26:01 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-10-29 20:26:08 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 20:26:08 [INFO]: [server]: Request originated from undefined
+2024-10-29 21:14:46 [INFO]: Starting Flowise...
+2024-10-29 21:14:46 [INFO]: 📦 [server]: Data Source is initializing...
+2024-10-29 21:14:59 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-10-29 21:14:59 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-10-29 21:41:53 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-29 21:44:19 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 21:44:19 [INFO]: [server]: Request originated from undefined
+2024-10-29 21:44:19 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-10-29 22:08:39 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-29 22:32:43 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-29 22:32:43 [INFO]: [server]: Request originated from undefined
+2024-10-29 22:32:43 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-10-29 22:33:04 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-10-29 22:33:56 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-10-29 22:34:22 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-29 22:34:31 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-29 22:39:54 [INFO]: ⬆️ POST /api/v1/prediction/96ab0264-08bd-4d41-afb2-8356e520de58
+2024-10-29 22:46:19 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:46:19 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:47:58 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:47:58 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:48:24 [INFO]: ⬆️ POST /api/v1/internal-prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:48:53 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:48:53 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:49:48 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:49:48 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:52:31 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:52:31 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:53:31 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:53:31 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:56:02 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:56:02 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:57:06 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:57:06 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:58:18 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:58:18 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 22:59:27 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 22:59:27 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 23:00:18 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 23:00:18 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 23:05:32 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-29 23:05:32 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-29 23:13:36 [INFO]: Shutting down Flowise...
+2024-10-30 22:05:40 [INFO]: Starting Flowise...
+2024-10-30 22:05:40 [INFO]: 📦 [server]: Data Source is initializing...
+2024-10-30 22:06:03 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-10-30 22:06:03 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-10-30 22:08:10 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:08:10 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-30 22:08:10 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-10-30 22:08:48 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-30 22:09:40 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:09:40 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:10:16 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:10:16 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-30 22:10:33 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:10:33 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:13:20 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:13:20 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:14:53 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:14:53 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-30 22:15:43 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:15:43 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:20:33 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:20:33 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:22:26 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:22:26 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:24:37 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-10-30 22:32:53 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:32:53 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-30 22:33:03 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 22:33:03 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-30 22:35:37 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:35:37 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:35:37 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-10-30 22:38:50 [INFO]: 🖊 PUT /api/v1/assistants/9f5c1a8b-9d2c-4f89-b9b0-1bf2b3e8ec90
+2024-10-30 22:39:13 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:39:13 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:41:33 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:41:33 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:48:49 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:48:49 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:51:58 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:51:58 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:54:08 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:54:08 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:56:17 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:56:17 [INFO]: [server]: Request originated from undefined
+2024-10-30 22:57:17 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-30 22:57:17 [INFO]: [server]: Request originated from undefined
+2024-10-30 23:06:09 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-30 23:06:09 [INFO]: [server]: Request originated from http://localhost:3001
+2024-10-31 14:25:14 [INFO]: Starting Flowise...
+2024-10-31 14:25:14 [INFO]: 📦 [server]: Data Source is initializing...
+2024-10-31 14:25:22 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-10-31 14:25:22 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-10-31 14:35:03 [INFO]: ⬆️ POST /api/v1/prediction/83038015-e890-47bd-aabe-992a4195cb4a
+2024-10-31 14:35:03 [INFO]: [server]: Request originated from undefined
+2024-10-31 14:35:03 [INFO]: [server]: Chatflow 83038015-e890-47bd-aabe-992a4195cb4a added into ChatflowPool
+2024-10-31 14:35:39 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-31 14:35:39 [INFO]: [server]: Request originated from http://localhost:3000
+2024-10-31 14:35:39 [INFO]: [server]: Chatflow 1c3c6956-2a5a-492d-ad6d-96546d5d940d added into ChatflowPool
+2024-10-31 14:36:09 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
+2024-10-31 14:36:09 [INFO]: [server]: Request originated from http://localhost:3000
+2024-10-31 14:36:51 [INFO]: Shutting down Flowise...

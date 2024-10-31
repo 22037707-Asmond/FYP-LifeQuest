@@ -25,22 +25,22 @@ import {
     ExpansionPanel
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import ChatBot from './ChatBot';
 
 const ChatPage = () => {
-    const { account, profilePictureUrl } = useAccount();
+    const { account } = useAccount();
     const { agentId } = useParams();
     const location = useLocation();
     const agentName = location.state?.agentUserName || "Agent";
     const [privateChats, setPrivateChats] = useState(new Map());
-    const [publicChats, setPublicChats] = useState([]);
-    const [tab, setTab] = useState(agentId ? agentName : 'CHATROOM');
+    const [tab, setTab] = useState(agentId ? agentName : '');
     const [userData, setUserData] = useState({
         username: '',
         receivername: agentName,
         message: ''
     });
     const [agentNames, setAgentNames] = useState(new Map());
-    const [agentPictures, setAgentPicture] = useState(new Map());
+    const [agentPictures, setAgentPictures] = useState(new Map());
 
     const stompClientRef = useRef(null);
 
@@ -53,14 +53,9 @@ const ChatPage = () => {
 
     useEffect(() => {
         if (account) {
-            const savedChats = JSON.parse(localStorage.getItem(`privateChats_${account.username}`));
-            if (savedChats) {
-                setPrivateChats(new Map(savedChats));
-            }
-
-            const savedPublicChats = JSON.parse(localStorage.getItem(`publicChats_${account.username}`));
-            if (savedPublicChats) {
-                setPublicChats(savedPublicChats);
+            const savedPrivateChats = JSON.parse(localStorage.getItem(`privateChats_${account.username}`));
+            if (savedPrivateChats) {
+                setPrivateChats(new Map(savedPrivateChats));
             }
         }
     }, [account]);
@@ -70,12 +65,6 @@ const ChatPage = () => {
             localStorage.setItem(`privateChats_${account.username}`, JSON.stringify([...privateChats]));
         }
     }, [privateChats, account]);
-
-    useEffect(() => {
-        if (account) {
-            localStorage.setItem(`publicChats_${account.username}`, JSON.stringify(publicChats));
-        }
-    }, [publicChats, account]);
 
     useEffect(() => {
         const fetchAgentNames = async () => {
@@ -94,20 +83,19 @@ const ChatPage = () => {
     }, [privateChats]);
 
     useEffect(() => {
-        const fetchAgentPicture = async () => {
+        const fetchAgentPictures = async () => {
             const newAgentPictures = new Map();
             for (let username of privateChats.keys()) {
                 try {
                     const pictureUrl = await getPictureUrl(username);
                     newAgentPictures.set(username, pictureUrl);
-                    console.log(`Picture URL for ${username}: ${pictureUrl}`); // Debugging
                 } catch (error) {
                     console.error(`Failed to fetch picture for user ${username}:`, error);
                 }
             }
-            setAgentPicture(newAgentPictures);
+            setAgentPictures(newAgentPictures);
         };
-        fetchAgentPicture();
+        fetchAgentPictures();
     }, [privateChats]);
 
     const connect = (username) => {
@@ -119,7 +107,6 @@ const ChatPage = () => {
 
     const onConnected = (username, stompClient) => {
         console.log('Connected to WebSocket');
-        stompClient.subscribe('/chatroom/public', onMessageReceived);
         stompClient.subscribe(`/user/${username}/private`, onPrivateMessageReceived);
         userJoin(username);
     };
@@ -133,13 +120,6 @@ const ChatPage = () => {
         stompClientRef.current.send("/app/message", {}, JSON.stringify(chatMessage));
     };
 
-    const onMessageReceived = (payload) => {
-        const payloadData = JSON.parse(payload.body);
-        if (payloadData.content !== "JOIN") {
-            setPublicChats((prevPublicChats) => [...prevPublicChats, payloadData]);
-        }
-    };
-
     const onPrivateMessageReceived = (payload) => {
         const payloadData = JSON.parse(payload.body);
         setPrivateChats((prevPrivateChats) => {
@@ -148,6 +128,9 @@ const ChatPage = () => {
                 updatedChats.get(payloadData.sender).push(payloadData);
             } else {
                 updatedChats.set(payloadData.sender, [payloadData]);
+            }
+            if (account) {
+                localStorage.setItem(`privateChats_${account.username}`, JSON.stringify([...updatedChats]));
             }
             return updatedChats;
         });
@@ -158,22 +141,7 @@ const ChatPage = () => {
     };
 
     const handleMessage = (value) => {
-        console.log('Input value:', value);
         setUserData((prevUserData) => ({ ...prevUserData, message: value }));
-    };
-
-    const sendValue = () => {
-        if (stompClientRef.current) {
-            const chatMessage = {
-                sender: userData.username,
-                content: userData.message,
-                timestamp: new Date().toISOString()
-            };
-            stompClientRef.current.send("/app/message", {}, JSON.stringify(chatMessage));
-            setUserData((prevUserData) => ({ ...prevUserData, message: "" }));
-        } else {
-            console.error('stompClient is not initialized');
-        }
     };
 
     const sendPrivateValue = () => {
@@ -195,18 +163,21 @@ const ChatPage = () => {
             });
             stompClientRef.current.send("/app/private-message", {}, JSON.stringify(chatMessage));
             setUserData((prevUserData) => ({ ...prevUserData, message: "" }));
-        } else {
-            console.error('stompClient is not initialized');
         }
     };
 
+    const handleTabChange = (newTab) => {
+        setTab(newTab);
+        setUserData((prevUserData) => ({
+            ...prevUserData,
+            receivername: newTab
+        }));
+    };
 
     const fileInputRef = useRef(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        console.log('Selected file:', file);
-        // Handle the file upload or processing here
     };
 
     const handleAttachClick = () => {
@@ -214,6 +185,9 @@ const ChatPage = () => {
             fileInputRef.current.click();
         }
     };
+
+    const currentAvatar = agentPictures.get(tab);
+    const currentAgentName = agentNames.get(tab) || tab;
 
     return (
         <>
@@ -233,14 +207,12 @@ const ChatPage = () => {
                 <Sidebar position="left" style={{ width: '300px' }}>
                     <Search placeholder="Search..." />
                     <ConversationList>
-                        <Conversation name="Chatroom" active={tab === "CHATROOM"} onClick={() => setTab("CHATROOM")}>
-                            <Avatar src={profilePictureUrl} status="available" />
-                        </Conversation>
                         {[...privateChats.keys()].map((name, index) => (
                             <Conversation
                                 key={index}
                                 name={agentNames.get(name) || name}
-                                active={tab === name} onClick={() => setTab(name)}
+                                active={tab === name}
+                                onClick={() => handleTabChange(name)}
                                 style={{ fontSize: '20px' }}
                             >
                                 <Avatar src={agentPictures.get(name)} status="available" style={{ width: '80px', height: '80px', objectFit: 'contain' }} />
@@ -249,39 +221,39 @@ const ChatPage = () => {
                     </ConversationList>
                 </Sidebar>
                 <ChatContainer>
-                    <ConversationHeader>
-                        <ConversationHeader.Back />
-                        <Avatar src={profilePictureUrl} name={tab} />
-                        <ConversationHeader.Content userName={tab} />
-                        <ConversationHeader.Actions>
-                            <VoiceCallButton />
-                            <VideoCallButton />
-                            <InfoButton />
-                        </ConversationHeader.Actions>
-                    </ConversationHeader>
+                    {tab && (
+                        <ConversationHeader>
+                            <ConversationHeader.Back />
+                            <Avatar src={currentAvatar} name={currentAgentName} />
+                            <ConversationHeader.Content userName={currentAgentName} />
+                            <ConversationHeader.Actions>
+                                <VoiceCallButton />
+                                <VideoCallButton />
+                                <InfoButton />
+                            </ConversationHeader.Actions>
+                        </ConversationHeader>
+                    )}
                     <MessageList>
                         <MessageSeparator content="Today" />
-                        {(tab === "CHATROOM" ? publicChats : privateChats.get(tab) || []).map((chat, index) => (
-                            (chat.sender === userData.username || chat.receiver === userData.username) && (
-                                <Message
-                                    key={index}
-                                    model={{
-                                        direction: chat.sender === userData.username ? 'outgoing' : 'incoming',
-                                        message: chat.content,
-                                        position: 'single',
-                                        sender: chat.sender,
-                                        sentTime: new Date(chat.timestamp).toLocaleTimeString()
-                                    }}
-                                    style={{ fontSize: '30px' }}
-                                />
-                            )
+                        {(privateChats.get(tab) || []).map((chat, index) => (
+                            <Message
+                                key={index}
+                                model={{
+                                    direction: chat.sender === userData.username ? 'outgoing' : 'incoming',
+                                    message: chat.content,
+                                    position: 'single',
+                                    sender: chat.sender,
+                                    sentTime: new Date(chat.timestamp).toLocaleTimeString()
+                                }}
+                                style={{ fontSize: '30px' }}
+                            />
                         ))}
                     </MessageList>
                     <MessageInput
                         placeholder="Type message here"
                         value={userData.message}
                         onChange={handleMessage}
-                        onSend={tab === "CHATROOM" ? sendValue : sendPrivateValue}
+                        onSend={sendPrivateValue}
                         onAttachClick={handleAttachClick}
                     />
                     <input
@@ -292,6 +264,7 @@ const ChatPage = () => {
                     />
                 </ChatContainer>
             </MainContainer>
+            <ChatBot />
         </>
     );
 };

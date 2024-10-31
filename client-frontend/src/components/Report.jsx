@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Page, Text, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, Text, Document, StyleSheet, Image } from '@react-pdf/renderer';
 import { ReportStorage } from '../services/LocalStorage';
 
 // Define styles
@@ -7,18 +7,13 @@ const styles = StyleSheet.create({
   page: {
     padding: 30,
   },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-  },
   header: {
     fontSize: 18,
     marginBottom: 10,
     fontWeight: 'bold',
   },
   subHeader: {
-    fontSize: 14,
+    fontSize: 16,
     marginBottom: 5,
     fontWeight: 'bold',
   },
@@ -39,52 +34,76 @@ const styles = StyleSheet.create({
   },
 });
 
+// Function to map markdown to styled components
+const formatReportContent = (reportContent) => {
+  const lines = reportContent.split('\n');
+  return lines.map((line, index) => {
+    // Handle headers
+    if (line.startsWith('### ')) {
+      return <Text key={index} style={styles.header}>{line.replace('### ', '')}</Text>; // H3
+    }
+    if (line.startsWith('#### ')) {
+      return <Text key={index} style={styles.subHeader}>{line.replace('#### ', '')}</Text>; // H4
+    }
+    // Handle bullet points
+    if (line.startsWith('- ')) {
+      return (
+        <Text key={index} style={styles.bulletPoint}>
+          <Text style={styles.bullet}>•</Text> {/* Custom bullet */}
+          <Text style={styles.bulletText}>{line.replace('- ', '').trim()}</Text>
+        </Text>
+      );
+    }
+    // Handle numbered list
+    if (line.match(/^\d+\./)) {
+      return (
+        <Text key={index} style={styles.bulletPoint}>
+          <Text style={styles.bullet}>{line.match(/^\d+\./)[0]}</Text>
+          <Text style={styles.bulletText}>{line.replace(/^\d+\./, '').trim()}</Text>
+        </Text>
+      );
+    }
+    // Regular text
+    return <Text key={index} style={styles.text}>{line}</Text>;
+  });
+};
+
 export default function Report() {
   const [message, setMessage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchReport = async () => {
-      const report = await ReportStorage.getReport();
-      setMessage(report);
+      try {
+        const report = await ReportStorage.getReport();
+        setMessage(report);
+      } catch (error) {
+        console.error('Error fetching report:', error);
+        setMessage('Error loading report.');
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchReport();
   }, []);
 
-  if (!message) {
+  if (loading) {
     return <Text>Loading...</Text>;
   }
 
-  // Remove markdown formatting and structure content
-  const formattedMessage = message
-    .replace(/### /g, '') // Remove '### ' from headers
-    .replace(/\*\*/g, ''); // Remove '**' from bold text
-
-  const lines = formattedMessage.split('\n');
+  if (!message) {
+    return <Text>Error loading report.</Text>;
+  }
 
   return (
     <Document>
       <Page style={styles.page}>
-        {lines.map((line, index) => {
-          if (line.startsWith('Client Information Summary:')) {
-            return <Text key={index} style={styles.header}>{line}</Text>;
-          }
-          if (line.startsWith('Explanation of Insurance Premium Prediction')) {
-            return <Text key={index} style={styles.subHeader}>{line}</Text>;
-          }
-          if (line.startsWith('Recommendations for Additional Prudential Singapore Products')) {
-            return <Text key={index} style={styles.subHeader}>{line}</Text>;
-          }
-          if (line.match(/^\d+\./)) {
-            return (
-              <Text key={index} style={styles.bulletPoint}>
-                <Text style={styles.bullet}>{line.match(/^\d+\./)[0]}</Text>
-                <Text style={styles.bulletText}>{line.replace(/^\d+\./, '').trim()}</Text>
-              </Text>
-            );
-          }
-          return <Text key={index} style={styles.text}>{line}</Text>;
-        })}
+        <Image
+          src="/images/lifequest.png" // Ensure the image path is correct
+          style={{ width: 50, height: 50, marginBottom: 10 }}
+        />
+        {formatReportContent(message)}
       </Page>
     </Document>
   );

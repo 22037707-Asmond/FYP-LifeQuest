@@ -1,0 +1,154 @@
+2024-07-23 18:37:48 [ERROR]: [server]: Error: Error: 400 Invalid type for 'content': expected one of a string or array of objects, but got an object instead.
+Error: Error: 400 Invalid type for 'content': expected one of a string or array of objects, but got an object instead.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:24:06 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:26:36 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:30:59 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:31:23 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:33:25 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:45:44 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:47:11 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-07-24 20:47:15 [ERROR]: [server]: Error: Error: 400 Missing required parameter: 'content'.
+Error: Error: 400 Missing required parameter: 'content'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-09-12 22:29:59 [ERROR]: [server]: Error: Error: 401 Incorrect API key provided: sk-proj-********************************************MbXc. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: Error: 401 Incorrect API key provided: sk-proj-********************************************MbXc. You can find your API key at https://platform.openai.com/account/api-keys.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-12 22:34:32 [ERROR]: [server]: Error: Error: The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_0f4e2ed934c644c3e236c47e5d5407e1 in your email.)
+Error: Error: The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request ID req_0f4e2ed934c644c3e236c47e5d5407e1 in your email.)
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-12 23:00:57 [ERROR]: [server]: Error: Error: 404 No thread found with id 'thread_tyOGpCCK18jbNOEBRH7OSVL8'.
+Error: Error: 404 No thread found with id 'thread_tyOGpCCK18jbNOEBRH7OSVL8'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-09-14 14:37:20 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Object.start (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\index.js:200:12)
+    at async C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:161:17
+    at async Start.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:157:9)
+    at async Start._run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\command.js:80:22)
+    at async Config.runCommand (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\config\config.js:301:25)
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Object.start (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\index.js:200:12)
+    at async C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:161:17
+    at async Start.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:157:9)
+    at async Start._run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\command.js:80:22)
+    at async Config.runCommand (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\config\config.js:301:25)
+2024-09-14 14:37:20 [ERROR]: uncaughtException:  listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Object.start (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\index.js:200:12)
+    at async C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:161:17
+    at async Start.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\commands\start.js:157:9)
+    at async Start._run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\command.js:80:22)
+    at async Config.runCommand (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\@oclif\core\lib\config\config.js:301:25)
+2024-10-17 11:40:17 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 12:52:12 [ERROR]: [server]: Error: Error: 404 No thread found with id '7cc595fa-f563-48d1-863a-133673cb4f25'.
+Error: Error: 404 No thread found with id '7cc595fa-f563-48d1-863a-133673cb4f25'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 12:53:41 [ERROR]: Error clearing OpenAI Thread 7cc595fa-f563-48d1-863a-133673cb4f25
+2024-10-17 12:53:51 [ERROR]: Error clearing OpenAI Thread 8e70259f-1462-4b72-89c6-eb6bc847165d
+2024-10-17 13:04:58 [ERROR]: [server]: Error: Error: 404 No assistant found with id 'asst_qkoLyvg64mMjBK6cnEN00RF7'.
+Error: Error: 404 No assistant found with id 'asst_qkoLyvg64mMjBK6cnEN00RF7'.
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:667:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async createInternalPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\internal-predictions\index.js:7:29)
+2024-10-17 13:05:52 [ERROR]: Error clearing OpenAI Thread e0f2f213-3cc4-473b-967e-cfe9c76cb1fd
+2024-10-29 20:23:56 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:23:59 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:24:11 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)
+2024-10-29 20:25:07 [ERROR]: [server]: Error: OpenAI ApiKey not found
+Error: OpenAI ApiKey not found
+    at OpenAIAssistant_Agents.run (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\node_modules\flowise-components\dist\nodes\agents\OpenAIAssistant\OpenAIAssistant.js:184:19)
+    at async utilBuildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\utils\buildChatflow.js:266:15)
+    at async Object.buildChatflow (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\services\predictions\index.js:9:28)
+    at async createPrediction (C:\Users\22037707\AppData\Roaming\npm\node_modules\flowise\dist\controllers\predictions\index.js:48:33)

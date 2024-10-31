@@ -1,9 +1,9 @@
 import { Box, Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { addInsurance, addInsuranceType, getAllInsuranceTypes } from './InsuranceAPI';
+import { addInsurance, addInsuranceType, getAllInsuranceTypes, getInsuranceType } from './InsuranceAPI';
 
 const AddInsurance = () => {
-  const [formType, setFormType] = useState('insurance');
+    const [formType, setFormType] = useState('insurance');
     const [formData, setFormData] = useState({ name: '', description: '', premium: '', insuranceType: '' });
     const [insuranceTypes, setInsuranceTypes] = useState([]);
 
@@ -38,15 +38,19 @@ const AddInsurance = () => {
                         id: formData.insuranceType
                     }
                 };
-                const response = await addInsurance(JSON.stringify(insuranceData));
-                console.log('Insurance created:', response);
+                await addInsurance(insuranceData); // Send the data as JSON
+
+                // Fetch the name of the insurance type
+                const insuranceType = await getInsuranceType(formData.insuranceType);
+
+                alert(`Insurance created\nname: ${insuranceData.name}\ndescription: ${insuranceData.description}\npremium: ${insuranceData.premium}\ninsurance type: ${insuranceType.name}`);
             } else {
                 const insuranceTypeData = {
                     name: formData.name,
                     description: formData.description
                 };
-                const response = await addInsuranceType(JSON.stringify(insuranceTypeData));
-                console.log('Insurance type created:', response);
+                await addInsuranceType(insuranceTypeData); // Send the data as JSON
+                alert(`Insurance type created\nname: ${insuranceTypeData.name}\ndescription: ${insuranceTypeData.description}`); // Use backticks
             }
         } catch (error) {
             console.error(`Error creating ${formType}:`, error);

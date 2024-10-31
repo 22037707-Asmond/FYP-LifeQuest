@@ -1,17 +1,39 @@
 import { useTheme } from '@mui/material';
 import { ResponsiveBar } from '@nivo/bar';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { tokens } from '../../theme';
+import { getAgentSales } from './lifequestDataAPI';
 
-const BarChart = ({ data }) => {
+const BarChart = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await getAgentSales(); // Fetch data from API
+                setData(result);
+            } catch (error) {
+                setError(error);
+                console.error('Error fetching data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     // Validate data structure
     const isDataValid = data && Array.isArray(data) && data.every(
-        item => item.agent_id !== undefined && item.payment !== undefined
+        item => item.agentName !== undefined && item.totalSales !== undefined
     );
 
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error fetching data: {error.message}</div>;
     if (!isDataValid) {
         console.error('Invalid data structure for BarChart:', data);
         return <div>Invalid data for the chart</div>;
@@ -53,8 +75,8 @@ const BarChart = ({ data }) => {
                     },
                 },
             }}
-            keys={['payment']}
-            indexBy="agent_id"
+            keys={['totalSales']}
+            indexBy="agentName"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
             padding={0.3}
             groupMode="grouped"
@@ -105,7 +127,7 @@ const BarChart = ({ data }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Agent ID',
+                legend: 'Agent Name',
                 legendPosition: 'middle',
                 legendOffset: 32,
             }}
@@ -113,7 +135,7 @@ const BarChart = ({ data }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Payment',
+                legend: 'Total Sales',
                 legendPosition: 'middle',
                 legendOffset: -40,
             }}

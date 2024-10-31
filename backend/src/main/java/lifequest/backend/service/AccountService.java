@@ -59,14 +59,13 @@ public class AccountService {
         }
     }
 
-      public Account updateAccount(Long id, AccountRequest updatedAccount) {
+     public Account updateAccount(Long id, AccountRequest updatedAccount) {
         Account account = accountRepository.findById(id).orElse(null);
         account.setFirstName(updatedAccount.getFirstName());
         account.setLastName(updatedAccount.getLastName());
         account.setUsername(updatedAccount.getUsername());
         account.setEmail(updatedAccount.getEmail());
+        account.setPassword(updatedAccount.getPassword());
         return accountRepository.save(account);
     } 
-
-    
 }

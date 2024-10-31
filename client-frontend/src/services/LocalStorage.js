@@ -18,6 +18,22 @@ export const LocalStorage = {
     }
 };
 
+export const pwdStorage = {
+    setPwd: (pwd) => {
+        window.localStorage.setItem('pwd', pwd);
+    },
+    getPwd: async () => {
+        const pwdData = window.localStorage.getItem('pwd');
+        if (pwdData) {
+            return pwdData;
+        }
+        return null;
+    },
+    clearPwd: () => {
+        window.localStorage.removeItem('pwd');
+    }
+};
+
 export const ReportStorage = {
     setReport: (report) => {
         window.localStorage.setItem('report', JSON.stringify(report));

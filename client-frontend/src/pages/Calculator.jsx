@@ -168,6 +168,7 @@ export default function Calculator() {
                     >
                         {loading ? <CircularProgress size={24} /> : 'Calculate'} {/* Show loading spinner */}
                     </Button>
+                    
 
                     {prediction !== null && (
                         <Typography variant="h6" sx={{ mt: 2 }}>

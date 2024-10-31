@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import HomepageHeader from '../homepageHeader';
 import { authUser } from '../../services/AccountsAPI';
-import { LocalStorage } from '../../services/LocalStorage';
+import { LocalStorage, pwdStorage } from '../../services/LocalStorage';
 
 const defaultTheme = createTheme();
 
@@ -25,7 +25,6 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -33,8 +32,9 @@ export default function Login() {
             console.log(userDetails);
            
             if (userDetails) {
-                LocalStorage.setAccount(userDetails); // Store user details in localStorage
-                navigate('/AccountPage');
+                LocalStorage.setAccount(userDetails);
+                pwdStorage.setPwd(password);
+                navigate('/Profile');
             } else {
                 setError('Invalid username or password.');
             }
@@ -63,7 +63,7 @@ export default function Login() {
                         <LoginIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Login to your TeeUp Account
+                        Login to your LifeQuest Account
                     </Typography>
                     {error && (
                         <Typography component="p" variant="body2" color="error">

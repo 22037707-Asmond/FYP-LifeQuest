@@ -10,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ import lombok.Setter;
 public class Users extends Account {
 
     @ManyToMany
+    @JsonManagedReference
     private List<Agent> agents;
 
     private String ic;
@@ -32,17 +34,20 @@ public class Users extends Account {
     private int children;
     private char sex;
 
+   
     @OneToMany(mappedBy = "user")
-    private List<Premium> premiums;
+    private List<Request> requests;
 
     @OneToMany(mappedBy = "user")
     private List<Payment> payments;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Billing> billings;
 
     // avr edit
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Insurance> insurances;
 
 }

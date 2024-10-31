@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 import java.util.List;
 
 import lifequest.backend.entity.*;
@@ -20,6 +21,9 @@ public class UsersService {
 
     @Autowired
     public AgentRepository agentRepository;
+
+    @Autowired
+    public AccountRepository accountRepository;
 
     public Users addAccount(Users account) {
         return usersRepository.save(account);
@@ -60,6 +64,17 @@ public class UsersService {
 
     public Users getUserById(Long id) {
         return usersRepository.findById(id).orElse(null);
+    }
+
+    public String getFullName(String username) {
+        Users account = usersRepository.findByUsername(username);
+        return account.getFirstName() + " " + account.getLastName();
+    }
+
+
+    public Blob getProfilePicture(String username) {
+        Users account = usersRepository.findByUsername(username);
+        return account.getProfilePicture();
     }
 
     

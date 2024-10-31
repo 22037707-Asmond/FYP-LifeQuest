@@ -8,6 +8,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Billing {
     @Id
@@ -19,10 +21,12 @@ public class Billing {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users user;
 
     @ManyToOne
     @JoinColumn(name = "insurance_id")
+    @JsonIgnore
     private Insurance insurance;
 
     // Getters and Setters

@@ -33,3 +33,12 @@ def getReport():
         return jsonify({"error": "Unexpected response format"}), 500
     
     return jsonify({"yearly": prediction_result_str, "monthly": monthly_premium_str, "message": main_message})
+
+
+@predict_bp.route('/predictMonthly', methods=['POST'])
+def getMonthly():
+    data = request.get_json(force=True)
+    prediction_result = math.ceil(get_prediction(data)[0])
+    monthly_premium = math.ceil(prediction_result / 12)
+    
+    return jsonify({"monthly": str(monthly_premium)})

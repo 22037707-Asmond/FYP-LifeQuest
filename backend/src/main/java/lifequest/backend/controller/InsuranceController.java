@@ -33,9 +33,6 @@ public class InsuranceController {
     private InsuranceRepository insuranceRepository;
 
     @Autowired
-    private InsuranceTypeRepository insuranceTypeRepository;
-
-    @Autowired
     private UsersRepository usersRepository;
 
     @Autowired
@@ -44,9 +41,10 @@ public class InsuranceController {
     @Autowired
     private BillingRepository billingRepository;
 
-    // CRUD operations for Insurance
+    @Autowired
+    private InsuranceTypeRepository insuranceTypeRepository;
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Insurance>> getAllInsurances() {
         List<Insurance> insurances = insuranceRepository.findAll();
         insurances.forEach(insurance -> {
@@ -59,37 +57,44 @@ public class InsuranceController {
         return new ResponseEntity<>(insurances, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Insurance> getInsuranceById(@PathVariable Long id) {
-        Insurance insurance = insuranceRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Insurance not found with id: " + id));
-        return ResponseEntity.ok(insurance);
-    }
-
     @PostMapping("/add")
     public ResponseEntity<Insurance> createInsurance(@RequestBody Insurance insurance) {
         return new ResponseEntity<>(insuranceService.addInsurance(insurance), HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Insurance> updateInsurance(@PathVariable Long id, @RequestBody Insurance insuranceDetails) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Insurance> getInsuranceById(@PathVariable Long id) {
         Insurance insurance = insuranceRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Insurance not found with id: " + id));
-
-        insurance.setName(insuranceDetails.getName());
-        insurance.setDescription(insuranceDetails.getDescription());
-        insurance.setInsuranceType(insuranceDetails.getInsuranceType());
-
-        insuranceRepository.save(insurance);
+                .orElseThrow(() -> new ResourceNotFoundException("Insurance not exist with id: " + id));
         return ResponseEntity.ok(insurance);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @PutMapping("/{id}")
+    public ResponseEntity<Insurance> updateInsurance(@PathVariable Long id, @RequestBody Insurance insuranceDetails) {
+        Insurance updateInsurance = insuranceRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Insurance not exist with id: " + id));
+
+        updateInsurance.setName(insuranceDetails.getName());
+        updateInsurance.setDescription(insuranceDetails.getDescription());
+        updateInsurance.setPremium(insuranceDetails.getPremium());
+        updateInsurance.setInsuranceType(insuranceDetails.getInsuranceType());
+
+        insuranceRepository.save(updateInsurance);
+
+        return ResponseEntity.ok(updateInsurance);
+    }
+
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteInsurance(@PathVariable Long id) {
         Insurance insurance = insuranceRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Insurance not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Insurance not exist with id: " + id));
         insuranceRepository.delete(insurance);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Insurance>> getInsurances() {
+        return new ResponseEntity<>(insuranceService.getInsurances(), HttpStatus.OK);
     }
 
     @GetMapping("/user/{userId}")
@@ -101,7 +106,6 @@ public class InsuranceController {
                                              .collect(Collectors.toList());
         return new ResponseEntity<>(insurances, HttpStatus.OK);
     }
-
     // CRUD operations for InsuranceType (Category)
 
     @GetMapping("/Category/all")

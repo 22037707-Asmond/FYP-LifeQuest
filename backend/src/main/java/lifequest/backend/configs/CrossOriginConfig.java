@@ -11,8 +11,7 @@ public class CrossOriginConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOriginPatterns("http://localhost:3000", "http://localhost:3001") // Allow both URLs
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*");
-}
+                .allowedOriginPatterns("http://localhost:3000", "http://localhost:3001","http://localhost:3002") // Allow both URLs
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
+    }
 }

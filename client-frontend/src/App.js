@@ -17,6 +17,7 @@ import MyInsurance from './pages/MyInsurance';
 import PaymentPage from './pages/PaymentPage';
 import Profile from './pages/Profile';
 import Receipt from './pages/ReceiptPage';
+import ViewAgent from './pages/ViewAgent';
 
 function App() {
   return (

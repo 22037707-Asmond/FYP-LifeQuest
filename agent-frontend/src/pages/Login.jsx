@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { LocalStorage } from '../services/LocalStorage';
 import { authAgent } from '../services/AgentsAPI';
+import { connectWebSocket } from '../services/WebSocketService'; // Assume this is where you define your WebSocket connection logic
 
 const defaultTheme = createTheme();
 
@@ -24,16 +25,19 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const userDetails = await authAgent(username, password);
             console.log(userDetails);
-           
+
             if (userDetails) {
                 LocalStorage.setAccount(userDetails); // Store user details in localStorage
-                navigate('/Profile');
+                
+                // Establish WebSocket connection after successful login
+                connectWebSocket(userDetails.username); 
+
+                navigate('/Profile'); // Navigate to Profile
             } else {
                 setError('Invalid username or password.');
             }
@@ -101,13 +105,6 @@ export default function Login() {
                         >
                             Login
                         </Button>
-                        <Grid container justifyContent="center" alignItems="center">
-                            <Grid item>
-                                <Link href="/SignUp" variant="body2" sx={{ color: 'red' }}>
-                                    Don't have an account? Sign Up
-                                </Link>
-                            </Grid>
-                        </Grid>
                     </Box>
                 </Box>
             </Container>

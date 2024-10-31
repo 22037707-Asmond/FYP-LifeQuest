@@ -1,28 +1,34 @@
+import React, { useState, useEffect } from 'react';
+import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import FullCalendar from '@fullcalendar/react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { LocalStorage } from '../../services/LocalStorage';
 import './AgentCalendar.css';
+import { LocalStorage } from '../../services/LocalStorage';
+import { removeCircularReferences } from '../../utils/CircularReferenceUtils';
 
 const AgentCalendar = () => {
   const [events, setEvents] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const defaultDate = new Date();
   defaultDate.setDate(defaultDate.getDate() + 1);
   const [newEvent, setNewEvent] = useState({ title: 'Meeting With ---', date: defaultDate, time: '14:00:00', userId: '' });
+  const [selectedUser, setSelectedUser] = useState({ userId: '' });
 
   useEffect(() => {
     fetchEvents();
+    // fetchAllUsers();
   }, []);
 
   const fetchEvents = async () => {
     try {
       const account = await LocalStorage.getAccount();
-      const agentId = account?.id;
+      const cleanAccount = removeCircularReferences(account);
+      console.log("Clean account:", cleanAccount);  // Debug log
+      const agentId = cleanAccount?.id;
       const response = await axios.get(`http://localhost:8080/api/calendar/agent/${agentId}`);
       const eventsData = response.data.map(event => ({
         title: event.title,
@@ -39,6 +45,8 @@ const AgentCalendar = () => {
     }
   };
 
+
+
   const handleDateClick = (info) => {
     setNewEvent({ ...newEvent, date: new Date(info.dateStr) });
   };
@@ -53,36 +61,39 @@ const AgentCalendar = () => {
   };
 
   const handleSaveEvent = async () => {
-    if (!newEvent.title || !newEvent.date || !newEvent.time || !newEvent.userId) {
+    if (!newEvent.title || !newEvent.date || !newEvent.time || !newEvent?.userId) {
       alert('Please fill in all fields.');
       return;
     }
 
     const account = await LocalStorage.getAccount();
-    const agentId = account?.id;
+    const cleanAccount = removeCircularReferences(account);
+    const agentId = cleanAccount?.id;
 
     try {
       const eventDate = new Date(newEvent.date.getTime() - newEvent.date.getTimezoneOffset() * 60000).toISOString().split('T')[0];
       const eventToSave = {
         ...newEvent,
         date: eventDate,
-        agentId: {id : agentId},
-        userId:{id: newEvent.userId},
+        agent: { id: agentId },
+        user: { id: newEvent?.userId },
         status: 'Upcoming'
       };
 
       console.log('Saving event:', eventToSave);
 
-      const response = await axios.post('http://localhost:8080/api/calendar', eventToSave);
+      const response = await axios.post('http://localhost:8080/api/calendar/agent', eventToSave);
+
       const newSavedEvent = {
         title: response.data.title,
         start: `${response.data.date}T${response.data.time}`,
         id: response.data.id,
         accepted: response.data.accepted,
-        agentId: response.data.agentId ? response.data.agentId.id : agentId,
-        userId: response.data.userId ? response.data.userId.id : newEvent.userId,
+        agentId: response.data.agent?.id,
+        userId: response.data.user?.id,
         status: response.data.status || 'Upcoming'
       };
+
       setEvents([...events, newSavedEvent]);
       setNewEvent({ title: 'Meeting With ---', date: defaultDate, time: '14:00:00', userId: '' });
     } catch (error) {
@@ -96,7 +107,7 @@ const AgentCalendar = () => {
       setSelectedEvent({
         id: event.id,
         title: event.title,
-        start: new Date(event.start),
+        start: new Date(event.start), // Convert start to Date object
         status: event.status,
         userId: event.userId,
         time: event.start.split('T')[1]
@@ -195,7 +206,7 @@ const AgentCalendar = () => {
           <option value="15:00:00">15:00</option>
           <option value="16:00:00">16:00</option>
         </select>
-        <label>Enter the User's ID:</label>
+        <label>Enter User Id</label>
         <input
           type="text"
           name="userId"
@@ -221,7 +232,7 @@ const AgentCalendar = () => {
             />
             <label>Meeting Date:</label>
             <DatePicker
-              selected={selectedEvent.start} 
+              selected={selectedEvent.start} // Already a Date object
               onChange={handleEditDateChange}
               dateFormat="yyyy-MM-dd"
             />
@@ -239,12 +250,12 @@ const AgentCalendar = () => {
               <option value="15:00:00">15:00</option>
               <option value="16:00:00">16:00</option>
             </select>
-            <label>Enter the User's ID:</label>
+            <label>Enter User Id</label>
             <input
               type="text"
               name="userId"
               value={selectedEvent.userId}
-              onChange={handleEditInputChange}
+              onChange={handleInputChange}
             />
             <button onClick={handleUpdateEvent}>Update Meeting</button>
           </div>
