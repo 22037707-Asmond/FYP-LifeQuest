@@ -53,3 +53,14 @@ npm install
 npm install langchainhub
 set port=3005 & npx flowise start
 ```
+
+---
+
+# Setting Up PRUKaya
+
+## Installation and Setup Steps
+
+```bash
+pip install -r requirements.txt
+python -m bot.bot
+```
