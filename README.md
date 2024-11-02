@@ -17,7 +17,6 @@
 ```bash
 cd backend
 mvn clean package
-cd target 
 runJava.bat
 ```
 
