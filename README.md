@@ -46,21 +46,29 @@ pip install -r requirements.txt
 python run.py
 ```
 
-### Step 7: Setting Up Flowise Server
+### Step 7: Setting Up Flowise Server (Do this in cmd not powershell)
 
 ```bash
 npm install
 npm install langchainhub
-set port=3005 & npx flowise start
+set port=3005 & npx flowise start 
 ```
 
 ---
 
 # Setting Up PRUKaya
-
 ## Installation and Setup Steps
 
+### Step 1: Setting Up Telebot Server
 ```bash
+cd PruKaya
 pip install -r requirements.txt
 python -m bot.bot
+```
+
+### Step 2: Run the flowise server (Do this in cmd not powershell)
+```bash
+cd ..
+cd flowise 
+set port=3005 & npx flowise start 
 ```
