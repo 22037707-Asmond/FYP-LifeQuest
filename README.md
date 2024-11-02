@@ -18,7 +18,7 @@
 cd backend
 mvn clean package
 cd target 
-java -jar backend-0.0.1-SNAPSHOT.jar
+runJava.bat
 ```
 
 ### Step 4: Setting Up LifeQuest - Client
