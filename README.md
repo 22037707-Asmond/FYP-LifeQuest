@@ -61,7 +61,12 @@ set port=3005 & npx flowise start
 ```
 
 ---
+# PRUKaya Demo
 
+
+https://github.com/user-attachments/assets/4d27ea04-fc3e-41d5-b9cd-ac1075327118
+
+---
 # Setting Up PRUKaya
 ## Installation and Setup Steps
 
