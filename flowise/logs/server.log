@@ -830,3 +830,21 @@ Error: OpenAI ApiKey not found
 2024-10-31 14:36:09 [INFO]: ⬆️ POST /api/v1/prediction/1c3c6956-2a5a-492d-ad6d-96546d5d940d
 2024-10-31 14:36:09 [INFO]: [server]: Request originated from http://localhost:3000
 2024-10-31 14:36:51 [INFO]: Shutting down Flowise...
+2024-11-02 18:54:43 [INFO]: Starting Flowise...
+2024-11-02 18:54:43 [INFO]: 📦 [server]: Data Source is initializing...
+2024-11-02 18:55:03 [INFO]: 📦 [server]: Data Source has been initialized!
+2024-11-02 18:55:03 [INFO]: ⚡️ [server]: Flowise Server is listening at :3005
+2024-11-02 18:55:38 [INFO]: ⬆️ POST /api/v1/node-load-method/chatOpenAI
+2024-11-02 21:13:34 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-11-02 21:17:55 [INFO]: 🖊 PUT /api/v1/assistants/fa640ee4-a3d7-4888-9331-de7d53faf425
+2024-11-02 21:18:25 [INFO]: ⬆️ POST /api/v1/assistants
+2024-11-02 21:18:40 [INFO]: ⬆️ POST /api/v1/node-load-method/openAIAssistant
+2024-11-02 21:19:10 [INFO]: ⬆️ POST /api/v1/chatflows
+2024-11-02 21:19:30 [INFO]: 🖊 PUT /api/v1/chatflows/f824b8ba-9e75-48d3-9944-db00683fb461
+2024-11-02 21:19:31 [INFO]: 🖊 PUT /api/v1/chatflows/f824b8ba-9e75-48d3-9944-db00683fb461
+2024-11-02 21:25:17 [INFO]: ⬆️ POST /api/v1/prediction/f824b8ba-9e75-48d3-9944-db00683fb461
+2024-11-02 21:25:17 [INFO]: [server]: Request originated from undefined
+2024-11-02 21:25:17 [INFO]: [server]: Chatflow f824b8ba-9e75-48d3-9944-db00683fb461 added into ChatflowPool
+2024-11-02 21:26:13 [INFO]: ⬆️ POST /api/v1/prediction/f824b8ba-9e75-48d3-9944-db00683fb461
+2024-11-02 21:26:13 [INFO]: [server]: Request originated from undefined
+2024-11-02 22:29:14 [INFO]: Shutting down Flowise...
